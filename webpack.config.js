@@ -9,11 +9,11 @@ console.log(isDev ? "开发环境" : "生产环境");
 const htmlsMap = [
   {
     template: "index",
-    chunks: ["index"]
+    chunks: ["vendor", "index"]
   },
   {
     template: "d3",
-    chunks: ["d3"]
+    chunks: ["vendor", "d3"]
   }
 ];
 
@@ -31,18 +31,23 @@ const htmlFiles = (function() {
   return result;
 }());
 
+const commonJS = ["jquery", "bootstrap"];
 module.exports = {
   entry: {
-    // commons: ["jquery", "bootstrap"], 
+    vendor: commonJS,
     index: ["./src/template/index.js"],
     d3: ["./src/template/d3.js"]
   },
   devtool: "eval-source-map",
   output: {
     path: path.resolve("build"),
-    publicPath: isDev ? "/build" : "./",
+    publicPath: isDev ? "/" : "./",
     filename: "[name]-[hash].js"
   },
+  // externals: {
+  //   react: 'React',
+  //   'react-dom':'ReactDOM',
+  // },
   module: {
     rules: [{
       test: /\.html$/,
@@ -71,10 +76,7 @@ module.exports = {
     ]
   },
   plugins:[
-    new webpack.DllReferencePlugin({
-      context: __dirname,
-      manifest: require("./manifest.json"),
-    }),
+    new webpack.optimize.CommonsChunkPlugin({name: "vendor", filename: "vendor.bundle.js"}),
   ].concat( htmlFiles)
     .concat(
       isDev ?

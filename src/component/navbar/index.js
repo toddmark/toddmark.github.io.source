@@ -35,7 +35,7 @@ export default class Nav extends Component{
                   <NavLink to="/game" activeStyle={{color: "#fff", background: "#777"}}>Game</NavLink>
                 </li>
                 <li className="dropdown">
-                  <a href="javascript:void(0);" className="dropdown-toggle" data-toggle="dropdown">Sandbox <span className="caret"></span></a>
+                  <a href="#" className="dropdown-toggle" data-toggle="dropdown">Sandbox <span className="caret"></span></a>
                   <ul className="dropdown-menu" role="menu">
                     <li><Link to="/sandbox">Index</Link></li>
                     <li><Link to="/sandbox/binarytree">binarytree</Link></li>
@@ -53,7 +53,7 @@ export default class Nav extends Component{
                   <a href="#" className="dropdown-toggle" data-toggle="dropdown">d3.js Demo <span className="caret"></span></a>
                   <ul className="dropdown-menu" role="menu">
                     <li>
-                      <a href="./d3.html">Home</a>
+                      <a href="/d3.html">Home</a>
                     </li>
                   </ul>
                 </li>
