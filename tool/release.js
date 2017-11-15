@@ -8,11 +8,13 @@ shell.exec("npm run build");
 
 const dir = shell.cd("../toddmark.github.io");
 if (dir.code !== 0) {
-  shell.echo("目录不存在");
+  shell.echo("dictionary is empty, please clone this url: https://github.com/toddmark/toddmark.github.io.source");
   shell.exit();
 }
 
 shell.exec("pwd");
+
+shell.exec("find * -delete");
 
 shell.cp("-r", "../toddmark.github.io.source/build/*", "../toddmark.github.io");
 
