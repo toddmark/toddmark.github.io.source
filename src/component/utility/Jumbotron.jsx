@@ -17,6 +17,7 @@ const Jumbotron = props => (
       <div style={{width: 200, height: 300}}>
         <img className="img-thumbnail" src="https://unsplash.it/200/300/?random" alt="" />
       </div>
+      <p style={{marginTop: 15, fontSize: 12, textAlign: "center"}}>Hosted by <a href="https://pages.coding.me" style={{fontWeight: "bold", color: "#666"}}>Coding Pages</a></p>
     </div>
   </div>
 );
