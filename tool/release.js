@@ -8,7 +8,7 @@ shell.exec("npm run build");
 
 const dir = shell.cd("../toddmark.github.io");
 if (dir.code !== 0) {
-  shell.echo("dictionary is empty, please clone this url: https://github.com/toddmark/toddmark.github.io.source");
+  shell.echo("dictionary is empty, please clone this url: https://github.com/toddmark/toddmark.github.io");
   shell.exit();
 }
 
@@ -18,4 +18,5 @@ shell.exec("find * -delete");
 
 shell.cp("-r", "../toddmark.github.io.source/build/*", "../toddmark.github.io");
 
+shell.exec("pwd");
 shell.exec(" git add . && git commit -m \"/****** Auto release from release.js ******/\" && git push ");
