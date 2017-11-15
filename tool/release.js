@@ -4,15 +4,13 @@ const shell = require("shelljs");
 
 shell.echo("Hello Shell");
 
-shell.exec("npm run build");
-
-const dir = shell.cd("../toddmark.github.io");
-if (dir.code !== 0) {
+if (shell.exec(" test -d '../toddmark.github.io' && echo 'Yes' || echo 'No' ") === "No") {
   shell.echo("dictionary is empty, please clone this url: https://github.com/toddmark/toddmark.github.io");
   shell.exit();
 }
+shell.exec("npm run build");
 
-shell.exec("pwd");
+shell.cd("../toddmark.github.io");
 
 shell.exec("find * -delete");
 
