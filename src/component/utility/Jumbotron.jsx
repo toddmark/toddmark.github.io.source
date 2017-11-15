@@ -7,7 +7,7 @@ const Jumbotron = props => (
     <div className="jumbotron">
       <div className="row">
         <div className="col-xs-6">
-          <a className="btn btn-primary btn-block" href="/blog">Story of blog</a>
+          <a className="btn btn-primary btn-block" href="/blog">Blog</a>
         </div>
         <div className="col-xs-6">
           <Link className="btn btn-default btn-block" to="/hello">Mill</Link>
