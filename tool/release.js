@@ -1,6 +1,7 @@
 // "release": "npm run build && git add . && git commit -m \"/****** release ******/\" && git push ",
 
 const shell = require("shelljs");
+const moment = require("moment");
 
 shell.echo("Hello Shell");
 
@@ -16,5 +17,6 @@ shell.exec("find * -delete");
 
 shell.cp("-r", "../toddmark.github.io.source/build/*", "../toddmark.github.io");
 
-shell.exec("pwd");
-shell.exec(" git add . && git commit -m \"/****** Auto release from release.js ******/\" && git push ");
+shell.exec(`echo '最近一次发布时间是：${moment().format("YYYY年MM月DD日 HH:mm:ss")} ' >> README.md`)
+
+shell.exec(`git add . && git commit -m "/****** 发布日期: ${moment().format("YYYY年MM月DD日 HH:mm:ss")} ******/" && git push `);
