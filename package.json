@@ -60,6 +60,7 @@
     "react-dom": "^15.6.1",
     "react-particles-js": "^1.5.0",
     "react-router-dom": "^4.2.2",
-    "scrollmagic": "^2.0.5"
+    "scrollmagic": "^2.0.5",
+    "shelljs": "^0.7.8"
   }
 }
