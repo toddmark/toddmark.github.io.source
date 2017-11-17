@@ -9,7 +9,7 @@ if (shell.exec(" test -d '../toddmark.github.io' && echo 'Yes' || echo 'No' ") =
   shell.echo("dictionary is empty, please clone this url: https://github.com/toddmark/toddmark.github.io");
   shell.exit();
 }
-shell.exec("npm run build");
+// shell.exec("npm run build");
 
 shell.cd("../toddmark.github.io");
 
@@ -17,6 +17,6 @@ shell.exec("find * -delete");
 
 shell.cp("-r", "../toddmark.github.io.source/build/*", "../toddmark.github.io");
 
-shell.exec(`echo "# The Last Release Time: ${moment().format("YYYY-MM-DD HH:mm:ss")} ![IMG](https://picsum.photos/888/300)" >> README.md`);
+shell.exec(`echo " # The Last Release Time: ${moment().format("YYYY-MM-DD HH:mm:ss")} ![IMG](https://picsum.photos/888/300) " >> README.md`);
 
 shell.exec(`git pull && git add . && git commit -m "(｡◕∀◕｡) 发布日期: ${moment().format("YYYY年MM月DD日 HH:mm:ss")}" && git push `);
