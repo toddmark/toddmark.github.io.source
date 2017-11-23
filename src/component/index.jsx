@@ -21,7 +21,7 @@ export default class Index extends Component {
     return (
       <div>
         <div className="container flex-parent">
-          <Jumbotron content={{ title: "Welcome! Visitors!" }} />
+          <Jumbotron content={{ title: "Welcome, Visitors!" }} />
         </div>
         <Particles
           style={{ position: "absolute", left: 0, top: 0, zIndex: -99 }}

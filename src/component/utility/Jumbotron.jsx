@@ -2,6 +2,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
+import Clock from "./clock.tsx";
+
 const Jumbotron = props => (
   <div>
     <div className="jumbotron">
@@ -14,8 +16,9 @@ const Jumbotron = props => (
         </div>
       </div>
       <p style={{marginTop: 15}} className="text-primary">{props.content.title}</p>
-      <div style={{width: 200, height: 300}}>
+      <div style={{width: 200}}>
         <img className="img-thumbnail" src="https://unsplash.it/200/300/?random" alt="" />
+        <Clock />
       </div>
       <p style={{marginTop: 15, fontSize: 12, textAlign: "center"}}>Hosted by <a href="https://pages.coding.me" style={{fontWeight: "bold", color: "#666"}}>Coding Pages</a></p>
     </div>
