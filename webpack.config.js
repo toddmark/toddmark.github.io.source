@@ -58,6 +58,8 @@ module.exports = {
     },{
       test: /\.js$/,
       loader: "imports-loader?define=>false"
+    }, { 
+      test: /\.tsx?$/, loader: "awesome-typescript-loader" 
     }, {
       test: /\.jsx?$/,
       exclude: /node_modules/,
@@ -82,7 +84,7 @@ module.exports = {
         [
           new webpack.HotModuleReplacementPlugin(),
           new webpack.NamedModulesPlugin(),
-          new BundleAnalyzerPlugin(),
+          // new BundleAnalyzerPlugin(),
         ]
         :
         // 生产环境
