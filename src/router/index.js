@@ -19,7 +19,7 @@ import Sandbox from "../component/sandbox/index.jsx";
 import BinaryTree from "../component/sandbox/binaryTree";
 import RandomSelect from "../component/sandbox/randomSelect";
 
-import Index from "../component/index.jsx";
+import Index from "../component/index.tsx";
 import game from "../component/game/game.jsx";
 
 class Root extends Component {
