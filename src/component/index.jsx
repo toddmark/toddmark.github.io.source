@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React, { Component } from "react";
-import Particles from "react-particles-js";
+// import Particles from "react-particles-js";
 import particlesProps from "./particleProps.js";
 import "./index.less";
 
@@ -23,12 +23,12 @@ export default class Index extends Component {
         <div className="container flex-parent">
           <Jumbotron content={{ title: "Welcome, Visitors!" }} />
         </div>
-        <Particles
+        {/* <Particles
           style={{ position: "absolute", left: 0, top: 0, zIndex: -99 }}
           width='100%'
           height='100%'
           params={particlesProps}
-        />
+        /> */}
       </div>
     );
   }

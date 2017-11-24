@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import rd3 from 'react-d3-library';
+// import rd3 from 'react-d3-library';
 import { node, update } from './mincraftNode.js';
 
-const RD3Component = rd3.Component;
+// const RD3Component = rd3.Component;
 
 class Mincraft extends Component {
   constructor(props) {
@@ -31,7 +31,7 @@ class Mincraft extends Component {
             </div>
           </div>
         </div>
-        <RD3Component data={this.state.d3} />
+        {/* <RD3Component data={this.state.d3} /> */}
       </div>
     )
   }
