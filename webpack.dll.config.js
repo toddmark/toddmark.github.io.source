@@ -8,7 +8,6 @@ module.exports = {
       "react-dom",
       "jquery",
       "bootstrap",
-      "react-d3-library",
       "gsap",
       "scrollmagic",
       "bootstrap/dist/css/bootstrap.min.css"

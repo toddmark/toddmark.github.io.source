@@ -1,8 +1,8 @@
 // eslint-disable-next-line no-unused-vars
 import React, { Component } from "react";
-import rd3 from "react-d3-library";
-const RD3Component = rd3.Component;
-import { node, regenerate } from "./binaryTreeNode.js";
+// import rd3 from "react-d3-library";
+// const RD3Component = rd3.Component;
+// import { node, regenerate } from "./binaryTreeNode.js";
 import "./binaryTree.less";
 import Nav from "../../navbar";
 
@@ -18,7 +18,7 @@ export default class BinaryTree extends Component{
   }
 
   componentDidMount() {
-    this.setState({d3: node});
+    // this.setState({d3: node});
     this.progressAnimate();
   }
 
@@ -36,7 +36,7 @@ export default class BinaryTree extends Component{
       distance += 10;
       if (distance > 100) {
         console.log(distance);
-        regenerate();
+        // regenerate();
         distance = 0;
         // clearInterval(timer);
       }
@@ -55,7 +55,7 @@ export default class BinaryTree extends Component{
             {this.state.distance}%
           </div>
         </div>
-        <RD3Component data={this.state.d3} />
+        {/* <RD3Component data={this.state.d3} /> */}
       </div>
     );
   }
