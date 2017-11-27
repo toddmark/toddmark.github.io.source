@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import "./index.less";
 
-// utility
-// import Carousel from './utility/carousel.jsx';
 import Jumbotron from "./utility/Jumbotron"
 
 export default class Index extends Component<any, any> {
