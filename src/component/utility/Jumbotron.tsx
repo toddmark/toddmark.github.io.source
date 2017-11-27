@@ -1,10 +1,9 @@
-// eslint-disable-next-line no-unused-vars
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-import Clock from "./clock.tsx";
+import Clock from "./clock";
 
-const Jumbotron = props => (
+const Jumbotron = (props: any) => (
   <div>
     <div className="jumbotron">
       <div className="row">

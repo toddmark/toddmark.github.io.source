@@ -40,7 +40,7 @@ module.exports = {
   devtool: "eval-source-map",
   output: {
     path: path.resolve("build"),
-    publicPath: isDev ? "/build" : "./",
+    publicPath: isDev ? "/build/" : "./",
     filename: "[name]-[hash].js"
   },
   module: {
@@ -59,7 +59,8 @@ module.exports = {
       test: /\.js$/,
       loader: "imports-loader?define=>false"
     }, { 
-      test: /\.tsx?$/, loader: "awesome-typescript-loader" 
+      test: /\.tsx?$/,
+      loader: "awesome-typescript-loader" 
     }, {
       test: /\.jsx?$/,
       exclude: /node_modules/,
@@ -71,6 +72,9 @@ module.exports = {
       test: /bootstrap.+\.(jsx|js)$/, loader: "imports-loader?jQuery=jquery,$=jquery,this=>window"
     }
     ]
+  },
+  resolve: {
+    extensions: [".ts",".tsx", ".js", ".jsx", ".scss"]
   },
   plugins:[
     new webpack.DllReferencePlugin({

@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/toddmark/toddmark#readme",
   "devDependencies": {
+    "@types/react-router": "^4.0.18",
+    "@types/react-router-dom": "^4.2.2",
     "awesome-typescript-loader": "^3.4.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.0",
