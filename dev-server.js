@@ -30,4 +30,4 @@ const server = new WebpackDevServer(compiler, {
 });
 
 server.listen(port);
-console.log(`Listenting at http://${myIp}:${port}`);
+console.log(`Listenting at http://${myIp}:${port}/build/`);

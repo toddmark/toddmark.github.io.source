@@ -1,4 +1,5 @@
-var node = document.createElement('div');
+import * as d3 from "d3";
+var node = document.createElement("div");
 
 var branches = [];
 var seed = {i: 0, x: 420, y: 600, a: 0, l: 130, d:0}; // a = angle, l = length, d = depth
@@ -64,49 +65,46 @@ function y1(d) {return d.y;}
 function x2(d) {return endPt(d).x;}
 function y2(d) {return endPt(d).y;}
 function highlightParents(d) {
-  var colour = d3.event.type === 'mouseover' ? 'green' : '#777';
+  var colour = d3.event.type === "mouseover" ? "green" : "#777";
   var depth = d.d;
   for(var i = 0; i <= depth; i++) {
-    d3.select('#id-'+parseInt(d.i)).style('stroke', colour);
+    d3.select("#id-"+parseInt(d.i)).style("stroke", colour);
     d = branches[d.parent];
   }
 }
 
 function create() {
   const width = window.screen.width;
-  d3.select(node).append('svg')
-    .attr('height', 650)
-    .attr('width', width)
-    .selectAll('line')
+  d3.select(node).append("svg")
+    .attr("height", 650)
+    .attr("width", width)
+    .selectAll("line")
     .data(branches)
     .enter()
-    .append('line')
-    .attr('x1', x1)
-    .attr('y1', y1)
-    .attr('x2', x2)
-    .attr('y2', y2)
-    .style('stroke-width', function(d) {return parseInt(maxDepth + 1 - d.d) + 'px';})
-    .attr('id', function(d) {return 'id-'+d.i;})
-    .on('mouseover', highlightParents)
-    .on('mouseout', highlightParents);
+    .append("line")
+    .attr("x1", x1)
+    .attr("y1", y1)
+    .attr("x2", x2)
+    .attr("y2", y2)
+    .style("stroke-width", function(d) {return parseInt(maxDepth + 1 - d.d) + "px";})
+    .attr("id", function(d) {return "id-"+d.i;})
+    .on("mouseover", highlightParents)
+    .on("mouseout", highlightParents);
 }
 
 function update() {
-  d3.select('svg')
-    .selectAll('line')
+  d3.select("svg")
+    .selectAll("line")
     .data(branches)
     .transition()
-    .attr('x1', x1)
-    .attr('y1', y1)
-    .attr('x2', x2)
-    .attr('y2', y2);
+    .attr("x1", x1)
+    .attr("y1", y1)
+    .attr("x2", x2)
+    .attr("y2", y2);
 }
 
 regenerate(true);
 
-d3.select(node).select('svg').on('click', regenerate);
+d3.select(node).select("svg").on("click", regenerate);
 
-module.exports = {
-  node,
-  regenerate
-};
+export default { node, regenerate };

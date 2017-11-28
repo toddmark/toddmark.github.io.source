@@ -1,23 +1,23 @@
-import React, {Component} from 'react';
+// eslint-disable-next-line no-unused-vars
+import React, {Component} from "react";
 // import rd3 from 'react-d3-library';
-import { node, update } from './mincraftNode.js';
+import node from "./mincraftNode.js";
+// const update = require("./mincraftNode.js");
+import $ from "jquery";
 
 // const RD3Component = rd3.Component;
 
 class Mincraft extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      d3: ''
-    }
   }
 
   componentDidMount() {
-    this.setState({d3: node});
+    $("#container").append(node.node);
   }
 
   resetPaint() {
-    update();
+    node.update();
   }
 
   render() {
@@ -31,9 +31,9 @@ class Mincraft extends Component {
             </div>
           </div>
         </div>
-        {/* <RD3Component data={this.state.d3} /> */}
+        <div id="container"></div>
       </div>
-    )
+    );
   }
 }
 

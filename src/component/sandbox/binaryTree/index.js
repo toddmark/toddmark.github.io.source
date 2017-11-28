@@ -2,24 +2,27 @@
 import React, { Component } from "react";
 // import rd3 from "react-d3-library";
 // const RD3Component = rd3.Component;
-// import { node, regenerate } from "./binaryTreeNode.js";
-import "./binaryTree.less";
+import $ from "jquery";
+
+import node from "./binaryTreeNode.js";
 import Nav from "../../navbar";
+
+import "./binaryTree.less";
 
 export default class BinaryTree extends Component{
 
   constructor(props) {
     super(props);
+    this.timer = null;
     this.state = {
-      d3: "",
       distance: 0
     };
-    this.timer = null;
   }
 
   componentDidMount() {
-    // this.setState({d3: node});
     this.progressAnimate();
+    $("#container").append(node.node);
+    console.log(node);
   }
 
   componentWillUnmount() {
@@ -28,15 +31,13 @@ export default class BinaryTree extends Component{
 
   progressAnimate() {
     const time = 1;
-    const speed = 100 / time;
     const step = 500;
     const self = this;
     let distance = 0;
     this.timer = setInterval(function() {
       distance += 10;
       if (distance > 100) {
-        console.log(distance);
-        // regenerate();
+        node.regenerate();
         distance = 0;
         // clearInterval(timer);
       }
@@ -55,7 +56,7 @@ export default class BinaryTree extends Component{
             {this.state.distance}%
           </div>
         </div>
-        {/* <RD3Component data={this.state.d3} /> */}
+        <div id="container"></div>
       </div>
     );
   }

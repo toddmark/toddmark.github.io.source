@@ -55,9 +55,6 @@ module.exports = {
       loader: "style-loader!css-loader"
     }, {
       test: /\.(eot|woff|ttf|eot|woff2)$/, loader: "file-loader"
-    },{
-      test: /\.js$/,
-      loader: "imports-loader?define=>false"
     }, { 
       test: /\.tsx?$/,
       loader: "awesome-typescript-loader" 
@@ -74,7 +71,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: [".ts",".tsx", ".js", ".jsx", ".scss"]
+    extensions: [".ts",".tsx", ".js", ".jsx", ".scss"],
   },
   plugins:[
     new webpack.DllReferencePlugin({
@@ -88,7 +85,7 @@ module.exports = {
         [
           new webpack.HotModuleReplacementPlugin(),
           new webpack.NamedModulesPlugin(),
-          // new BundleAnalyzerPlugin(),
+          new BundleAnalyzerPlugin(),
         ]
         :
         // 生产环境

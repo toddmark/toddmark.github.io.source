@@ -10,7 +10,8 @@ module.exports = {
       "bootstrap",
       "gsap",
       "scrollmagic",
-      "bootstrap/dist/css/bootstrap.min.css"
+      "bootstrap/dist/css/bootstrap.min.css",
+      "d3",
       //其他库
     ],
   },

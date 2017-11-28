@@ -2,7 +2,7 @@ require("./hello.less");
 
 import {TweenMax, TimelineMax} from "gsap";
 import ScrollMagic from "scrollmagic";
-require("scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap");
+import "imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap";
 
 // eslint-disable-next-line no-unused-vars
 import React, {Component} from "react";
