@@ -6,6 +6,7 @@ class Clock extends Component<any, any>{
       <div>
         I plan to design a clock by CSS.
         Bzinga! I have a very confused issue for my website.
+        Build tool!
       </div>
     )
   }

@@ -12,8 +12,6 @@ if (shell.exec(" test -d '../toddmark.github.io' && echo 'Yes' || echo 'No' ") =
   shell.exit();
 }
 
-shell.exec("npm run build");
-
 shell.cd("../toddmark.github.io");
 
 shell.exec("git pull");
