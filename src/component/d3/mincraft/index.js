@@ -28,6 +28,7 @@ class Mincraft extends Component {
           <div className="panel-body">
             <div className="btn-group">
               <button type="button" className="btn btn-danger" onClick={this.resetPaint}>Clean</button>
+              <button type="button" className="btn btn-primary" onClick={this.resetPaint}>Export</button>
             </div>
           </div>
         </div>

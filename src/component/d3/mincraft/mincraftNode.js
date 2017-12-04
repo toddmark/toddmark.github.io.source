@@ -1,9 +1,9 @@
 import * as d3 from "d3";
 const node = document.createElement("div");
 
-const rectSize = 25;
-const lines = 32;
-const columns = 32;
+const rectSize = 50;
+const lines = 16;
+const columns = 16;
 const defaultColor = "#eee";
 const width = columns * rectSize;
 const height = lines * rectSize;

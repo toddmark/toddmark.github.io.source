@@ -85,7 +85,7 @@ module.exports = {
         [
           new webpack.HotModuleReplacementPlugin(),
           new webpack.NamedModulesPlugin(),
-          new BundleAnalyzerPlugin(),
+          // new BundleAnalyzerPlugin(),
         ]
         :
         // 生产环境
