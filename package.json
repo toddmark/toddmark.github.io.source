@@ -55,7 +55,7 @@
   },
   "dependencies": {
     "@types/react": "^16.0.25",
-    "@types/react-dom": "^16.0.3",
+    "@types/react-dom": "^16.0.4",
     "bootstrap": "^3.3.7",
     "canvg": "0.0.8",
     "d3": "^4.10.2",
