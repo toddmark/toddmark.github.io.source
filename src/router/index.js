@@ -22,6 +22,7 @@ import RandomSelect from "../component/sandbox/randomSelect";
 
 import Index from "../component/index.tsx";
 import game from "../component/game/game.jsx";
+let a = "123";
 
 class Root extends Component {
   render() {
