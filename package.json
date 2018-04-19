@@ -12,9 +12,9 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.{json,css,}": ["prettier --write", "git add"],
-    "*.{js, jsx,}": ["prettier --write", "eslint --fix", "git add"],
-    "*.{ts, tsx,}": ["prettier --write", "tslint --fix", "git add"]
+    "*.{json,css}": ["prettier --write", "git add"],
+    "*.{js,jsx}": ["prettier --write", "eslint", "git add"],
+    "*.{ts,tsx}": ["prettier --write", "tslint", "git add"]
   },
   "repository": {
     "type": "git",
