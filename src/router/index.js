@@ -1,8 +1,8 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 
 // eslint-disable-next-line no-unused-vars
-
-import React, { Component } from "react";
+import React from "react";
+import { Component } from "react";
 import {
   Route,
   Switch,
@@ -22,7 +22,6 @@ import RandomSelect from "../component/sandbox/randomSelect";
 
 import Index from "../component/index.tsx";
 import game from "../component/game/game.jsx";
-let a = "123";
 
 class Root extends Component {
   render() {
