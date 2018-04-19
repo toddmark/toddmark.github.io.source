@@ -9,7 +9,7 @@
     "release": "node ./tool/release.js",
     "start": "cross-env NODE_ENV=development node dev-server.js",
     "dll": "webpack --config webpack.dll.config.js",
-    "precommit": "pretty-quick --staged"
+    "precommit": "lint-staged"
   },
   "lint-staged": {
     "*.{js,json,css,md}": ["prettier --write", "git add"]
@@ -52,7 +52,6 @@
     "less-loader": "^4.0.5",
     "lint-staged": "^7.0.4",
     "prettier": "1.12.1",
-    "pretty-quick": "^1.4.1",
     "react-hot-loader": "^4.0.0",
     "source-map-loader": "^0.2.3",
     "style-loader": "^0.18.2",
