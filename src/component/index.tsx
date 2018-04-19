@@ -3,8 +3,6 @@ import "./index.less";
 
 import Jumbotron from "./utility/Jumbotron";
 
-const a = 123;
-
 export default class Index extends Component<any, any> {
   constructor(props: any) {
     super(props);
