@@ -1,12 +1,13 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 
 // eslint-disable-next-line no-unused-vars
+
 import React, { Component } from "react";
 import {
   Route,
   Switch,
   // BrowserRouter as Router,
-  HashRouter as Router,
+  HashRouter as Router
 } from "react-router-dom";
 
 import Hello from "../component/hello.jsx";
@@ -33,7 +34,7 @@ class Root extends Component {
             <Route path="/game" component={game} />
             <Route path="/about" component={About} />
             <Route exact path="/sandbox" component={Sandbox} />
-            <Route path="/sandbox/binaryTree" component={BinaryTree}/>
+            <Route path="/sandbox/binaryTree" component={BinaryTree} />
             <Route path="/sandbox/randomSelect" component={RandomSelect} />
           </Switch>
         </Router>
