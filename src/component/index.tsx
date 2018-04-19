@@ -15,7 +15,6 @@ export default class Index extends Component<any, any> {
     return (
       <div>
         <div className="container flex-parent">
-          {/* 123 */}
           <Jumbotron content={{ title: "Welcome, Visitors!" }} />
         </div>
       </div>
