@@ -13,7 +13,7 @@ export default class Index extends Component<any, any> {
     return (
       <div>
         <div className="container flex-parent">
-          <Jumbotron content={{ title: "Welcome, Visitors !" }} />
+          <Jumbotron content={{ title: "Welcome, my visitors !" }} />
         </div>
       </div>
     );
