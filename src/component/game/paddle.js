@@ -1,11 +1,11 @@
-function Paddle (path) {
+function Paddle(path) {
   const img = new Image();
   img.src = path;
   const paddle = {
     img: img,
     x: 0,
     y: 220,
-    speed: 15,
+    speed: 15
   };
 
   paddle.moveLeft = () => {
@@ -18,7 +18,7 @@ function Paddle (path) {
 
   return paddle;
 }
-function Ball (path) {
+function Ball(path) {
   const img = new Image();
   img.src = path;
   const _o = {
@@ -27,15 +27,15 @@ function Ball (path) {
     y: 50,
     speedX: 5,
     speedY: 5,
-    fired: false,
+    fired: false
   };
 
   _o.move = function() {
     if (_o.fired) {
-      if (_o.x < 0 || (_o.x + _o.img.width) > 400 ) {
+      if (_o.x < 0 || _o.x + _o.img.width > 400) {
         _o.speedX = -_o.speedX;
       }
-      if (_o.y < 0 || (_o.y + _o.img.height) > 300 ) {
+      if (_o.y < 0 || _o.y + _o.img.height > 300) {
         _o.speedY = -_o.speedY;
       }
       // move
@@ -48,9 +48,8 @@ function Ball (path) {
   };
 
   _o.collide = function(obj) {
-    // 进入挡板宽度范围
     // paddle: obj,  ball: _o
-    if (_o.x >= obj.x && (_o.x + _o.img.width) < (obj.x + obj.img.width)){
+    if (_o.x >= obj.x && _o.x + _o.img.width < obj.x + obj.img.width) {
       if (_o.y + _o.img.height >= obj.y) {
         _o.speedY = -_o.speedY;
       }
@@ -60,7 +59,4 @@ function Ball (path) {
   return _o;
 }
 
-export {
-  Paddle,
-  Ball
-};
+export { Paddle, Ball };
