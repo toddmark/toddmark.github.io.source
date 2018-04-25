@@ -22,6 +22,7 @@ import RandomSelect from "../component/sandbox/randomSelect";
 
 import Index from "../component/index.tsx";
 import game from "../component/game/game.jsx";
+import JetFighter from "../component/game/jetFighter/index";
 
 class Root extends Component {
   render() {
@@ -32,6 +33,7 @@ class Root extends Component {
             <Route exact path="/" component={Index} />
             <Route path="/hello" component={Hello} />
             <Route path="/game" component={game} />
+            <Route path="/jetfighter" component={JetFighter} />
             <Route path="/about" component={About} />
             <Route exact path="/sandbox" component={Sandbox} />
             <Route path="/sandbox/binaryTree" component={BinaryTree} />
