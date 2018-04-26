@@ -39,7 +39,7 @@ export default class Nav extends Component {
               <div className="navbar-brand">
                 <img
                   style={{ width: 20 }}
-                  src={require("../img/witcher.jpeg")}
+                  src={require("../img/cat.png")}
                   alt=""
                 />
               </div>
