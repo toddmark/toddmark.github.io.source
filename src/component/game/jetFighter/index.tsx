@@ -31,9 +31,17 @@ class Stage extends React.Component<{}, {}> {
         jetFighter.width,
         jetFighter.height
       );
-    }, 1000 / 100);
+      for (const i of Object.keys(jetFighter.event)) {
+        if (jetFighter.event[i].active && jetFighter.event[i].action) {
+          jetFighter.event[i].action();
+        }
+      }
+    }, 1000 / 60);
     document.addEventListener("keydown", event => {
-      jetFighter.keyBoardEvent(event.key);
+      jetFighter.keyBoardEvent(event.key, true);
+    });
+    document.addEventListener("keyup", event => {
+      jetFighter.keyBoardEvent(event.key, false);
     });
   }
 

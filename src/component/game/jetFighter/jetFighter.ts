@@ -4,8 +4,9 @@ class JetFighter {
   y: number;
   width: number;
   height: number;
+  event: {};
   // keyBoarnEvent: Function;
-  private speed = 5;
+  private speed = 15;
   constructor(src) {
     this.img = new Image(); // Create new img element
     this.img.src = src;
@@ -13,20 +14,24 @@ class JetFighter {
     this.y = 0;
     this.width = 50;
     this.height = 50;
+    this.event = {};
   }
-  public keyBoardEvent = key => {
+  public keyBoardEvent = (key, active) => {
+    this.event[key] = {};
+    // console.log(key, this.event[key]);
+    this.event[key].active = active;
     switch (key) {
       case "a":
-        this.moveLeft();
+        this.event[key].action = this.moveLeft;
         break;
       case "d":
-        this.moveRight();
+        this.event[key].action = this.moveRight;
         break;
       case "w":
-        this.moveUp();
+        this.event[key].action = this.moveUp;
         break;
       case "s":
-        this.moveDown();
+        this.event[key].action = this.moveDown;
         break;
     }
   };
