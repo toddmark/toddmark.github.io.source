@@ -73,6 +73,7 @@ export default class Nav extends Component {
                 <li>
                   <NavLink
                     to="/jetfighter"
+                    replace={this.state.currentPath === "/jetfighter"}
                     activeStyle={{ color: "#fff", background: "#777" }}
                   >
                     Jet Fighter

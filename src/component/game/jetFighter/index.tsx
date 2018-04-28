@@ -1,28 +1,42 @@
 import * as React from "react";
-
 import Nav from "../../navbar/index";
+import JetFighter from "./jetFighter";
 
-interface IStageState {
-  bbc: string;
-}
+const imgSrc = require("./img/jet_fighter.png");
+const jetFighter = new JetFighter(imgSrc);
 
-class Stage extends React.Component<{}, IStageState> {
+class Stage extends React.Component<{}, {}> {
   constructor(props) {
     super(props);
-    this.state = {
-      bbc: "123"
-    };
   }
 
   componentDidMount() {
     const canvas: any = document.getElementById("stage");
     const ctx = canvas.getContext("2d");
-    const img = new Image(); // Create new img element
-    img.src = require("./img/jet_fighter.png"); // Set source path
-    img.onload = () => {
-      ctx.drawImage(img, 100, 100, 50, 50);
+    jetFighter.img.onload = () => {
+      ctx.drawImage(
+        jetFighter.img,
+        jetFighter.x,
+        jetFighter.y,
+        jetFighter.width,
+        jetFighter.height
+      );
     };
+    setInterval(() => {
+      ctx.clearRect(0, 0, 600, 600);
+      ctx.drawImage(
+        jetFighter.img,
+        jetFighter.x,
+        jetFighter.y,
+        jetFighter.width,
+        jetFighter.height
+      );
+    }, 1000 / 100);
+    document.addEventListener("keydown", event => {
+      jetFighter.keyBoardEvent(event.key);
+    });
   }
+
   render() {
     return (
       <div>
