@@ -6,7 +6,7 @@ class JetFighter {
   height: number;
   event: {};
   // keyBoarnEvent: Function;
-  private speed = 15;
+  private speed = 5;
   constructor(src) {
     this.img = new Image(); // Create new img element
     this.img.src = src;
