@@ -1,16 +1,17 @@
 import * as React from "react";
 import Nav from "../../navbar/index";
-import JetFighter from "./jetFighter";
-import Stage from "./stage";
+import Bullet from "./model/bullet";
+import JetFighter from "./model/jetFighter";
+import Stage from "./model/stage";
 
-import { debug } from "./console";
+import { debug } from "./model/console";
 
-const imgSrc = require("./img/jet_fighter.png");
-const jetFighter = new JetFighter(imgSrc);
+// const imgSrc = require("./img/jet_fighter.png");
+const jetFighter = new JetFighter(require("./img/jet_fighter.png"));
+const bullet = new Bullet(require("./img/bullet.png"));
 
 function updateState(ctx) {
   ctx.clearRect(0, 0, 600, 600);
-
   // active keyboard event
   for (const i of Object.keys(jetFighter.event)) {
     if (jetFighter.event[i].active && jetFighter.event[i].action) {
@@ -18,15 +19,23 @@ function updateState(ctx) {
     }
   }
 
+  // jetFighter position detect
   if (jetFighter.x > Stage.width - jetFighter.width) {
-    // console.log(jetFighter.x , Stage.width - jetFighter.width)
     jetFighter.x = Stage.width - jetFighter.width;
   }
   if (jetFighter.x < 0) {
     jetFighter.x = 0;
   }
-
+  if (jetFighter.y > Stage.height - jetFighter.height) {
+    jetFighter.y = Stage.width - jetFighter.width;
+  }
+  if (jetFighter.y < 0) {
+    jetFighter.y = 0;
+  }
   debug(ctx, jetFighter);
+  if (jetFighter.shoot) {
+    ctx.drawImage(bullet.img, jetFighter.x + 18, jetFighter.y - 25, 16, 16);
+  }
   ctx.drawImage(
     jetFighter.img,
     jetFighter.x,
@@ -44,15 +53,6 @@ class CanvasContainer extends React.Component<{}, {}> {
   componentDidMount() {
     const canvas: any = document.getElementById("stage");
     const ctx = canvas.getContext("2d");
-    jetFighter.img.onload = () => {
-      ctx.drawImage(
-        jetFighter.img,
-        jetFighter.x,
-        jetFighter.y,
-        jetFighter.width,
-        jetFighter.height
-      );
-    };
     setInterval(() => updateState(ctx), 1000 / 60);
     document.addEventListener("keydown", event => {
       jetFighter.keyBoardEvent(event.key, true);

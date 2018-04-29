@@ -4,6 +4,7 @@ class JetFighter {
   y: number;
   width: number;
   height: number;
+  shoot: boolean;
   event: {};
   // keyBoarnEvent: Function;
   private speed = 5;
@@ -15,6 +16,7 @@ class JetFighter {
     this.width = 50;
     this.height = 50;
     this.event = {};
+    this.shoot = false;
   }
   public keyBoardEvent = (key, active) => {
     this.event[key] = {};
@@ -33,6 +35,9 @@ class JetFighter {
       case "s":
         this.event[key].action = this.moveDown;
         break;
+      case " ":
+        this.event[key].action = this.fire;
+        break;
     }
   };
   public moveLeft = () => {
@@ -46,6 +51,9 @@ class JetFighter {
   };
   public moveDown = () => {
     this.y += this.speed;
+  };
+  public fire = () => {
+    this.shoot = true;
   };
 }
 

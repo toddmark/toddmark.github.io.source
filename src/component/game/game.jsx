@@ -15,7 +15,7 @@ class Game extends Component {
     const stage = Stage();
 
     paddle.img.onload = function() {
-      stage.drawImage(paddle);
+      // stage.drawImage(paddle);
     };
 
     stage.update = function() {
