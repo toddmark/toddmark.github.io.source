@@ -1,3 +1,5 @@
+import { IBullet } from "./bullet";
+
 class Singleton {
   static getInstance() {
     if (!Singleton.instance) {
@@ -8,9 +10,11 @@ class Singleton {
   private static instance: Singleton;
   width: number;
   height: number;
+  bulletContainer: Array<IBullet>;
   private constructor() {
     this.width = 600;
     this.height = 600;
+    this.bulletContainer = [];
   }
 }
 

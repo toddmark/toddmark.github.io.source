@@ -1,6 +1,7 @@
 import ImgResource from "./imgResource";
 class JetFighter extends ImgResource {
   shoot: boolean;
+  shootHold: boolean;
   event: {};
   // keyBoarnEvent: Function;
   private speed = 5;
@@ -12,7 +13,9 @@ class JetFighter extends ImgResource {
     this.height = 50;
     this.event = {};
     this.shoot = false;
+    this.shootHold = false;
   }
+
   public keyBoardEvent = (key, active) => {
     this.event[key] = {};
     // console.log(key, this.event[key]);
@@ -30,11 +33,9 @@ class JetFighter extends ImgResource {
       case "s":
         this.event[key].action = this.moveDown;
         break;
-      case " ":
-        this.event[key].action = this.fire;
-        break;
     }
   };
+
   public moveLeft = () => {
     this.x -= this.speed;
   };
@@ -47,7 +48,8 @@ class JetFighter extends ImgResource {
   public moveDown = () => {
     this.y += this.speed;
   };
-  public fire = () => {
+  public fire = bullet => {
+    console.log("fire");
     this.shoot = true;
   };
 }

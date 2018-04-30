@@ -5,7 +5,9 @@
   "rules": {
     "member-access": false,
     "no-var-requires": false,
-    "no-namespace": false
+    "no-namespace": false,
+    "array-type": [true, "generic"],
+    "no-console": [false]
   },
   "rulesDirectory": []
 }

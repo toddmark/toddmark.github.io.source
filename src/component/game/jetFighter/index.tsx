@@ -6,9 +6,9 @@ import Stage from "./model/stage";
 
 import { debug } from "./model/console";
 
-// const imgSrc = require("./img/jet_fighter.png");
-const jetFighter = new JetFighter(require("./img/jet_fighter.png"));
-const bullet = new Bullet(require("./img/bullet.png"));
+const jetFighterImg = require("./img/jet_fighter.png");
+const bulletImg = require("./img/bullet.png");
+const jetFighter = new JetFighter(jetFighterImg);
 
 function updateState(ctx) {
   ctx.clearRect(0, 0, 600, 600);
@@ -32,10 +32,8 @@ function updateState(ctx) {
   if (jetFighter.y < 0) {
     jetFighter.y = 0;
   }
+
   debug(ctx, jetFighter);
-  if (jetFighter.shoot) {
-    ctx.drawImage(bullet.img, jetFighter.x + 18, jetFighter.y - 25, 16, 16);
-  }
   ctx.drawImage(
     jetFighter.img,
     jetFighter.x,
@@ -43,6 +41,21 @@ function updateState(ctx) {
     jetFighter.width,
     jetFighter.height
   );
+
+  // draw bullet
+  if (Stage.bulletContainer.length > 0) {
+    for (const i of Stage.bulletContainer) {
+      debug(ctx, i);
+      ctx.drawImage(i.img, i.x, i.y, i.width, i.height);
+    }
+  }
+
+  // if (jetFighter.shoot) {
+  //   const bullet = new Bullet(bulletImg, jetFighter.x + 18, jetFighter.y - 25,);
+  //   console.log(bullet === bullet);
+  //   debug(ctx, bullet);
+  //   ctx.drawImage(bullet.img, bullet.x, bullet.y, bullet.width, bullet.height);
+  // }
 }
 
 class CanvasContainer extends React.Component<{}, {}> {
@@ -56,6 +69,11 @@ class CanvasContainer extends React.Component<{}, {}> {
     setInterval(() => updateState(ctx), 1000 / 60);
     document.addEventListener("keydown", event => {
       jetFighter.keyBoardEvent(event.key, true);
+      if (event.key === " ") {
+        const bullet = new Bullet(bulletImg, jetFighter.x, jetFighter.y);
+        Stage.bulletContainer.push(bullet);
+        jetFighter.fire(bullet);
+      }
     });
     document.addEventListener("keyup", event => {
       jetFighter.keyBoardEvent(event.key, false);
