@@ -9,6 +9,7 @@ export interface IBullet {
 }
 class Bullet extends ImgResource {
   shoot: boolean;
+  timer: any;
   constructor(props, x, y) {
     super(props);
     this.x = x + 18;
@@ -18,7 +19,12 @@ class Bullet extends ImgResource {
     this.move();
   }
   private move = () => {
-    setInterval(() => {
+    this.timer = setInterval(() => {
+      if (this.y < 0) {
+        clearInterval(this.timer);
+        console.log("123");
+      }
+      console.log("456");
       this.y -= 5;
     }, 1000 / 60);
   };
