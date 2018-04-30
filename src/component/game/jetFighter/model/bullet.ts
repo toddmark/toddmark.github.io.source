@@ -17,12 +17,10 @@ class Bullet extends ImgResource {
     this.height = 16;
     this.move();
   }
-
   private move = () => {
     setInterval(() => {
-      console.log(this);
-      this.y -= 10;
-    }, 100);
+      this.y -= 5;
+    }, 1000 / 60);
   };
 }
 

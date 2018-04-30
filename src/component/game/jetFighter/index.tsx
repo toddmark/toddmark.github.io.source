@@ -44,10 +44,13 @@ function updateState(ctx) {
 
   // draw bullet
   if (Stage.bulletContainer.length > 0) {
-    for (const i of Stage.bulletContainer) {
-      debug(ctx, i);
-      ctx.drawImage(i.img, i.x, i.y, i.width, i.height);
-    }
+    Stage.bulletContainer.forEach((item, index) => {
+      debug(ctx, item);
+      if (item.y <= 0) {
+        Stage.bulletContainer.splice(index, 1);
+      }
+      ctx.drawImage(item.img, item.x, item.y, item.width, item.height);
+    });
   }
 
   // if (jetFighter.shoot) {
