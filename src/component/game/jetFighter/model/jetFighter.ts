@@ -1,16 +1,11 @@
-class JetFighter {
-  img: HTMLImageElement;
-  x: number;
-  y: number;
-  width: number;
-  height: number;
+import ImgResource from "./imgResource";
+class JetFighter extends ImgResource {
   shoot: boolean;
   event: {};
   // keyBoarnEvent: Function;
   private speed = 5;
-  constructor(src) {
-    this.img = new Image(); // Create new img element
-    this.img.src = src;
+  constructor(props) {
+    super(props);
     this.x = 0;
     this.y = 0;
     this.width = 50;

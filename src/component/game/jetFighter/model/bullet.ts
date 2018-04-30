@@ -1,8 +1,8 @@
-class Bullet {
-  img: HTMLImageElement;
-  constructor(src) {
-    this.img = new Image(); // Create new img element
-    this.img.src = src;
+import ImgResource from "./imgResource";
+class Bullet extends ImgResource {
+  shoot: boolean;
+  constructor(props) {
+    super(props);
   }
 }
 
