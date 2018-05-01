@@ -7,12 +7,12 @@ const Jumbotron = (props: any) => (
   <div>
     <div className="jumbotron">
       <div className="row">
-        <div className="col-xs-6">
+        <div className="col">
           <a className="btn btn-primary btn-block" href="/blog">
             Blog
           </a>
         </div>
-        <div className="col-xs-6">
+        <div className="col">
           <Link className="btn btn-default btn-block" to="/hello">
             Mill
           </Link>

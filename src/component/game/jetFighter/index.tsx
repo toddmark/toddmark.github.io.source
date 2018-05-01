@@ -62,14 +62,16 @@ function updateState(ctx) {
 }
 
 class CanvasContainer extends React.Component<{}, {}> {
+  private timer = null;
   constructor(props) {
     super(props);
+    this.timer = null;
   }
 
   componentDidMount() {
     const canvas: any = document.getElementById("stage");
     const ctx = canvas.getContext("2d");
-    setInterval(() => updateState(ctx), 1000 / 60);
+    this.timer = setInterval(() => updateState(ctx), 1000 / 60);
     document.addEventListener("keydown", event => {
       jetFighter.keyBoardEvent(event.key, true);
       if (event.key === " ") {
@@ -88,11 +90,15 @@ class CanvasContainer extends React.Component<{}, {}> {
     });
   }
 
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  }
+
   render() {
     return (
       <div>
         <Nav />
-        <div style={{ margin: "0 auto", width: Stage.width }}>
+        <div style={{ margin: "15px auto", width: Stage.width }}>
           <canvas
             id="stage"
             style={{ border: "1px solid #ccc" }}
