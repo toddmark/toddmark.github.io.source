@@ -73,13 +73,18 @@ class CanvasContainer extends React.Component<{}, {}> {
     document.addEventListener("keydown", event => {
       jetFighter.keyBoardEvent(event.key, true);
       if (event.key === " ") {
-        const bullet = new Bullet(bulletImg, jetFighter.x, jetFighter.y);
-        Stage.bulletContainer.push(bullet);
-        jetFighter.fire(bullet);
+        if (!jetFighter.shoot) {
+          const bullet = new Bullet(bulletImg, jetFighter.x, jetFighter.y);
+          Stage.bulletContainer.push(bullet);
+          jetFighter.fire(true);
+        }
       }
     });
     document.addEventListener("keyup", event => {
       jetFighter.keyBoardEvent(event.key, false);
+      if (event.key === " ") {
+        jetFighter.fire(false);
+      }
     });
   }
 

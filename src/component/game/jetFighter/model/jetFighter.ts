@@ -13,7 +13,6 @@ class JetFighter extends ImgResource {
     this.height = 50;
     this.event = {};
     this.shoot = false;
-    this.shootHold = false;
   }
 
   public keyBoardEvent = (key, active) => {
@@ -48,9 +47,8 @@ class JetFighter extends ImgResource {
   public moveDown = () => {
     this.y += this.speed;
   };
-  public fire = bullet => {
-    console.log("fire");
-    this.shoot = true;
+  public fire = fire => {
+    this.shoot = fire;
   };
 }
 

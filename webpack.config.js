@@ -75,11 +75,11 @@ module.exports = {
       {
         test: /.*\.(gif|png|jpe?g|svg)$/i,
         loader: "file-loader?name=img-[sha512:hash:base64:7].[ext]"
-      },
-      {
-        test: /bootstrap.+\.(jsx|js)$/,
-        loader: "imports-loader?jQuery=jquery,$=jquery,this=>window"
       }
+      // {
+      // test: /bootstrap.+\.(jsx|js)$/,
+      // loader: "imports-loader?jQuery=jquery,$=jquery,this=>window"
+      // }
     ]
   },
   resolve: {

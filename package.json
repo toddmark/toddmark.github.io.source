@@ -67,7 +67,7 @@
   "dependencies": {
     "@types/react": "^16.0.25",
     "@types/react-dom": "^16.0.4",
-    "bootstrap": "^3.3.7",
+    "bootstrap": "^4.1.1",
     "canvas": "^1.6.10",
     "canvg": "0.0.8",
     "d3": "^4.10.2",
@@ -76,6 +76,7 @@
     "ip": "^1.1.5",
     "jquery": "^3.2.1",
     "moment": "^2.19.2",
+    "popper.js": "^1.14.3",
     "progress-bar-webpack-plugin": "^1.11.0",
     "react": "^16.1.1",
     "react-d3-library": "^1.1.8",

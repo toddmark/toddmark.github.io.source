@@ -22,9 +22,7 @@ class Bullet extends ImgResource {
     this.timer = setInterval(() => {
       if (this.y < 0) {
         clearInterval(this.timer);
-        console.log("123");
       }
-      console.log("456");
       this.y -= 5;
     }, 1000 / 60);
   };
