@@ -2,3 +2,5 @@ webpack.config.js
 webpack.dll.config.js
 .eslintrc.js
 build/bundle.dll.js
+
+tool/*
