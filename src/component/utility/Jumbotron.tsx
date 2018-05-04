@@ -5,15 +5,15 @@ import Clock from "./clock";
 
 const Jumbotron = (props: any) => (
   <div>
-    <div className="jumbotron">
+    <div className="jumbotron shadow">
       <div className="row">
         <div className="col">
-          <a className="btn btn-primary btn-block" href="/blog">
+          <a className="btn btn-primary btn-dark" href="/blog">
             Blog
           </a>
         </div>
         <div className="col">
-          <Link className="btn btn-default btn-block" to="/hello">
+          <Link className="btn btn-dark btn-block" to="/hello">
             Mill
           </Link>
         </div>
