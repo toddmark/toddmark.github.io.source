@@ -38,12 +38,28 @@ class Singleton {
       observeObj.width,
       observeObj.height
     );
-    this.ctx.font = "12px serif";
+    this.ctx.font = "12px Microsoft YaHei";
     this.ctx.fillText(
       `(${observeObj.x},${observeObj.y})`,
       observeObj.x,
       observeObj.y
     );
+  };
+
+  drawBullet = () => {
+    if (this.bulletContainer.length > 0) {
+      this.bulletContainer.forEach((item, index) => {
+        this.debug(item);
+        if (item.y <= 0) {
+          this.bulletContainer.splice(index, 1);
+        }
+        this.ctx.drawImage(item.img, item.x, item.y, item.width, item.height);
+      });
+    }
+  };
+
+  drawBrick = brick => {
+    this.ctx.drawImage(brick.img, brick.x, brick.y, brick.width, brick.height);
   };
 }
 

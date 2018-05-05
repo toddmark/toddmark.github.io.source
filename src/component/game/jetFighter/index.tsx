@@ -4,10 +4,6 @@ import Nav from "../../navbar/index";
 import { Stage } from "./main";
 
 class CanvasContainer extends React.Component<{}, {}> {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     Stage.init();
   }
