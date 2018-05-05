@@ -1,4 +1,4 @@
-import { IBullet } from "./bullet";
+import { IBullet } from "../types/bullet";
 
 class Singleton {
   static getInstance() {
@@ -11,11 +11,24 @@ class Singleton {
   width: number;
   height: number;
   bulletContainer: Array<IBullet>;
-  private constructor() {
+  timer: any;
+  ctx: any;
+  updateStage: any;
+  constructor() {
     this.width = 600;
     this.height = 600;
     this.bulletContainer = [];
   }
+
+  init = () => {
+    const canvas: any = document.getElementById("stage");
+    this.ctx = canvas.getContext("2d");
+    this.timer = setInterval(this.updateStage, 1000 / 60);
+  };
+
+  stopTimer = () => {
+    clearInterval(this.timer);
+  };
 }
 
 export default Singleton.getInstance();
