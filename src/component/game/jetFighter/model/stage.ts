@@ -29,6 +29,22 @@ class Singleton {
   stopTimer = () => {
     clearInterval(this.timer);
   };
+
+  debug = observeObj => {
+    this.ctx.strokeStyle = "red";
+    this.ctx.strokeRect(
+      observeObj.x,
+      observeObj.y,
+      observeObj.width,
+      observeObj.height
+    );
+    this.ctx.font = "12px serif";
+    this.ctx.fillText(
+      `(${observeObj.x},${observeObj.y})`,
+      observeObj.x,
+      observeObj.y
+    );
+  };
 }
 
 export default Singleton.getInstance();
