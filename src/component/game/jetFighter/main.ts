@@ -6,12 +6,10 @@ import Stage from "./model/stage";
 const brickImg = require("./img/brick.png");
 const bulletImg = require("./img/bullet.png");
 const jetFighterImg = require("./img/jet_fighter.png");
-const jetFighter = new JetFighter(jetFighterImg);
-
-const brick = new Brick(brickImg, 10, 10);
+const jetFighter = new JetFighter(jetFighterImg, Stage.width, Stage.height);
 
 Stage.updateStage = () => {
-  if (!Stage.ctx) {
+  if (!Stage.ctx || Stage.pause) {
     return;
   }
 
@@ -20,24 +18,26 @@ Stage.updateStage = () => {
   // active keyboard event
   jetFighter.eventAction(Stage);
 
-  Stage.debug(jetFighter);
+  // detect brick boundary
+  Stage.brickContainer.forEach(item => {
+    item.detectBoundary(Stage.bulletContainer);
+  });
 
-  Stage.ctx.drawImage(
-    jetFighter.img,
-    jetFighter.x,
-    jetFighter.y,
-    jetFighter.width,
-    jetFighter.height
-  );
+  // draw jetFighter
+  Stage.drawJetfight(jetFighter);
 
   // draw bullet
   Stage.drawBullet();
 
   // draw brick
-  Stage.drawBrick(brick);
+  Stage.drawBrick();
 };
-// setInterval(() => {
-// }, 1000)
+
+setInterval(() => {
+  const brick = new Brick(brickImg, Stage);
+  brick.move(Stage.height);
+  Stage.brickContainer.push(brick);
+}, 500);
 
 document.addEventListener("keydown", event => {
   jetFighter.keyBoardEvent(event.key, true);

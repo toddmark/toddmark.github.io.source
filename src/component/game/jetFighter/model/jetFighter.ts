@@ -6,12 +6,12 @@ class JetFighter extends ImgResource {
   event: {};
   // keyBoarnEvent: Function;
   private speed = 5;
-  constructor(props) {
+  constructor(props, width, height) {
     super(props);
-    this.x = 0;
-    this.y = 0;
-    this.width = 50;
-    this.height = 50;
+    this.width = 133 / 3;
+    this.height = 190 / 3;
+    this.x = (width - this.width) / 2;
+    this.y = (height - this.height) / 2;
     this.event = {};
     this.shoot = false;
   }
@@ -70,7 +70,7 @@ class JetFighter extends ImgResource {
       this.x = 0;
     }
     if (this.y > Stage.height - this.height) {
-      this.y = Stage.width - this.width;
+      this.y = Stage.height - this.height;
     }
     if (this.y < 0) {
       this.y = 0;
