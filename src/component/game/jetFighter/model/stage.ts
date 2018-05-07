@@ -60,7 +60,6 @@ class Singleton {
     if (this.bulletContainer.length > 0) {
       this.bulletContainer.forEach((item, index) => {
         if (item.destory) {
-          // item = null;
           this.bulletContainer.splice(index, 1);
           return;
         }
@@ -74,7 +73,6 @@ class Singleton {
     if (this.brickContainer.length > 0) {
       this.brickContainer.forEach((item, index) => {
         if (item.destory) {
-          // item = null;
           this.brickContainer.splice(index, 1);
           return;
         }

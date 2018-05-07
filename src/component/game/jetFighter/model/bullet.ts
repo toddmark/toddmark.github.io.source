@@ -2,8 +2,6 @@ import ImgResource from "./imgResource";
 
 class Bullet extends ImgResource {
   shoot: boolean;
-  timer: any;
-  speed: number;
   destory: boolean;
   constructor(props, x, y) {
     super(props);

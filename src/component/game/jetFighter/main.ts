@@ -37,8 +37,11 @@ setInterval(() => {
   const brick = new Brick(brickImg, Stage);
   brick.move(Stage.height);
   Stage.brickContainer.push(brick);
-  console.log(Stage.brickContainer, Stage.bulletContainer);
 }, 500);
+
+setInterval(() => {
+  console.log("Bricks", Stage.brickContainer.length);
+}, 1000);
 
 document.addEventListener("keydown", event => {
   jetFighter.keyBoardEvent(event.key, true);

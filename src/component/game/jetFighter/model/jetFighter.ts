@@ -5,7 +5,6 @@ class JetFighter extends ImgResource {
   shootHold: boolean;
   event: {};
   // keyBoarnEvent: Function;
-  private speed = 5;
   constructor(props, width, height) {
     super(props);
     this.width = 133 / 3;
@@ -14,6 +13,7 @@ class JetFighter extends ImgResource {
     this.y = (height - this.height) / 2;
     this.event = {};
     this.shoot = false;
+    this.speed = 5;
   }
 
   public keyBoardEvent = (key, active) => {
