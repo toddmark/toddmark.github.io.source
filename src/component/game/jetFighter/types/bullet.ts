@@ -4,4 +4,5 @@ export interface IBullet {
   y: number;
   width: number;
   height: number;
+  destory: boolean;
 }

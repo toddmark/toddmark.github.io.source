@@ -3,20 +3,24 @@ import ImgResource from "./imgResource";
 class Brick extends ImgResource {
   timer: any;
   destory: boolean;
+  speed: number;
   constructor(props, Stage) {
     super(props);
     this.width = 32;
     this.height = 32;
     this.x = Math.round(Math.random() * (Stage.width - this.width));
-    this.y = Math.round(Math.random() * 100);
+    this.y = Math.round(Math.random() * (Stage.height / 2));
+    // this.y = - this.height;
     this.destory = false;
+    this.speed = 1;
   }
   move = boundary => {
     this.timer = setInterval(() => {
-      if (this.y > boundary) {
+      if (this.y > boundary - 50) {
         clearInterval(this.timer);
+        this.destory = true;
       }
-      this.y += 2;
+      this.y += this.speed;
     }, 1000 / 60);
   };
 

@@ -36,7 +36,7 @@ class Singleton {
   };
 
   debug = observeObj => {
-    return;
+    // return;
     this.ctx.strokeStyle = "red";
     this.ctx.strokeRect(
       observeObj.x,
@@ -59,8 +59,10 @@ class Singleton {
   drawBullet = () => {
     if (this.bulletContainer.length > 0) {
       this.bulletContainer.forEach((item, index) => {
-        if (item.y <= 0) {
+        if (item.destory) {
+          // item = null;
           this.bulletContainer.splice(index, 1);
+          return;
         }
         this.debug(item);
         this.ctx.drawImage(item.img, item.x, item.y, item.width, item.height);
@@ -72,7 +74,9 @@ class Singleton {
     if (this.brickContainer.length > 0) {
       this.brickContainer.forEach((item, index) => {
         if (item.destory) {
+          // item = null;
           this.brickContainer.splice(index, 1);
+          return;
         }
         this.debug(item);
         this.ctx.drawImage(item.img, item.x, item.y, item.width, item.height);

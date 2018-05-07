@@ -37,6 +37,7 @@ setInterval(() => {
   const brick = new Brick(brickImg, Stage);
   brick.move(Stage.height);
   Stage.brickContainer.push(brick);
+  console.log(Stage.brickContainer, Stage.bulletContainer);
 }, 500);
 
 document.addEventListener("keydown", event => {
