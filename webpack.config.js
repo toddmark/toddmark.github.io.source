@@ -34,6 +34,7 @@ const htmlFiles = (function() {
 })();
 
 module.exports = {
+  mode: isDev ? "development" : "production",
   entry: {
     // commons: ["jquery", "bootstrap"],
     index: ["./src/template/index.js"],
@@ -102,11 +103,11 @@ module.exports = {
           ]
         : [
             // 生产环境
-            new webpack.optimize.UglifyJsPlugin({
-              compress: {
-                warnings: false
-              }
-            }),
+            // new webpack.optimize.UglifyJsPlugin({
+            //   compress: {
+            //     warnings: false
+            //   }
+            // }),
             new webpack.DefinePlugin({
               "process.env": {
                 NODE_ENV: JSON.stringify("production")
