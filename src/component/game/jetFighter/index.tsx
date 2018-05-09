@@ -24,6 +24,13 @@ class CanvasContainer extends React.Component<{}, {}> {
             height={Stage.height}
           />
         </div>
+        <button
+          onClick={() => {
+            Stage.pause = !Stage.pause;
+          }}
+        >
+          Pause
+        </button>
       </div>
     );
   }

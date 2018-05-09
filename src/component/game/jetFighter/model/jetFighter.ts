@@ -69,8 +69,8 @@ class JetFighter extends ImgResource {
     if (this.x < 0) {
       this.x = 0;
     }
-    if (this.y > Stage.height - this.height) {
-      this.y = Stage.height - this.height;
+    if (this.y > Stage.height - this.height - 50) {
+      this.y = Stage.height - this.height - 50;
     }
     if (this.y < 0) {
       this.y = 0;

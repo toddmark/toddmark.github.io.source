@@ -1,6 +1,7 @@
 import Brick from "./model/brick";
 import Bullet from "./model/bullet";
 import JetFighter from "./model/jetFighter";
+import RolePanel from "./model/rolePanel";
 import Stage from "./model/stage";
 
 const brickImg = require("./img/brick.png");
@@ -13,7 +14,7 @@ Stage.updateStage = () => {
     return;
   }
 
-  Stage.ctx.clearRect(0, 0, 600, 600);
+  Stage.ctx.clearRect(0, 0, Stage.width, Stage.height);
 
   // active keyboard event
   jetFighter.eventAction(Stage);
@@ -31,17 +32,20 @@ Stage.updateStage = () => {
 
   // draw brick
   Stage.drawBrick();
+
+  // draw role panel
+  Stage.drawRolePanel(RolePanel);
 };
 
 setInterval(() => {
   const brick = new Brick(brickImg, Stage);
-  brick.move(Stage.height);
+  brick.move(Stage.height - 50);
   Stage.brickContainer.push(brick);
 }, 500);
 
-setInterval(() => {
-  console.log("Bricks", Stage.brickContainer.length);
-}, 1000);
+// setInterval(() => {
+//   console.log("Bricks", Stage.brickContainer.length);
+// }, 1000);
 
 document.addEventListener("keydown", event => {
   jetFighter.keyBoardEvent(event.key, true);

@@ -2,13 +2,13 @@ import { IBrick } from "../types/brick";
 import { IBullet } from "../types/bullet";
 
 class Singleton {
+  static instance: Singleton;
   static getInstance() {
     if (!Singleton.instance) {
       Singleton.instance = new Singleton();
     }
     return Singleton.instance;
   }
-  private static instance: Singleton;
   width: number;
   height: number;
   bulletContainer: Array<IBullet>;
@@ -18,8 +18,8 @@ class Singleton {
   updateStage: any;
   pause: boolean;
   constructor() {
-    this.width = 600;
-    this.height = 600;
+    this.width = 800;
+    this.height = 800;
     this.bulletContainer = [];
     this.brickContainer = [];
     this.pause = false;
@@ -80,6 +80,17 @@ class Singleton {
         this.ctx.drawImage(item.img, item.x, item.y, item.width, item.height);
       });
     }
+  };
+
+  drawRolePanel = rolePanel => {
+    console.log(rolePanel);
+    this.ctx.drawImage(
+      rolePanel.img,
+      rolePanel.x,
+      rolePanel.y,
+      rolePanel.width,
+      rolePanel.height
+    );
   };
 }
 
