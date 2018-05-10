@@ -7,6 +7,7 @@ import Stage from "./model/stage";
 const brickImg = require("./img/brick.png");
 const bulletImg = require("./img/bullet.png");
 const jetFighterImg = require("./img/jet_fighter.png");
+const moonImg = require("./img/moon.png");
 const jetFighter = new JetFighter(jetFighterImg, Stage.width, Stage.height);
 
 Stage.updateStage = () => {
@@ -34,7 +35,8 @@ Stage.updateStage = () => {
   Stage.drawBrick();
 
   // draw role panel
-  Stage.drawRolePanel(RolePanel);
+  RolePanel.loadImgResource(moonImg);
+  RolePanel.render(Stage);
 };
 
 setInterval(() => {
@@ -51,7 +53,7 @@ document.addEventListener("keydown", event => {
   jetFighter.keyBoardEvent(event.key, true);
   if (event.key === " ") {
     if (!jetFighter.shoot) {
-      const bullet = new Bullet(bulletImg, jetFighter.x, jetFighter.y);
+      const bullet = new Bullet(bulletImg, jetFighter.x, jetFighter.y, Stage);
       Stage.bulletContainer.push(bullet);
       jetFighter.fire(true);
     }

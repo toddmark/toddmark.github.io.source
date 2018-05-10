@@ -81,17 +81,6 @@ class Singleton {
       });
     }
   };
-
-  drawRolePanel = rolePanel => {
-    console.log(rolePanel);
-    this.ctx.drawImage(
-      rolePanel.img,
-      rolePanel.x,
-      rolePanel.y,
-      rolePanel.width,
-      rolePanel.height
-    );
-  };
 }
 
 export default Singleton.getInstance();
