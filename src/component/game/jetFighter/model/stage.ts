@@ -45,6 +45,7 @@ class Singleton {
       observeObj.height
     );
     this.ctx.font = "12px Microsoft YaHei";
+    this.ctx.fillStyle = "#000";
     this.ctx.fillText(
       `(${Math.round(observeObj.x)},${Math.round(observeObj.y)})`,
       observeObj.x,

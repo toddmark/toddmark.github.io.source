@@ -18,12 +18,17 @@ class Singleton {
 
   render(stage) {
     // console.log(stage);
-    stage.ctx.strokeStyle = "#369";
-    stage.ctx.strokeRect(
-      0,
-      stage.height - this.height,
-      stage.width,
-      this.height
+    const ctx = stage.ctx;
+    ctx.strokeStyle = "#369";
+    ctx.strokeRect(0, stage.height - this.height, stage.width, this.height);
+    ctx.fillStyle = "#eee";
+    ctx.fillRect(0, stage.height - this.height, stage.width, this.height);
+    ctx.font = "12px Microsoft YaHei";
+    ctx.fillStyle = "#000";
+    ctx.fillText(
+      "Role play panel( text from canvas)",
+      10,
+      stage.height - this.height / 2
     );
   }
 
