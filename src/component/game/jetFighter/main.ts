@@ -43,6 +43,9 @@ Stage.updateStage = () => {
 };
 
 setInterval(() => {
+  if (Stage.pause) {
+    return;
+  }
   const brick = new Brick(brickImg, Stage);
   brick.move(Stage.height - 50);
   Stage.brickContainer.push(brick);

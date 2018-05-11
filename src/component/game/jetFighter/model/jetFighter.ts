@@ -1,5 +1,8 @@
 import ImgResource from "./imgResource";
 
+// utility
+import { isCrossing } from "../utility/isCrossing";
+
 class JetFighter extends ImgResource {
   shoot: boolean;
   shootHold: boolean;
@@ -80,7 +83,13 @@ class JetFighter extends ImgResource {
   };
 
   detectCollide = bricks => {
-    console.log(bricks.length);
+    for (const item of bricks) {
+      const result = isCrossing(this, item);
+      if (result) {
+        item.destory = true;
+        this.blood--;
+      }
+    }
   };
 }
 
