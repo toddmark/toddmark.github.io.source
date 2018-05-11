@@ -4,6 +4,7 @@ class JetFighter extends ImgResource {
   shoot: boolean;
   shootHold: boolean;
   event: {};
+  blood: number;
   // keyBoarnEvent: Function;
   constructor(props, width, height) {
     super(props);
@@ -14,6 +15,7 @@ class JetFighter extends ImgResource {
     this.event = {};
     this.shoot = false;
     this.speed = 5;
+    this.blood = 10;
   }
 
   public keyBoardEvent = (key, active) => {
@@ -75,6 +77,10 @@ class JetFighter extends ImgResource {
     if (this.y < 0) {
       this.y = 0;
     }
+  };
+
+  detectCollide = bricks => {
+    console.log(bricks.length);
   };
 }
 

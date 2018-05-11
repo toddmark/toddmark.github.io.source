@@ -25,6 +25,9 @@ Stage.updateStage = () => {
     item.detectBoundary(Stage.bulletContainer);
   });
 
+  // detect jetFighter boundary
+  jetFighter.detectCollide(Stage.brickContainer);
+
   // draw jetFighter
   Stage.drawJetfight(jetFighter);
 
@@ -36,7 +39,7 @@ Stage.updateStage = () => {
 
   // draw role panel
   RolePanel.loadImgResource(moonImg);
-  RolePanel.render(Stage);
+  RolePanel.render(Stage, jetFighter);
 };
 
 setInterval(() => {

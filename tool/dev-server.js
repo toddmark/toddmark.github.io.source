@@ -1,5 +1,5 @@
 const webpack = require("webpack");
-const config = require("./webpack.config.js");
+const config = require("../webpack.config.js");
 const port = 8001;
 const IP = require("ip");
 const myIp = IP.address();

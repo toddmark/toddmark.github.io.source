@@ -64,7 +64,7 @@ class Singleton {
           this.bulletContainer.splice(index, 1);
           return;
         }
-        this.debug(item);
+        // this.debug(item);
         this.ctx.drawImage(item.img, item.x, item.y, item.width, item.height);
       });
     }

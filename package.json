@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node ./tool/build.js",
     "release": "node ./tool/release.js",
-    "start": "cross-env NODE_ENV=development node dev-server.js",
+    "start": "cross-env NODE_ENV=development node ./tool/dev-server.js",
     "dll": "webpack --config webpack.dll.config.js",
     "precommit": "lint-staged"
   },
