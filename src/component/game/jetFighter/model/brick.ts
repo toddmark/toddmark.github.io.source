@@ -33,6 +33,8 @@ class Brick extends ImgResource {
       // const result = isCrossing(this, item);
       const result = isCrossing(item, this);
       if (result) {
+        // bullet
+        item.destory = true;
         this.destory = true;
       }
     });
