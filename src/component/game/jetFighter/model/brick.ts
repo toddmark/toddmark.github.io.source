@@ -35,6 +35,7 @@ class Brick extends ImgResource {
       if (result) {
         // bullet
         item.destory = true;
+        // brick
         this.destory = true;
       }
     });

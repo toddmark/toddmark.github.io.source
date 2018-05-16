@@ -12,8 +12,17 @@ const jetFighter = new JetFighter(jetFighterImg, Stage.width, Stage.height);
 
 Stage.updateStage = () => {
   if (!Stage.ctx || Stage.pause) {
+    if (jetFighter.destory) {
+      Stage.ctx.clearRect(
+        jetFighter.x,
+        jetFighter.y,
+        jetFighter.width,
+        jetFighter.height
+      );
+    }
     return;
   }
+  Stage.pause = jetFighter.destory ? true : false;
 
   Stage.ctx.clearRect(0, 0, Stage.width, Stage.height);
 
@@ -42,18 +51,14 @@ Stage.updateStage = () => {
   RolePanel.render(Stage, jetFighter);
 };
 
-setInterval(() => {
+Stage.createBrick = () => {
   if (Stage.pause) {
     return;
   }
   const brick = new Brick(brickImg, Stage);
   brick.move(Stage.height - 50);
   Stage.brickContainer.push(brick);
-}, 500);
-
-// setInterval(() => {
-//   console.log("Bricks", Stage.brickContainer.length);
-// }, 1000);
+};
 
 document.addEventListener("keydown", event => {
   jetFighter.keyBoardEvent(event.key, true);
@@ -73,4 +78,4 @@ document.addEventListener("keyup", event => {
   }
 });
 
-export { Stage };
+export { Stage, jetFighter };

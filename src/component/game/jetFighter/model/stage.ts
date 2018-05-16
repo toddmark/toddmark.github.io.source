@@ -13,10 +13,12 @@ class Singleton {
   height: number;
   bulletContainer: Array<IBullet>;
   brickContainer: Array<IBrick>;
-  timer: any;
   ctx: any;
-  updateStage: any;
   pause: boolean;
+  updateStage: () => void;
+  timer: any;
+  createBrick: () => void;
+  brickTimer: any;
   constructor() {
     this.width = 800;
     this.height = 800;
@@ -28,11 +30,14 @@ class Singleton {
   init = () => {
     const canvas: any = document.getElementById("stage");
     this.ctx = canvas.getContext("2d");
+    this.pause = false;
     this.timer = setInterval(this.updateStage, 1000 / 60);
+    this.brickTimer = setInterval(this.createBrick, 500);
   };
 
   stopTimer = () => {
     clearInterval(this.timer);
+    clearInterval(this.brickTimer);
   };
 
   debug = observeObj => {

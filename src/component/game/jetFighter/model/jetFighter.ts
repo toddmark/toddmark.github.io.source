@@ -8,6 +8,7 @@ class JetFighter extends ImgResource {
   shootHold: boolean;
   event: {};
   blood: number;
+  destory: boolean;
   // keyBoarnEvent: Function;
   constructor(props, width, height) {
     super(props);
@@ -17,8 +18,9 @@ class JetFighter extends ImgResource {
     this.y = (height - this.height) / 2;
     this.event = {};
     this.shoot = false;
+    this.destory = false;
     this.speed = 5;
-    this.blood = 10;
+    this.blood = 1;
   }
 
   public keyBoardEvent = (key, active) => {
@@ -88,6 +90,9 @@ class JetFighter extends ImgResource {
       if (result) {
         item.destory = true;
         this.blood--;
+      }
+      if (this.blood === 0) {
+        this.destory = true;
       }
     }
   };

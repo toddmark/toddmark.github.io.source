@@ -1,7 +1,7 @@
 import * as React from "react";
 import Nav from "../../navbar/index";
 
-import { Stage } from "./main";
+import { jetFighter, Stage } from "./main";
 
 class CanvasContainer extends React.Component<{}, {}> {
   componentDidMount() {
@@ -24,13 +24,28 @@ class CanvasContainer extends React.Component<{}, {}> {
             height={Stage.height}
           />
         </div>
-        <button
-          onClick={() => {
-            Stage.pause = !Stage.pause;
-          }}
-        >
-          Pause
-        </button>
+        <div style={{ margin: "0 auto", width: Stage.width }}>
+          <div className="btn-group">
+            <button
+              className="btn btn-info"
+              onClick={() => {
+                Stage.pause = !Stage.pause;
+              }}
+            >
+              暂停{Stage.pause}
+            </button>
+            <button
+              className="btn btn-info"
+              onClick={() => {
+                jetFighter.blood = 3;
+                jetFighter.destory = false;
+                Stage.pause = false;
+              }}
+            >
+              复活
+            </button>
+          </div>
+        </div>
       </div>
     );
   }
