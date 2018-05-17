@@ -19,12 +19,14 @@ class Singleton {
   timer: any;
   createBrick: () => void;
   brickTimer: any;
+  brickTimerInterval: number;
   constructor() {
     this.width = 800;
     this.height = 800;
     this.bulletContainer = [];
     this.brickContainer = [];
     this.pause = false;
+    this.brickTimerInterval = 500;
   }
 
   init = () => {
@@ -32,7 +34,7 @@ class Singleton {
     this.ctx = canvas.getContext("2d");
     this.pause = false;
     this.timer = setInterval(this.updateStage, 1000 / 60);
-    this.brickTimer = setInterval(this.createBrick, 500);
+    this.brickTimer = setInterval(this.createBrick, this.brickTimerInterval);
   };
 
   stopTimer = () => {

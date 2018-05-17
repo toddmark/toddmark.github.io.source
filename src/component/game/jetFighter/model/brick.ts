@@ -1,3 +1,4 @@
+// import {IBrick} from "../types/brick";
 import { isCrossing } from "../utility/isCrossing";
 import ImgResource from "./imgResource";
 

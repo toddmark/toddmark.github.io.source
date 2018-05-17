@@ -8,18 +8,19 @@ const brickImg = require("./img/brick.png");
 const bulletImg = require("./img/bullet.png");
 const jetFighterImg = require("./img/jet_fighter.png");
 const moonImg = require("./img/moon.png");
-const jetFighter = new JetFighter(jetFighterImg, Stage.width, Stage.height);
+const jetFighter = new JetFighter(jetFighterImg, Stage);
 
 Stage.updateStage = () => {
+  if (jetFighter.destory) {
+    Stage.ctx.clearRect(
+      jetFighter.x,
+      jetFighter.y,
+      jetFighter.width,
+      jetFighter.height
+    );
+    return;
+  }
   if (!Stage.ctx || Stage.pause) {
-    if (jetFighter.destory) {
-      Stage.ctx.clearRect(
-        jetFighter.x,
-        jetFighter.y,
-        jetFighter.width,
-        jetFighter.height
-      );
-    }
     return;
   }
   Stage.pause = jetFighter.destory ? true : false;

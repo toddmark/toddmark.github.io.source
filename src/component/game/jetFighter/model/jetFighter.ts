@@ -3,19 +3,23 @@ import ImgResource from "./imgResource";
 // utility
 import { isCrossing } from "../utility/isCrossing";
 
+import { IStage } from "../types/stage";
+
 class JetFighter extends ImgResource {
   shoot: boolean;
   shootHold: boolean;
   event: {};
   blood: number;
   destory: boolean;
+  stage: IStage;
   // keyBoarnEvent: Function;
-  constructor(props, width, height) {
+  constructor(props, Stage) {
     super(props);
     this.width = 133 / 3;
     this.height = 190 / 3;
-    this.x = (width - this.width) / 2;
-    this.y = (height - this.height) / 2;
+    this.stage = Stage;
+    this.x = (this.stage.width - this.width) / 2;
+    this.y = (this.stage.height - this.height) / 2;
     this.event = {};
     this.shoot = false;
     this.destory = false;
@@ -93,6 +97,7 @@ class JetFighter extends ImgResource {
       }
       if (this.blood === 0) {
         this.destory = true;
+        this.stage.pause = true;
       }
     }
   };
