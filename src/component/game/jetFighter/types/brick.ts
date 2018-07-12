@@ -5,5 +5,7 @@ export interface IBrick {
   width: number;
   height: number;
   destory: boolean;
+  blood: number;
+  totalBlood: number;
   detectBoundary: (e) => void;
 }

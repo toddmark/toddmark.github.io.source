@@ -35,7 +35,7 @@ class CanvasContainer extends React.Component<{}, {}> {
               暂停{Stage.pause}
             </button>
             <button
-              className="btn btn-info"
+              className="btn btn-default"
               onClick={() => {
                 jetFighter.blood = 3;
                 jetFighter.destory = false;
@@ -43,6 +43,14 @@ class CanvasContainer extends React.Component<{}, {}> {
               }}
             >
               复活
+            </button>
+            <button
+              className="btn btn-info"
+              onClick={() => {
+                jetFighter.blood = 9999;
+              }}
+            >
+              无敌
             </button>
           </div>
         </div>

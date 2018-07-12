@@ -3,6 +3,7 @@ import ImgResource from "./imgResource";
 class Bullet extends ImgResource {
   shoot: boolean;
   destory: boolean;
+  damage: number;
   stage: any;
   constructor(props, x, y, stage) {
     super(props);
@@ -13,6 +14,7 @@ class Bullet extends ImgResource {
     this.speed = 10;
     this.destory = false;
     this.stage = stage;
+    this.damage = 1;
     this.move();
   }
   private move = () => {

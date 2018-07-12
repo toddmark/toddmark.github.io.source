@@ -85,7 +85,13 @@ class Singleton {
           return;
         }
         this.debug(item);
-        this.ctx.drawImage(item.img, item.x, item.y, item.width, item.height);
+        this.ctx.drawImage(
+          item.img,
+          item.x,
+          item.y,
+          item.width,
+          item.height * item.blood / item.totalBlood
+        );
       });
     }
   };

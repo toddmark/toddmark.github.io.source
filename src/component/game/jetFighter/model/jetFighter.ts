@@ -24,7 +24,7 @@ class JetFighter extends ImgResource {
     this.shoot = false;
     this.destory = false;
     this.speed = 5;
-    this.blood = 1;
+    this.blood = 10;
   }
 
   public keyBoardEvent = (key, active) => {
