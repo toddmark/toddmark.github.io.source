@@ -10,8 +10,22 @@ import {
   HashRouter as Router
 } from "react-router-dom";
 
-import Hello from "../component/hello.jsx";
+import Bundle from "./lazyloader";
+const Loading = function() {
+  return <div>Loading...</div>;
+};
+
+// import Hello from "../component/hello.jsx";
+import Hello from "bundle-loader?lazy&name=hello!../component/hello.jsx";
 import About from "../component/about.jsx";
+const createComponent = component => () => {
+  let AsyncComponent = (
+    <Bundle load={component}>
+      {Async => (Async ? <Async /> : <Loading />)}
+    </Bundle>
+  );
+  return AsyncComponent;
+};
 
 import "bootstrap";
 
@@ -31,7 +45,7 @@ class Root extends Component {
         <Router basename="/">
           <Switch>
             <Route exact path="/" component={Index} />
-            <Route path="/hello" component={Hello} />
+            <Route path="/hello" component={createComponent(Hello)} />
             <Route path="/game" component={game} />
             <Route path="/jetfighter" component={JetFighter} />
             <Route path="/about" component={About} />
