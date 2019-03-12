@@ -10,7 +10,7 @@ import {
   HashRouter as Router
 } from "react-router-dom";
 
-import Bundle from "./lazyloader";
+import LazyLoader from "./lazyloader";
 const Loading = function() {
   return <div>Loading...</div>;
 };
@@ -20,9 +20,12 @@ import Hello from "bundle-loader?lazy&name=hello!../component/hello.jsx";
 import About from "../component/about.jsx";
 const createComponent = component => () => {
   let AsyncComponent = (
-    <Bundle load={component}>
-      {Async => (Async ? <Async /> : <Loading />)}
-    </Bundle>
+    <LazyLoader load={component}>
+      {Async => {
+        // console.log(Async);
+        return Async ? <Async /> : <Loading />;
+      }}
+    </LazyLoader>
   );
   return AsyncComponent;
 };
