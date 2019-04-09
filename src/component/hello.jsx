@@ -5,10 +5,10 @@ import ScrollMagic from "scrollmagic";
 import "imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap";
 
 // eslint-disable-next-line no-unused-vars
-import React, { Component } from "react";
+import React, { Component, Suspense } from "react";
 import Nav from "./navbar";
 
-export default class Hello extends Component {
+class Hello extends Component {
   constructor(props) {
     super(props);
     this.title =
@@ -66,3 +66,6 @@ export default class Hello extends Component {
     );
   }
 }
+
+
+export default Hello;
