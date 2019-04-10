@@ -4,13 +4,12 @@ import React, { Component } from "react";
 // const RD3Component = rd3.Component;
 import $ from "jquery";
 
-import node from "./binaryTreeNode.js";
+import node from "./BinaryTreeNode.js";
 import Nav from "../../navbar";
 
 import "./binaryTree.less";
 
-export default class BinaryTree extends Component{
-
+export default class BinaryTree extends Component {
   constructor(props) {
     super(props);
     this.timer = null;
@@ -30,7 +29,7 @@ export default class BinaryTree extends Component{
   }
 
   progressAnimate() {
-    const time = 1;
+    // const time = 1;
     const step = 500;
     const self = this;
     let distance = 0;
@@ -52,11 +51,18 @@ export default class BinaryTree extends Component{
       <div>
         <Nav />
         <div className="progress">
-          <div className="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style={{width: `${this.state.distance}%`}}>
+          <div
+            className="progress-bar progress-bar-info progress-bar-striped"
+            role="progressbar"
+            aria-valuenow="20"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            style={{ width: `${this.state.distance}%` }}
+          >
             {this.state.distance}%
           </div>
         </div>
-        <div id="container"></div>
+        <div id="container" />
       </div>
     );
   }

@@ -1,8 +1,8 @@
+import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 // eslint-disable-next-line no-unused-vars
-import React from "react";
-import { Component } from "react";
+import React, { Suspense, Fragment } from "react";
 import {
   Route,
   Switch,
@@ -10,54 +10,63 @@ import {
   HashRouter as Router
 } from "react-router-dom";
 
-import LazyLoader from "./lazyloader";
-const Loading = function() {
-  return <div>Loading...</div>;
-};
-
-// import Hello from "../component/hello.jsx";
-import Hello from "bundle-loader?lazy&name=hello!../component/hello.jsx";
-import About from "../component/about.jsx";
-const createComponent = component => () => {
-  let AsyncComponent = (
-    <LazyLoader load={component}>
-      {Async => {
-        // console.log(Async);
-        return Async ? <Async /> : <Loading />;
-      }}
-    </LazyLoader>
-  );
-  return AsyncComponent;
-};
-
-import "bootstrap";
+const Hello = React.lazy(() =>
+  import(/* webpackChunkName: 'Hello' */ "../component/Hello.jsx")
+);
+const About = React.lazy(() =>
+  import(/* webpackChunkName: 'About'*/ "../component/About.jsx")
+);
 
 // sandbox
-import Sandbox from "../component/sandbox/index.jsx";
-import BinaryTree from "../component/sandbox/binaryTree";
-import RandomSelect from "../component/sandbox/randomSelect";
+const Sandbox = React.lazy(() =>
+  import(/* webpackChunkName: 'Sandbox'*/ "../component/sandbox/Index.jsx")
+);
+const BinaryTree = React.lazy(() =>
+  import(/* webpackChunkName: 'binaryTree'*/ "../component/sandbox/binaryTree/Index.js")
+);
+const RandomSelect = React.lazy(() =>
+  import(/* webpackChunkName: 'RandomSelect'*/ "../component/sandbox/randomSelect/Index.js")
+);
+const Home = React.lazy(() =>
+  import(/* webpackChunkName: 'Home'*/ "../component/Home.tsx")
+);
+const Game = React.lazy(() =>
+  import(/* webpackChunkName: 'Game'*/ "../component/game/Game.jsx")
+);
+const JetFighter = React.lazy(() =>
+  import(/* webpackChunkName: 'JetFighter'*/ "../component/game/jetFighter/Index")
+);
 
-import Index from "../component/index.tsx";
-import game from "../component/game/game.jsx";
-import JetFighter from "../component/game/jetFighter/index";
-
-class Root extends Component {
+function createComponent(Component) {
+  return props => (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Component {...props} />
+    </Suspense>
+  );
+}
+class Root extends React.Component {
   render() {
     return (
-      <div>
-        <Router basename="/">
-          <Switch>
-            <Route exact path="/" component={Index} />
+      <Router>
+        <Switch>
+          <Fragment>
+            <Route exact path="/" component={createComponent(Home)} />
             <Route path="/hello" component={createComponent(Hello)} />
-            <Route path="/game" component={game} />
-            <Route path="/jetfighter" component={JetFighter} />
-            <Route path="/about" component={About} />
-            <Route exact path="/sandbox" component={Sandbox} />
-            <Route path="/sandbox/binaryTree" component={BinaryTree} />
-            <Route path="/sandbox/randomSelect" component={RandomSelect} />
-          </Switch>
-        </Router>
-      </div>
+            <Route path="/game" component={createComponent(Game)} />
+            <Route path="/jetfighter" component={createComponent(JetFighter)} />
+            <Route path="/about" component={createComponent(About)} />
+            <Route exact path="/sandbox" component={createComponent(Sandbox)} />
+            <Route
+              path="/sandbox/binaryTree"
+              component={createComponent(BinaryTree)}
+            />
+            <Route
+              path="/sandbox/randomSelect"
+              component={createComponent(RandomSelect)}
+            />
+          </Fragment>
+        </Switch>
+      </Router>
     );
   }
 }

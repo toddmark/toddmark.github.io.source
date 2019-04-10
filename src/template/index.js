@@ -6,11 +6,11 @@ import { AppContainer } from "react-hot-loader";
 import RootContainer from "../router/index.js";
 
 const render = () => {
-  ReactDOM.render((
+  ReactDOM.render(
     <AppContainer>
       <RootContainer />
-    </AppContainer>
-  ), document.getElementById("app")
+    </AppContainer>,
+    document.getElementById("app")
   );
 };
 
@@ -22,4 +22,3 @@ if (module.hot) {
     render();
   });
 }
-

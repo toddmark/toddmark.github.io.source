@@ -5,18 +5,16 @@ import ScrollMagic from "scrollmagic";
 import "imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap";
 
 // eslint-disable-next-line no-unused-vars
-import React, { Component } from "react";
+import React, { Component, Suspense } from "react";
 import Nav from "./navbar";
 
-export default class Hello extends Component {
+class Hello extends Component {
   constructor(props) {
     super(props);
-    this.title =
-      "JavaScript was initially created to make webpages alive. The programs in this language are called scripts. They can be written right in the HTML and execute automatically as the page loads. Scripts are provided and executed as a plain text. They don’t need a special preparation or a compilation to run.";
+    this.title = "Todd Mark";
   }
 
   componentDidMount() {
-    const self = this;
     this.controller = new ScrollMagic.Controller();
     // create a scene
     const spanArray = document
@@ -66,3 +64,5 @@ export default class Hello extends Component {
     );
   }
 }
+
+export default Hello;

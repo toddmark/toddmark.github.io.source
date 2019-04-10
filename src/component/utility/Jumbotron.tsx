@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import Clock from "./clock";
 
 const Jumbotron = (props: any) => (
