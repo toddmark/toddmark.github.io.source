@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./index.less";
-
 import Jumbotron from "./utility/Jumbotron";
 
 export default class Index extends Component<any, any> {

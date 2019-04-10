@@ -1,8 +1,5 @@
 import React from "react";
-// import {
-//   Link
-// } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 import Clock from "./clock";
 
 const Jumbotron = (props: any) => (
@@ -15,9 +12,9 @@ const Jumbotron = (props: any) => (
           </a>
         </div>
         <div className="col">
-          {/* <Link className="btn btn-dark btn-block" to="/hello">
+          <Link className="btn btn-dark btn-block" to="/hello">
             Mill
-          </Link> */}
+          </Link>
         </div>
       </div>
       <p style={{ marginTop: 15 }} className="text-primary">
