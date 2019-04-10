@@ -4,8 +4,8 @@ const path = require("path");
 module.exports = {
   entry: {
     bundle: [
-      // "react",
-      // "react-dom",
+      "react",
+      "react-dom",
       "jquery",
       "bootstrap",
       "gsap",
