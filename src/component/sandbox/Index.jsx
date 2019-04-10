@@ -1,11 +1,10 @@
-import React, {Component} from "react";
-import { Router, Route, Link, hashHistory } from "react-router";
+import React from "react";
+// import { Router, Route, Link, hashHistory } from "react-router";
 
 import Nav from "../navbar";
-import BinaryTree from "./binaryTree";
+// import BinaryTree from "./binaryTree/Index";
 
-class Sandbox extends Component{
-
+class Sandbox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,12 +12,14 @@ class Sandbox extends Component{
       resultArray: [],
       log: []
     };
-    this.bubbleSort  = this.bubbleSort.bind(this);
+    this.bubbleSort = this.bubbleSort.bind(this);
     this.generate = this.generate.bind(this);
   }
 
   generate() {
-    let array = [1,1,1,1,1,1,1,1,1,1,1].map(()=>{return parseInt(Math.random() * 100);});
+    let array = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1].map(() => {
+      return parseInt(Math.random() * 100);
+    });
     this.setState({
       array: array
     });
@@ -36,7 +37,11 @@ class Sandbox extends Component{
           temp = targetArray[i];
           targetArray[i] = targetArray[j];
           targetArray[j] = temp;
-          log.push(`第${count}次交换, 把第${i}位的${targetArray[j]}与第${j}位的${targetArray[i]}互换, 互换后的新数组为${targetArray}`);
+          log.push(
+            `第${count}次交换, 把第${i}位的${targetArray[j]}与第${j}位的${
+              targetArray[i]
+            }互换, 互换后的新数组为${targetArray}`
+          );
           this.setState({
             log: log
           });
@@ -44,41 +49,37 @@ class Sandbox extends Component{
       }
     }
     this.setState({
-      resultArray: targetArray 
+      resultArray: targetArray
     });
   }
-
 
   render() {
     return (
       <div className="container-fluid">
         <Nav />
-        <div>  
-          {this.props.children || (<h4>Welcome to your Sandbox</h4>)}
-        </div>
+        <div>{this.props.children || <h4>Welcome to your Sandbox</h4>}</div>
         <div className="panel panel-primary">
           <div className="panel-heading">Before sort:</div>
-          <div className="panel-body">
-            {this.state.array.join(",")}
-          </div>
+          <div className="panel-body">{this.state.array.join(",")}</div>
         </div>
-        <div className="button-group" style={{marginBottom: 20}}>
-          <button onClick={this.generate} className="btn btn-primary">generate</button>
-          <button onClick={this.bubbleSort}  className="btn btn-primary">Sort</button>
+        <div className="button-group" style={{ marginBottom: 20 }}>
+          <button onClick={this.generate} className="btn btn-primary">
+            generate
+          </button>
+          <button onClick={this.bubbleSort} className="btn btn-primary">
+            Sort
+          </button>
         </div>
         <div className="panel panel-success">
           <div className="panel-heading">After sort:</div>
-          <div className="panel-body">
-            {this.state.resultArray.join(",")}
-          </div>
+          <div className="panel-body">{this.state.resultArray.join(",")}</div>
         </div>
-        {this.state.log.map((item)=> {
+        {this.state.log.map(item => {
           return <p>{item}</p>;
         })}
       </div>
     );
   }
 }
-
 
 export default Sandbox;
