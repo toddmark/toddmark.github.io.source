@@ -10,30 +10,17 @@ import {
   HashRouter as Router
 } from "react-router-dom";
 
-// import LazyLoader from "./lazyloader";
-// const Loading = function() {
-//   return <div>Loading...</div>;
-// };
-
-// import Hello from "../component/Hello.jsx";
-// import Hello from "bundle-loader?lazy&name=hello!../component/hello.jsx";
 const Hello = React.lazy(() =>
   import(/* webpackChunkName: 'Hello' */ "../component/Hello.jsx")
 );
 const About = React.lazy(() =>
   import(/* webpackChunkName: 'About'*/ "../component/about.jsx")
 );
-function createComponent(Component) {
-  console.log(Component);
-  return props => (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Component {...props} />
-    </Suspense>
-  );
-}
 
 // sandbox
-import Sandbox from "../component/sandbox/index.jsx";
+const Sandbox = React.lazy(() =>
+  import(/* webpackChunkName: 'Sandbox'*/ "../component/sandbox/index.jsx")
+);
 import BinaryTree from "../component/sandbox/binaryTree";
 import RandomSelect from "../component/sandbox/randomSelect";
 
@@ -42,6 +29,13 @@ import game from "../component/game/game.jsx";
 import JetFighter from "../component/game/jetFighter/index";
 import { Fragment } from "react";
 
+function createComponent(Component) {
+  return props => (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Component {...props} />
+    </Suspense>
+  );
+}
 class Root extends React.Component {
   render() {
     return (
@@ -53,7 +47,7 @@ class Root extends React.Component {
             <Route path="/game" component={game} />
             <Route path="/jetfighter" component={JetFighter} />
             <Route path="/about" component={createComponent(About)} />
-            <Route exact path="/sandbox" component={Sandbox} />
+            <Route exact path="/sandbox" component={createComponent(Sandbox)} />
             <Route path="/sandbox/binaryTree" component={BinaryTree} />
             <Route path="/sandbox/randomSelect" component={RandomSelect} />
           </Fragment>
