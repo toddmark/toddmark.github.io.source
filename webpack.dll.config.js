@@ -29,7 +29,7 @@ module.exports = {
     new webpack.DllPlugin({
       context: __dirname,
       name: "[name]_[chunkhash]_library",
-      path: path.join(__dirname, "manifest.json")
+      path: path.join(__dirname, "./manifest.json")
     }),
     new webpack.ProvidePlugin({
       $: "jquery",

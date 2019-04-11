@@ -1,6 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const AddAssetHtmlPlugin = require("add-asset-html-webpack-plugin");
 // const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const ProgressBarPlugin = require("progress-bar-webpack-plugin");
 
@@ -21,15 +22,39 @@ const htmlsMap = [
 
 const htmlFiles = (function() {
   let result = [];
-  htmlsMap.map(item => {
-    result.push(
-      new HtmlWebpackPlugin({
-        template: `./src/template/${item.template}.html`,
-        chunks: item.chunks,
-        filename: `${item.template}.html`
-      })
-    );
-  });
+  if (isDev) {
+    htmlsMap.map(item => {
+      result.push(
+        new HtmlWebpackPlugin({
+          template: `./src/template/${item.template}.html`,
+          chunks: item.chunks,
+          filename: `${item.template}.html`
+        }),
+        new AddAssetHtmlPlugin({
+          filepath: require.resolve("./build/bundle.dll.js")
+        }),
+        new AddAssetHtmlPlugin({
+          filepath: require.resolve("./build/bootstrap.dll.js")
+        })
+      );
+    });
+  } else {
+    htmlsMap.map(item => {
+      result.push(
+        new HtmlWebpackPlugin({
+          template: `./src/template/${item.template}.html`,
+          chunks: item.chunks,
+          filename: `${item.template}.html`
+        }),
+        new AddAssetHtmlPlugin({
+          filepath: require.resolve("./bundle.dll.js")
+        }),
+        new AddAssetHtmlPlugin({
+          filepath: require.resolve("./bootstrap.dll.js")
+        })
+      );
+    });
+  }
   return result;
 })();
 
@@ -86,10 +111,10 @@ module.exports = {
     extensions: [".ts", ".tsx", ".js", ".jsx", ".scss"]
   },
   plugins: [
-    // new webpack.DllReferencePlugin({
-    //   context: __dirname,
-    //   manifest: require("./manifest.json")
-    // })
+    new webpack.DllReferencePlugin({
+      context: __dirname,
+      manifest: require("./manifest.json")
+    })
   ]
     .concat(htmlFiles, new ProgressBarPlugin())
     .concat(
