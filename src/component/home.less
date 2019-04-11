@@ -1,3 +1,10 @@
+body {
+  background: #1b2838;
+  background-image: url('./img/steam_bg.png');
+  background-repeat: repeat;
+  background-position: center;
+}
+
 .flex-parent {
   display: flex;
   align-items: center;
@@ -8,18 +15,24 @@
   width: 100%;
   height: 100%;
 }
-.carousel-inner .img {
-  border-radius: 50%;
+
+.carousel-inner {
+  .img {
+    border-radius: 50%;
+  }
 }
+
 .carousel-control {
   background-image: none !important;
 }
+
 .flex-center-div {
   max-width: 600px;
   max-height: 600px;
   overflow: hidden;
   border-radius: 50%;
 }
+
 .animation {
   color: #fff;
   background: linear-gradient(90deg, #28e0b0, #c328e0, #28a1e0, #e0286b) center / cover;
@@ -28,36 +41,45 @@
   -moz-animation: AnimationName 30s ease infinite;
   animation: AnimationName 30s ease infinite;
 }
+
 @-webkit-keyframes AnimationName {
   0% {
-    background-position: 0% 50%;
+    background-position: 0% 50%
   }
+
   50% {
-    background-position: 100% 50%;
+    background-position: 100% 50%
   }
+
   100% {
-    background-position: 0% 50%;
+    background-position: 0% 50%
   }
 }
+
 @-moz-keyframes AnimationName {
   0% {
-    background-position: 0% 50%;
+    background-position: 0% 50%
   }
+
   50% {
-    background-position: 100% 50%;
+    background-position: 100% 50%
   }
+
   100% {
-    background-position: 0% 50%;
+    background-position: 0% 50%
   }
 }
+
 @keyframes AnimationName {
   0% {
-    background-position: 0% 50%;
+    background-position: 0% 50%
   }
+
   50% {
-    background-position: 100% 50%;
+    background-position: 100% 50%
   }
+
   100% {
-    background-position: 0% 50%;
+    background-position: 0% 50%
   }
 }

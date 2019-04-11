@@ -43,7 +43,6 @@ module.exports = {
   devtool: "eval-source-map",
   output: {
     path: path.resolve("build"),
-    publicPath: isDev ? "/build/" : "./",
     filename: "[name]-[hash].js"
   },
   module: {
@@ -75,7 +74,7 @@ module.exports = {
       },
       {
         test: /.*\.(gif|png|jpe?g|svg)$/i,
-        loader: "file-loader?name=/assets/img-[sha512:hash:base64:7].[ext]"
+        loader: "file-loader?name=assets/img-[sha512:hash:base64:7].[ext]"
       }
       // {
       // test: /bootstrap.+\.(jsx|js)$/,

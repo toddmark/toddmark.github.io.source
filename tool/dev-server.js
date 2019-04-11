@@ -18,7 +18,6 @@ const WebpackDevServer = require("webpack-dev-server");
 const compiler = webpack(config);
 const server = new WebpackDevServer(compiler, {
   hot: true,
-  publicPath: "/build/",
   historyApiFallback: true,
   open: true,
   stats: {
@@ -29,4 +28,4 @@ const server = new WebpackDevServer(compiler, {
 });
 
 server.listen(port);
-console.log(`\n Listenting at http://${myIp}:${port}/build/`);
+console.log(`\n Listenting at http://${myIp}:${port}`);

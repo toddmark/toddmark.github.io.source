@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./index.less";
+import "./home.less";
 import Jumbotron from "./utility/Jumbotron";
 
 export default class Home extends Component<any, any> {
