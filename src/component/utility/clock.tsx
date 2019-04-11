@@ -1,15 +1,9 @@
 import React, { Component } from "react";
 
-class Clock extends Component<any, any>{
+class Clock extends Component<any, any> {
   render() {
-    return (
-      <div>
-        I plan to design a clock by CSS.
-        Bzinga! I have a very confused issue for my website.
-        Build tool!
-      </div>
-    )
+    return <div>The mater of my English have a big progress.</div>;
   }
-};
+}
 
 export default Clock;

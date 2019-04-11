@@ -1,20 +1,23 @@
 const webpack = require("webpack");
 const path = require("path");
+let isDev = false;
+const env = process.env.NODE_ENV;
+isDev = env === "development" ? true : false;
 
 module.exports = {
+  mode: isDev ? "development" : "production",
   entry: {
     bundle: [
       "react",
       "react-dom",
       "jquery",
-      "bootstrap",
       "gsap",
       "scrollmagic",
-      "bootstrap/dist/css/bootstrap.min.css",
       "popper.js",
       "d3"
       //其他库
-    ]
+    ],
+    bootstrap: ["bootstrap", "bootstrap/dist/css/bootstrap.min.css"]
   },
   output: {
     path: path.resolve("build"),

@@ -75,7 +75,7 @@ module.exports = {
       },
       {
         test: /.*\.(gif|png|jpe?g|svg)$/i,
-        loader: "file-loader?name=img-[sha512:hash:base64:7].[ext]"
+        loader: "file-loader?name=/assets/img-[sha512:hash:base64:7].[ext]"
       }
       // {
       // test: /bootstrap.+\.(jsx|js)$/,
@@ -87,10 +87,10 @@ module.exports = {
     extensions: [".ts", ".tsx", ".js", ".jsx", ".scss"]
   },
   plugins: [
-    new webpack.DllReferencePlugin({
-      context: __dirname,
-      manifest: require("./manifest.json")
-    })
+    // new webpack.DllReferencePlugin({
+    //   context: __dirname,
+    //   manifest: require("./manifest.json")
+    // })
   ]
     .concat(htmlFiles, new ProgressBarPlugin())
     .concat(
