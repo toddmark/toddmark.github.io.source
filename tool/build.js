@@ -6,13 +6,15 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-const file = shell.find("build/*").filter(function(file) {
-  return file.indexOf(".dll.js") < 0;
+const deleteFileArr = shell.find("build/*").filter(function(file) {
+  const excludeFile = [".dll.js", "words.js"];
+  console.log(excludeFile, file);
+  return !excludeFile.includes(file);
 });
-console.log(file);
-shell.rm("-rf", file);
-shell.exec("webpack --progress --color");
-shell.cp("./src/recourse/favicon.ico", "./build/");
+// console.log(deleteFileArr);
+// shell.rm("-rf", deleteFileArr);
+// shell.exec("webpack --progress --color");
+// shell.cp("./src/recourse/favicon.ico", "./build/");
 
 rl.question("是否发布？(n/y)", answer => {
   const result = answer === "y";

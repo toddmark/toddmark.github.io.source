@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import "./home.less";
 import Jumbotron from "./utility/Jumbotron";
+const st = require("../../build/words");
 
+console.log(st);
 export default class Home extends Component<any, any> {
   constructor(props: any) {
     super(props);
