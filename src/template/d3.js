@@ -1,22 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { AppContainer } from 'react-hot-loader';
+// eslint-disable-next-line no-unused-vars
+import React from "react";
+import ReactDOM from "react-dom";
+import { AppContainer } from "react-hot-loader";
 
-import RootContainer from '../router/d3.js'
+import RootContainer from "../router/d3.js";
 
-const render = (Component) => {
-  ReactDOM.render((
+const render = Component => {
+  ReactDOM.render(
     <AppContainer>
       <Component />
-    </AppContainer>
-    ), document.getElementById('app')
+    </AppContainer>,
+    document.getElementById("app")
   );
-}
+};
 
 render(RootContainer);
 
 if (module.hot) {
-  module.hot.accept('../router/d3.js', () => {
+  module.hot.accept("../router/d3.js", () => {
     render(RootContainer);
-  })
+  });
 }
