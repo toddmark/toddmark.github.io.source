@@ -94,7 +94,7 @@
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
     "scrollmagic": "^2.0.5",
-    "shelljs": "^0.7.8",
+    "shelljs": "^0.8.3",
     "typescript": "^3.4.3",
     "webpack": "^4.29.6"
   }

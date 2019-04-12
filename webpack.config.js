@@ -22,39 +22,21 @@ const htmlsMap = [
 
 const htmlFiles = (function() {
   let result = [];
-  if (isDev) {
-    htmlsMap.map(item => {
-      result.push(
-        new HtmlWebpackPlugin({
-          template: `./src/template/${item.template}.html`,
-          chunks: item.chunks,
-          filename: `${item.template}.html`
-        }),
-        new AddAssetHtmlPlugin({
-          filepath: require.resolve("./build/bundle.dll.js")
-        }),
-        new AddAssetHtmlPlugin({
-          filepath: require.resolve("./build/bootstrap.dll.js")
-        })
-      );
-    });
-  } else {
-    htmlsMap.map(item => {
-      result.push(
-        new HtmlWebpackPlugin({
-          template: `./src/template/${item.template}.html`,
-          chunks: item.chunks,
-          filename: `${item.template}.html`
-        }),
-        new AddAssetHtmlPlugin({
-          filepath: require.resolve("./bundle.dll.js")
-        }),
-        new AddAssetHtmlPlugin({
-          filepath: require.resolve("./bootstrap.dll.js")
-        })
-      );
-    });
-  }
+  htmlsMap.map(item => {
+    result.push(
+      new HtmlWebpackPlugin({
+        template: `./src/template/${item.template}.html`,
+        chunks: item.chunks,
+        filename: `${item.template}.html`
+      }),
+      new AddAssetHtmlPlugin({
+        filepath: require.resolve("./build/bundle.dll.js")
+      }),
+      new AddAssetHtmlPlugin({
+        filepath: require.resolve("./build/bootstrap.dll.js")
+      })
+    );
+  });
   return result;
 })();
 
@@ -113,7 +95,7 @@ module.exports = {
   plugins: [
     new webpack.DllReferencePlugin({
       context: __dirname,
-      manifest: require("./manifest.json")
+      manifest: path.join(__dirname, "./manifest.json")
     })
   ]
     .concat(htmlFiles, new ProgressBarPlugin())

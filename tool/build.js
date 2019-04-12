@@ -6,9 +6,12 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-shell.exec(
-  "rm -rf build && webpack --config webpack.dll.config.js && webpack --progress --color"
-);
+const file = shell.find("build/*").filter(function(file) {
+  return file.indexOf(".dll.js") < 0;
+});
+console.log(file);
+shell.rm("-rf", file);
+shell.exec("webpack --progress --color");
 shell.cp("./src/recourse/favicon.ico", "./build/");
 
 rl.question("是否发布？(n/y)", answer => {

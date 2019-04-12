@@ -24,7 +24,43 @@ module.exports = {
     filename: "[name].dll.js",
     library: "[name]_[chunkhash]_library"
   },
-  module: require("./webpack.config").module,
+  module: {
+    rules: [
+      {
+        test: /\.html$/,
+        loader: "html-loader"
+      },
+      {
+        test: /\.less$/,
+        loader: "style-loader!css-loader!less-loader"
+      },
+      {
+        test: /\.css$/,
+        loader: "style-loader!css-loader"
+      },
+      {
+        test: /\.(eot|woff|ttf|eot|woff2)$/,
+        loader: "file-loader"
+      },
+      {
+        test: /\.tsx?$/,
+        loader: "awesome-typescript-loader"
+      },
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loaders: ["babel-loader"]
+      },
+      {
+        test: /.*\.(gif|png|jpe?g|svg)$/i,
+        loader: "file-loader?name=assets/img-[sha512:hash:base64:7].[ext]"
+      }
+      // {
+      // test: /bootstrap.+\.(jsx|js)$/,
+      // loader: "imports-loader?jQuery=jquery,$=jquery,this=>window"
+      // }
+    ]
+  },
   plugins: [
     new webpack.DllPlugin({
       context: __dirname,
