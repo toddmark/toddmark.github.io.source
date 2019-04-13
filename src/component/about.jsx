@@ -1,5 +1,6 @@
 import React from "react";
 import Nav from "./navbar";
+import Jumbotron from "./utility/Jumbotron.tsx";
 
 import "./about.less";
 
@@ -16,10 +17,7 @@ export default class About extends React.Component {
     return (
       <div>
         <Nav />
-        <div className="jumbotron">
-          <h1 className="text-danger" />
-          <p className="bg-primary">ha sikei</p>
-        </div>
+        <Jumbotron content={{ title: "这里是我的简介" }} />
         <div
           id="carousel-example-generic"
           className="carousel slide"
@@ -42,13 +40,13 @@ export default class About extends React.Component {
               return (
                 <div
                   key={index}
-                  className={index === 0 ? "item active" : "item"}
+                  className={
+                    index === 0 ? "carousel-item active" : "carousel-item"
+                  }
                 >
-                  <img
-                    className="img-responsive"
-                    src={imgList[index]}
-                    alt="..."
-                  />
+                  <div className="img-responsive">
+                    <img src={imgList[index]} alt="..." />
+                  </div>
                   <div className="carousel-caption" />
                 </div>
               );

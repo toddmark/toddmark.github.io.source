@@ -28,15 +28,6 @@ const Jumbotron = (props: any) => (
         />
         <Clock />
       </div>
-      <p style={{ marginTop: 15, fontSize: 12, textAlign: "center" }}>
-        Hosted by{" "}
-        <a
-          href="https://pages.coding.me"
-          style={{ fontWeight: "bold", color: "#666" }}
-        >
-          Coding Pages
-        </a>
-      </p>
     </div>
   </div>
 );

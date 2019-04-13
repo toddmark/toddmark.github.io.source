@@ -20,7 +20,7 @@ export default class Nav extends Component {
       <div>
         <nav
           style={{ zIndex: 9 }}
-          className="navbar navbar-expand-lg navbar-light bg-light"
+          className="navbar navbar-expand-lg navbar-dark"
           role="navigation"
         >
           <div className="container-fluid">

@@ -1,5 +1,6 @@
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "../component/home.less";
 
 // eslint-disable-next-line no-unused-vars
 import React, { Suspense, Fragment } from "react";
