@@ -97,6 +97,7 @@
     "react": "^16.8.2",
     "react-d3-library": "^1.1.8",
     "react-dom": "^16.8.6",
+    "react-particles-js": "^2.6.0",
     "react-router-dom": "^5.0.0",
     "scrollmagic": "^2.0.5",
     "shelljs": "^0.8.3",

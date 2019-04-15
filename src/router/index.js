@@ -29,7 +29,7 @@ const RandomSelect = React.lazy(() =>
   import(/* webpackChunkName: 'RandomSelect'*/ "../component/sandbox/randomSelect/Index.js")
 );
 const Home = React.lazy(() =>
-  import(/* webpackChunkName: 'Home'*/ "../component/Home.tsx")
+  import(/* webpackChunkName: 'Home'*/ "../component/Home.jsx")
 );
 const Game = React.lazy(() =>
   import(/* webpackChunkName: 'Game'*/ "../component/game/Game.jsx")

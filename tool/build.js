@@ -15,7 +15,7 @@ const deleteFileArr = shell.find("build/*").filter(function(file) {
   });
 });
 
-console.log(deleteFileArr);
+// console.log(deleteFileArr);
 
 shell.rm("-rf", deleteFileArr);
 shell.exec("webpack --progress --color");

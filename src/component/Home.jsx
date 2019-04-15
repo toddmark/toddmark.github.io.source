@@ -1,12 +1,14 @@
-import React, { Component } from "react";
+import React from "react";
+import Particles from "react-particles-js";
 import "./home.less";
 // import Jumbotron from "./utility/Jumbotron";
 import Nav from "./navbar";
 import Moment from "moment";
+import propsP from "./particleProps.js";
 const words = require("../../build/words");
 
-export default class Home extends Component<any, any> {
-  constructor(props: any) {
+export default class Home extends React.Component {
+  constructor(props) {
     super(props);
     this.state = {};
   }
@@ -15,6 +17,7 @@ export default class Home extends Component<any, any> {
     console.log(words);
     return (
       <div>
+        <Particles style={{ position: "fixed" }} params={propsP} />
         <Nav />
         {/* <div className="container-fluid flex-parent">
           <Jumbotron content={{ title: "Welcome, my visitors !" }} />
