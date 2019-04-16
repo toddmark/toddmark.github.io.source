@@ -10,7 +10,7 @@ const deleteFileArr = shell.find("build/*").filter(function(file) {
   // 不删除的文件
   const excludeFileArr = [".dll.js", "words.js"];
   return !excludeFileArr.some(function(excludeFile) {
-    console.log(file.indexOf(excludeFile), file, excludeFile);
+    // console.log(file.indexOf(excludeFile), file, excludeFile);
     return file.indexOf(excludeFile) > 0;
   });
 });

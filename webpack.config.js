@@ -2,7 +2,8 @@ const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const AddAssetHtmlPlugin = require("add-asset-html-webpack-plugin");
-// const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+  .BundleAnalyzerPlugin;
 const ProgressBarPlugin = require("progress-bar-webpack-plugin");
 
 let isDev = false;
@@ -104,16 +105,11 @@ module.exports = {
         ? [
             // 开发环境
             new webpack.HotModuleReplacementPlugin(),
-            new webpack.NamedModulesPlugin()
-            // new BundleAnalyzerPlugin(),
+            new webpack.NamedModulesPlugin(),
+            new BundleAnalyzerPlugin()
           ]
         : [
             // 生产环境
-            // new webpack.optimize.UglifyJsPlugin({
-            //   compress: {
-            //     warnings: false
-            //   }
-            // }),
             new webpack.DefinePlugin({
               "process.env": {
                 NODE_ENV: JSON.stringify("production")
