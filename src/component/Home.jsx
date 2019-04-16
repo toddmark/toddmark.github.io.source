@@ -25,28 +25,30 @@ export default class Home extends React.Component {
         <div className="container-fluid">
           <Nav />
           <div className="row">
-            {words.words.map(item => {
-              return <WordCard word={item} />;
-              // return (
-              //   <div className="col-sm-3">
-              //     <div className="card">
-              //       <div className="card-body">
-              //         <h5 className="card-title">{item.text}</h5>
-              //         <span>{Moment(item.date).format("YYYY年M月DD日")}</span>
-              //         <p className="card-text">{item.context}</p>
-              //         <p className="card-text">{item.trans}</p>
-              //         <a
-              //           target="_blank"
-              //           href={item.url}
-              //           className="btn btn-primary"
-              //         >
-              //           Look up
-              //         </a>
-              //       </div>
-              //     </div>
-              //   </div>
-              // );
-            })}
+            <div className="container">
+              {words.words.map(item => {
+                return <WordCard word={item} />;
+                // return (
+                //   <div className="col-sm-3">
+                //     <div className="card">
+                //       <div className="card-body">
+                //         <h5 className="card-title">{item.text}</h5>
+                //         <span>{Moment(item.date).format("YYYY年M月DD日")}</span>
+                //         <p className="card-text">{item.context}</p>
+                //         <p className="card-text">{item.trans}</p>
+                //         <a
+                //           target="_blank"
+                //           href={item.url}
+                //           className="btn btn-primary"
+                //         >
+                //           Look up
+                //         </a>
+                //       </div>
+                //     </div>
+                //   </div>
+                // );
+              })}
+            </div>
           </div>
         </div>
         <p style={{ marginTop: 15, fontSize: 12, textAlign: "center" }}>
