@@ -40,7 +40,15 @@ const JetFighter = React.lazy(() =>
 
 function createComponent(Component) {
   return props => (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense
+      fallback={
+        <div>
+          <div className="spinner-border text-danger loading" role="status">
+            <span className="sr-only">Loading...</span>
+          </div>
+        </div>
+      }
+    >
       <Component {...props} />
     </Suspense>
   );

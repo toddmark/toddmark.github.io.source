@@ -1,10 +1,11 @@
 import React from "react";
 import Particles from "react-particles-js";
+import propsP from "./particleProps.js";
 import "./home.less";
 // import Jumbotron from "./utility/Jumbotron";
 import Nav from "./navbar";
-import Moment from "moment";
-import propsP from "./particleProps.js";
+// import Moment from "moment";
+import WordCard from "./utility/wordCard";
 const words = require("../../build/words");
 
 export default class Home extends React.Component {
@@ -17,33 +18,34 @@ export default class Home extends React.Component {
     console.log(words);
     return (
       <div>
-        <Particles style={{ position: "fixed" }} params={propsP} />
-        <Nav />
+        <Particles style={{ position: "fixed", zIndex: -1 }} params={propsP} />
         {/* <div className="container-fluid flex-parent">
           <Jumbotron content={{ title: "Welcome, my visitors !" }} />
         </div> */}
-        <div className="container">
+        <div className="container-fluid">
+          <Nav />
           <div className="row">
             {words.words.map(item => {
-              return (
-                <div className="col-sm-3">
-                  <div className="card">
-                    <div className="card-body">
-                      <h5 className="card-title">{item.text}</h5>
-                      <span>{Moment(item.date).format("YYYY年M月DD日")}</span>
-                      <p className="card-text">{item.context}</p>
-                      <p className="card-text">{item.trans}</p>
-                      <a
-                        target="_blank"
-                        href={item.url}
-                        className="btn btn-primary"
-                      >
-                        Look up
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              );
+              return <WordCard word={item} />;
+              // return (
+              //   <div className="col-sm-3">
+              //     <div className="card">
+              //       <div className="card-body">
+              //         <h5 className="card-title">{item.text}</h5>
+              //         <span>{Moment(item.date).format("YYYY年M月DD日")}</span>
+              //         <p className="card-text">{item.context}</p>
+              //         <p className="card-text">{item.trans}</p>
+              //         <a
+              //           target="_blank"
+              //           href={item.url}
+              //           className="btn btn-primary"
+              //         >
+              //           Look up
+              //         </a>
+              //       </div>
+              //     </div>
+              //   </div>
+              // );
             })}
           </div>
         </div>
