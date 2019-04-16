@@ -1,10 +1,10 @@
+// import Jumbotron from "./utility/Jumbotron";
+import Moment from "moment";
 import React from "react";
 import Particles from "react-particles-js";
 import "./home.less";
-// import Jumbotron from "./utility/Jumbotron";
 import Nav from "./navbar";
-import Moment from "moment";
-import propsP from "./particleProps.js";
+import propsP from "./particleProps";
 const words = require("../../build/words");
 
 export default class Home extends React.Component {

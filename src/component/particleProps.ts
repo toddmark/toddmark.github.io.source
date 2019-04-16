@@ -1,29 +1,59 @@
+type ShapeType =
+  | "circle"
+  | "edge"
+  | "triangle"
+  | "polygon"
+  | "star"
+  | "image"
+  | "images";
+
+type MoveDirection =
+  | "top"
+  | "top-right"
+  | "right"
+  | "bottom-right"
+  | "bottom"
+  | "bottom-left"
+  | "left"
+  | "top-left"
+  | "none";
+
+type MoveOutMode = "bounce" | "out";
+
+type InteractivityMode = "grab" | "push" | "remove" | "bubble" | "repulse";
+
+const type: ShapeType = "circle";
+const direction: MoveDirection = "bottom";
+const outMode: MoveOutMode = "bounce";
+const modeHover: InteractivityMode = "bubble";
+const modeClick: InteractivityMode = "repulse";
+
 const particlesProps = {
   particles: {
-    number: {
-      value: 400,
-      density: {
-        enable: true,
-        value_area: 800
-      }
-    },
     color: {
       value: "#0DA7EE"
     },
+    number: {
+      density: {
+        enable: true,
+        value_area: 800
+      },
+      value: 200
+    },
     shape: {
-      type: "circle",
-      stroke: {
-        width: 0,
-        color: "#000000"
+      image: {
+        height: 100,
+        src: "img/github.svg",
+        width: 100
       },
       polygon: {
         nb_sides: 5
       },
-      image: {
-        src: "img/github.svg",
-        width: 100,
-        height: 100
-      }
+      stroke: {
+        color: "#000000",
+        width: 0
+      },
+      type
     },
     opacity: {
       value: 0.5,
@@ -36,7 +66,7 @@ const particlesProps = {
       }
     },
     size: {
-      value: 10,
+      value: 20,
       random: true,
       anim: {
         enable: false,
@@ -54,12 +84,12 @@ const particlesProps = {
     },
     move: {
       enable: true,
-      speed: 6,
-      direction: "bottom",
-      random: false,
+      speed: Math.ceil(Math.random() * 3),
+      direction,
+      random: true,
       straight: false,
-      out_mode: "out",
-      bounce: false,
+      outMode,
+      bounce: true,
       attract: {
         enable: false,
         rotateX: 600,
@@ -72,11 +102,11 @@ const particlesProps = {
     events: {
       onhover: {
         enable: true,
-        mode: "bubble"
+        mode: modeHover
       },
       onclick: {
         enable: true,
-        mode: "repulse"
+        mode: modeClick
       },
       resize: true
     },
