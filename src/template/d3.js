@@ -5,19 +5,9 @@ import { AppContainer } from "react-hot-loader";
 
 import RootContainer from "../router/d3.js";
 
-const render = Component => {
-  ReactDOM.render(
-    <AppContainer>
-      <Component />
-    </AppContainer>,
-    document.getElementById("app")
-  );
-};
-
-render(RootContainer);
-
-if (module.hot) {
-  module.hot.accept("../router/d3.js", () => {
-    render(RootContainer);
-  });
-}
+ReactDOM.render(
+  <AppContainer>
+    <RootContainer />
+  </AppContainer>,
+  document.getElementById("app")
+);

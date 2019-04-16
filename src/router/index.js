@@ -1,6 +1,7 @@
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../component/home.less";
+import { hot } from "react-hot-loader/root";
 
 // eslint-disable-next-line no-unused-vars
 import React, { Suspense, Fragment } from "react";
@@ -80,4 +81,4 @@ class Root extends React.Component {
   }
 }
 
-export default Root;
+export default hot(Root);

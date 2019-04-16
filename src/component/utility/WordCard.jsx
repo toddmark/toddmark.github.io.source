@@ -3,12 +3,7 @@ import React from "react";
 class WordCard extends React.Component {
   componentDidMount() {}
 
-  getDetails() {
-    fetch("https://api.shanbay.com/bdc/search/?word=dynamic", {
-      mode: "no-cors"
-    });
-    console.log(this.props.word.text.toLowerCase());
-  }
+  getDetails() {}
 
   render() {
     const item = this.props.word;

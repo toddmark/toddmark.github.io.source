@@ -38,7 +38,7 @@ const particlesProps = {
         enable: true,
         value_area: 800
       },
-      value: 200
+      value: 100
     },
     shape: {
       image: {
@@ -84,7 +84,7 @@ const particlesProps = {
     },
     move: {
       enable: true,
-      speed: Math.ceil(Math.random() * 3),
+      speed: Math.ceil(Math.random() * 2),
       direction,
       random: true,
       straight: false,
