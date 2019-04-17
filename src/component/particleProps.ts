@@ -56,7 +56,7 @@ const particlesProps = {
       type
     },
     opacity: {
-      value: 0.5,
+      value: 0.1,
       random: true,
       anim: {
         enable: false,
@@ -66,7 +66,7 @@ const particlesProps = {
       }
     },
     size: {
-      value: 20,
+      value: 10,
       random: true,
       anim: {
         enable: false,
@@ -112,20 +112,20 @@ const particlesProps = {
     },
     modes: {
       grab: {
-        distance: 400,
+        distance: 100,
         line_linked: {
           opacity: 0.5
         }
       },
       bubble: {
-        distance: 400,
+        distance: 100,
         size: 4,
         duration: 0.3,
         opacity: 1,
         speed: 3
       },
       repulse: {
-        distance: 200,
+        distance: 100,
         duration: 0.4
       },
       push: {
