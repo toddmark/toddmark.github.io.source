@@ -5,11 +5,12 @@ import Jumbotron from "./utility/Jumbotron.tsx";
 import "./about.less";
 
 const imgList = [
-  require("./img/1.jpg"),
-  require("./img/2.jpg"),
-  require("./img/3.jpg"),
-  require("./img/4.jpg"),
-  require("./img/5.jpg")
+  require("./img/steam_bg.png"),
+  require("./img/steam_bg.png"),
+  require("./img/steam_bg.png"),
+  require("./img/steam_bg.png"),
+  require("./img/steam_bg.png"),
+  require("./img/steam_bg.png")
 ];
 
 export default class About extends React.Component {

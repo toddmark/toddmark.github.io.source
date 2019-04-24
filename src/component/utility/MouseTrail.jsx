@@ -31,7 +31,10 @@ class MouseTrail extends React.Component {
       "resize",
       () => {
         this.setState({
-          cHeight: document.body.clientHeight,
+          cHeight:
+            document.body.clientHeight < window.innerHeight
+              ? window.innerHeight
+              : document.body.clientHeight,
           cWidth: document.body.clientWidth
         });
       },
