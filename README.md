@@ -5,5 +5,6 @@
 # 更新日志
 
 - 2019.04.13 网站改变重构，升级所有依赖至当前最新，相关分支 `feature/lazy-component`
+- 2019.04.24 添加鼠标轨迹
 
 ![Todd Mark](https://unsplash.it/1000)
