@@ -9,7 +9,7 @@ class WordCard extends React.Component {
     const item = this.props.word;
     return (
       <span style={{ color: "#eee" }} onClick={this.getDetails.bind(this)}>
-        {item.text.toLowerCase()}&emsp;
+        {item.text.toLowerCase()}&ensp;
       </span>
     );
   }

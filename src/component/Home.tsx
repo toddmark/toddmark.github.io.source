@@ -7,6 +7,8 @@ import Nav from "./navbar";
 import propsP from "./particleProps";
 // import Moment from "moment";
 import WordCard from "./utility/wordCard";
+import MouseTrail from "./utility/MouseTrail";
+
 const words = require("../../build/words");
 
 export default class Home extends React.Component {
@@ -19,6 +21,7 @@ export default class Home extends React.Component {
     console.log(words);
     return (
       <div>
+        <MouseTrail />
         <Particles style={{ position: "fixed", zIndex: -1 }} params={propsP} />
         {/* <div className="container-fluid flex-parent">
           <Jumbotron content={{ title: "Welcome, my visitors !" }} />
