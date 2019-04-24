@@ -102,6 +102,6 @@
     "scrollmagic": "^2.0.5",
     "shelljs": "^0.8.3",
     "typescript": "^3.4.3",
-    "webpack": "^4.29.6"
+    "webpack": "^4.30.0"
   }
 }
