@@ -22,8 +22,12 @@ class MouseTrail extends React.Component {
 
   componentDidMount() {
     // Set height and width on load because if set in state body isn't defined yet.
+    const cHeight =
+      document.body.clientHeight < window.innerHeight
+        ? window.innerHeight
+        : document.body.clientHeight;
     this.setState({
-      cHeight: document.body.clientHeight,
+      cHeight,
       cWidth: document.body.clientWidth
     });
 
@@ -31,10 +35,7 @@ class MouseTrail extends React.Component {
       "resize",
       () => {
         this.setState({
-          cHeight:
-            document.body.clientHeight < window.innerHeight
-              ? window.innerHeight
-              : document.body.clientHeight,
+          cHeight,
           cWidth: document.body.clientWidth
         });
       },
