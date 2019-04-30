@@ -117,7 +117,7 @@ class MouseTrail extends React.Component {
     const { cHeight, cWidth } = this.state;
     return (
       <canvas
-        style={{ position: "fixed" }}
+        style={{ position: "fixed", pointerEvents: "none" }}
         ref={this.canvas}
         width={cWidth}
         height={cHeight}
