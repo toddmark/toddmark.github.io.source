@@ -1,5 +1,6 @@
 import React from "react";
 import Moment from "moment";
+import "./wordCard.less";
 
 class WordCard extends React.Component {
   componentDidMount() {
@@ -20,31 +21,34 @@ class WordCard extends React.Component {
       }
     });
     // newList[]
-    console.log(Object.keys(newList));
     return newList;
   }
 
   render() {
     // const words = this.props.words;
     const TypeOneList = this.getTypeOne();
-    // console.log(Moment(item.date).month(), Moment(item.date).week(), Moment(item.date).format("YYYY年M月DD日"));
     return (
       <div style={{ color: "#eee" }}>
-        {Object.keys(TypeOneList).map(item => {
-          const month = `${Number(item) + 1}月`;
-          console.log(TypeOneList[item]);
-          const days = [];
-          TypeOneList[item].forEach(day => {
-            days.push(<span>{day}</span>);
-          });
-          console.log(days);
-          return (
-            <div>
-              <p>{month}</p>
-              {/* {days} */}
-            </div>
-          );
-        })}
+        {Object.keys(TypeOneList)
+          .reverse()
+          .map(item => {
+            const month = `${Number(item) + 1}月`;
+            const days = [];
+            TypeOneList[item].forEach(day => {
+              days.push(
+                <span className="col-sm-2 word">
+                  {" "}
+                  {day.text.toLowerCase()}{" "}
+                </span>
+              );
+            });
+            return (
+              <div>
+                <h4>{month}</h4>
+                <div className="row">{days}</div>
+              </div>
+            );
+          })}
       </div>
     );
   }
