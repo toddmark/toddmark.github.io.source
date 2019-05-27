@@ -26,8 +26,8 @@ export default class Home extends React.Component {
         {/* <div className="container-fluid flex-parent">
           <Jumbotron content={{ title: "Welcome, my visitors !" }} />
         </div> */}
+        <Nav />
         <div className="container-fluid">
-          <Nav />
           <div className="row">
             <div className="container">
               <WordCard words={words} />

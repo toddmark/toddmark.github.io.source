@@ -4,11 +4,19 @@ import JetFighter from "./model/jetFighter";
 import RolePanel from "./model/rolePanel";
 import Stage from "./model/stage";
 
-const brickImg = require("./img/brick.png");
-const bulletImg = require("./img/bullet.png");
+const brickImgSrc = require("./img/brick.png");
+const brickImg = new Image();
+brickImg.src = brickImgSrc;
+const bulletImgSrc = require("./img/bullet.png");
+const bulletImg = new Image();
+bulletImg.src = bulletImgSrc;
 const jetFighterImg = require("./img/jet_fighter.png");
-const moonImg = require("./img/moon.png");
-const jetFighter = new JetFighter(jetFighterImg, Stage);
+const jetFighterImgElement = new Image();
+jetFighterImgElement.src = jetFighterImg;
+const moonImgSrc = require("./img/moon.png");
+const moonImg = new Image();
+moonImg.src = moonImgSrc;
+const jetFighter = new JetFighter(jetFighterImgElement, Stage);
 
 Stage.updateStage = () => {
   if (jetFighter.destory) {

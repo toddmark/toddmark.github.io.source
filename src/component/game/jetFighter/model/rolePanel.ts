@@ -41,9 +41,7 @@ class Singleton {
     }
   }
 
-  loadImgResource(src) {
-    const img = new Image(); // Create new img element
-    img.src = src;
+  loadImgResource(img) {
     this.imgResources.blood = img;
   }
 }

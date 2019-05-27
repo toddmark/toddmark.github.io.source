@@ -6,9 +6,8 @@ class ImgResource {
   height: number;
   timer: any;
   speed: number;
-  constructor(src) {
-    this.img = new Image(); // Create new img element
-    this.img.src = src;
+  constructor(ele) {
+    this.img = ele;
   }
 }
 

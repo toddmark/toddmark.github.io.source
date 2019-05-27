@@ -28,7 +28,7 @@ class WordCard extends React.Component {
     // const words = this.props.words;
     const TypeOneList = this.getTypeOne();
     return (
-      <div style={{ color: "#eee" }}>
+      <div>
         {Object.keys(TypeOneList)
           .reverse()
           .map(item => {

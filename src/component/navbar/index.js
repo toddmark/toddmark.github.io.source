@@ -19,7 +19,7 @@ export default class Nav extends Component {
     return (
       <div>
         <nav
-          style={{ zIndex: 9 }}
+          style={{ zIndex: 9, background: "#1b2838" }}
           className="navbar navbar-expand-lg navbar-dark"
           role="navigation"
         >
