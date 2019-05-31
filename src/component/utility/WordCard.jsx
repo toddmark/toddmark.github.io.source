@@ -43,7 +43,7 @@ class WordCard extends React.Component {
               );
             });
             return (
-              <div>
+              <div className="wordPanel">
                 <div className="clearfix">
                   <h4 className="text-primary">
                     {month}
