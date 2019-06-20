@@ -8,6 +8,8 @@ import propsP from "./particleProps";
 // import Moment from "moment";
 import WordCard from "./utility/wordCard";
 import MouseTrail from "./utility/MouseTrail";
+import main from "@toddmark/login-input-component";
+console.log("▄︻┻━┳一++: toddmark", main);
 
 const words = require("../../build/words");
 
@@ -28,6 +30,7 @@ export default class Home extends React.Component {
         </div> */}
         <Nav />
         <div className="container-fluid">
+          <main></main>
           <div className="row">
             <div className="container">
               <WordCard words={words} />
