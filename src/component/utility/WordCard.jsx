@@ -3,6 +3,16 @@ import Moment from "moment";
 import "./wordCard.less";
 
 class WordCard extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      word: {
+        title: "",
+        text: ""
+      }
+    };
+  }
+
   componentDidMount() {
     this.getTypeOne();
   }
@@ -24,9 +34,17 @@ class WordCard extends React.Component {
     return newList;
   }
 
+  wordClick(word) {
+    this.setState({
+      word
+    });
+    console.log(word);
+  }
+
   render() {
     // const words = this.props.words;
     const TypeOneList = this.getTypeOne();
+    const { word } = this.state;
     return (
       <div>
         {Object.keys(TypeOneList)
@@ -36,7 +54,12 @@ class WordCard extends React.Component {
             const days = [];
             TypeOneList[item].forEach(day => {
               days.push(
-                <span className="col-sm-2 word">
+                <span
+                  className="col-sm-2 word"
+                  data-toggle="modal"
+                  data-target="#exampleModal"
+                  onClick={this.wordClick.bind(this, day)}
+                >
                   {" "}
                   {day.text.toLowerCase()}{" "}
                 </span>
@@ -56,14 +79,6 @@ class WordCard extends React.Component {
               </div>
             );
           })}
-        <button
-          type="button"
-          className="btn btn-primary"
-          data-toggle="modal"
-          data-target="#exampleModal"
-        >
-          Launch demo modal
-        </button>
         <div
           className="modal fade"
           id="exampleModal"
@@ -76,7 +91,7 @@ class WordCard extends React.Component {
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title" id="exampleModalLabel">
-                  Modal title
+                  {word.text.toLowerCase()}
                 </h5>
                 <button
                   type="button"
@@ -87,8 +102,15 @@ class WordCard extends React.Component {
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div className="modal-body">...</div>
-              <div className="modal-footer">
+              <div className="modal-body">
+                <h3>{word.text.toLowerCase()}</h3>
+                <p>{word.context}</p>
+                <p>{word.trans}</p>
+                <p className="text-right">
+                  {Moment(word.date).format("YYYY-MM-DD HH:mm:ss")}
+                </p>
+              </div>
+              {/* <div className="modal-footer">
                 <button
                   type="button"
                   className="btn btn-secondary"
@@ -99,7 +121,7 @@ class WordCard extends React.Component {
                 <button type="button" className="btn btn-primary">
                   Save changes
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

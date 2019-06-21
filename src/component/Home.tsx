@@ -8,8 +8,8 @@ import propsP from "./particleProps";
 // import Moment from "moment";
 import WordCard from "./utility/wordCard";
 import MouseTrail from "./utility/MouseTrail";
-import main from "@toddmark/login-input-component";
-console.log("▄︻┻━┳一++: toddmark", main);
+// import main from "@toddmark/login-input-component";
+// console.log("▄︻┻━┳一++: toddmark", main);
 
 const words = require("../../build/words");
 
