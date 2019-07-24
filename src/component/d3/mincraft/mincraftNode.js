@@ -12,8 +12,11 @@ const y = height / rectSize;
 
 // create rect
 function initStage() {
-  d3.select(node).append("svg")
-    .attr("width", width).attr("height", height).style("background", "#000")
+  d3.select(node)
+    .append("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .style("background", "#000")
     .selectAll("rect")
     .data(d3.range(x * y))
     .enter()
@@ -27,7 +30,8 @@ function initStage() {
 
 function update() {
   console.log(d3.select("svg").selectAll("rect"));
-  d3.select("svg").selectAll("rect")
+  d3.select("svg")
+    .selectAll("rect")
     .data(d3.range(x * y))
     .attr("transform", translate)
     .attr("width", rectSize)
@@ -38,16 +42,37 @@ function update() {
 
 initStage();
 
-d3.select(node).select("svg").selectAll("rect").on("click", function () {
+const allGrids = d3
+  .select(node)
+  .select("svg")
+  .selectAll("rect");
+allGrids.on("click", function() {
   if (d3.select(this).attr("data-choosed") == "true") {
-    d3.select(this).style("fill", defaultColor).attr("data-choosed", false);
+    d3.select(this)
+      .style("fill", defaultColor)
+      .attr("data-choosed", false);
   } else {
-    d3.select(this).style("fill", "#000").attr("data-choosed", true);
+    d3.select(this)
+      .style("fill", "#000")
+      .attr("data-choosed", true);
   }
 });
 
+allGrids.on("mouseenter", function() {
+  console.log("enter");
+  d3.select(this)
+    .style("cursor", "pointer")
+    .style("opacity", "0.9");
+});
+allGrids.on("mouseleave", function() {
+  console.log("leave");
+  d3.select(this)
+    .style("cursor", "pointer")
+    .style("opacity", "1");
+});
+
 function translate(d) {
-  return `translate(${ d % x * rectSize },${ Math.floor(d / x) * rectSize })`;
+  return `translate(${(d % x) * rectSize},${Math.floor(d / x) * rectSize})`;
 }
 
-export default {node, update};
+export default { node, update };
