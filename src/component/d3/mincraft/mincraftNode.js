@@ -10,6 +10,8 @@ const height = lines * rectSize;
 const x = width / rectSize;
 const y = height / rectSize;
 
+let isPress = false;
+
 // create rect
 function initStage() {
   d3.select(node)
@@ -46,33 +48,46 @@ const allGrids = d3
   .select(node)
   .select("svg")
   .selectAll("rect");
-allGrids.on("click", function() {
-  if (d3.select(this).attr("data-choosed") == "true") {
-    d3.select(this)
-      .style("fill", defaultColor)
-      .attr("data-choosed", false);
-  } else {
-    d3.select(this)
-      .style("fill", "#000")
-      .attr("data-choosed", true);
-  }
+
+allGrids.on("mousedown", function() {
+  paintSquare(this);
 });
 
 allGrids.on("mouseenter", function() {
-  console.log("enter");
   d3.select(this)
     .style("cursor", "pointer")
     .style("opacity", "0.9");
+  if (isPress) {
+    paintSquare(this);
+  }
 });
 allGrids.on("mouseleave", function() {
-  console.log("leave");
   d3.select(this)
     .style("cursor", "pointer")
     .style("opacity", "1");
 });
 
+document.addEventListener("mousedown", function() {
+  isPress = true;
+});
+document.addEventListener("mouseup", function() {
+  isPress = false;
+});
+
 function translate(d) {
   return `translate(${(d % x) * rectSize},${Math.floor(d / x) * rectSize})`;
+}
+
+function paintSquare(item) {
+  if (d3.select(item).attr("data-choosed") == "true" && !isPress) {
+    d3.select(item)
+      .style("fill", defaultColor)
+      .attr("data-choosed", false);
+  } else {
+    d3.select(item)
+      .style("fill", "#000")
+      .attr("data-choosed", true);
+  }
 }
 
 export default { node, update };

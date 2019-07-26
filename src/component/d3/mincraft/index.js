@@ -20,26 +20,48 @@ class Mincraft extends Component {
     node.update();
   }
 
+  renderCanvas() {
+    var mySVG = $("#container").find("svg")[0];
+    var loader = new Image();
+    loader.onload = function() {
+      var viewImg = $("#img")[0];
+      var can = document.createElement("canvas");
+      can.width = 800;
+      can.height = 800;
+      var ctx = can.getContext("2d");
+      loader.width = can.width;
+      loader.height = can.height;
+      ctx.drawImage(loader, 0, 0, loader.width, loader.height);
+      can.src = can.toDataURL();
+      viewImg.src = can.toDataURL();
+    };
+    var svgAsXML = new XMLSerializer().serializeToString(mySVG);
+    loader.src = "data:image/svg+xml," + encodeURIComponent(svgAsXML);
+  }
+
   render() {
     return (
       <div className="container">
         <div style={{ marginTop: 20 }} className="panel panel-info">
-          <div className="panel-heading">Tools</div>
-          <div className="panel-body">
+          <div style={{ marginBottom: 10 }} className="panel-heading">
+            工具栏
+          </div>
+          <div style={{ marginBottom: 10 }} className="panel-body">
             <div className="btn-group">
+              <img id="img" width="200" height="200" />
               <button
                 type="button"
                 className="btn btn-danger"
                 onClick={this.resetPaint}
               >
-                Clean
+                清空
               </button>
               <button
                 type="button"
                 className="btn btn-primary"
-                onClick={this.resetPaint}
+                onClick={this.renderCanvas}
               >
-                Export
+                生成 Canvas
               </button>
             </div>
           </div>
