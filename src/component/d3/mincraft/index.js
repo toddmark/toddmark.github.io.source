@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import node from "./mincraftNode.js";
 // const update = require("./mincraftNode.js");
 import $ from "jquery";
+import { ROW, COLUMNS, RECTSIZE } from "./constant";
 
 // const RD3Component = rd3.Component;
 
@@ -17,7 +18,7 @@ class Mincraft extends Component {
   }
 
   resetPaint() {
-    node.update();
+    node.update("reset");
   }
 
   renderCanvas() {
@@ -26,8 +27,8 @@ class Mincraft extends Component {
     loader.onload = function() {
       var viewImg = $("#img")[0];
       var can = document.createElement("canvas");
-      can.width = 800;
-      can.height = 800;
+      can.width = ROW * RECTSIZE;
+      can.height = COLUMNS * RECTSIZE;
       var ctx = can.getContext("2d");
       loader.width = can.width;
       loader.height = can.height;
@@ -48,7 +49,6 @@ class Mincraft extends Component {
           </div>
           <div style={{ marginBottom: 10 }} className="panel-body">
             <div className="btn-group">
-              <img id="img" width="200" height="200" />
               <button
                 type="button"
                 className="btn btn-danger"
@@ -64,6 +64,7 @@ class Mincraft extends Component {
                 生成 Canvas
               </button>
             </div>
+            <img id="img" width="200" />
           </div>
         </div>
         <div id="container"></div>

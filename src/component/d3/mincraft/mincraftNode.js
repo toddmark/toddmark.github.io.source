@@ -1,14 +1,12 @@
 import * as d3 from "d3";
+import { ROW, COLUMNS, RECTSIZE } from "./constant";
 const node = document.createElement("div");
 
-const rectSize = 50;
-const lines = 16;
-const columns = 16;
 const defaultColor = "#eee";
-const width = columns * rectSize;
-const height = lines * rectSize;
-const x = width / rectSize;
-const y = height / rectSize;
+const width = COLUMNS * RECTSIZE;
+const height = ROW * RECTSIZE;
+const x = width / RECTSIZE;
+const y = height / RECTSIZE;
 
 let isPress = false;
 
@@ -24,22 +22,24 @@ function initStage() {
     .enter()
     .append("rect")
     .attr("transform", translate)
-    .attr("width", rectSize)
-    .attr("height", rectSize)
+    .attr("width", RECTSIZE)
+    .attr("height", RECTSIZE)
     .style("stroke", "#eff")
     .style("fill", defaultColor);
 }
 
-function update() {
-  console.log(d3.select("svg").selectAll("rect"));
-  d3.select("svg")
-    .selectAll("rect")
-    .data(d3.range(x * y))
-    .attr("transform", translate)
-    .attr("width", rectSize)
-    .attr("height", rectSize)
-    .style("stroke", "#eff")
-    .style("fill", defaultColor);
+function update(type) {
+  if (type === "reset") {
+    d3.select("svg")
+      .selectAll("rect")
+      .data(d3.range(x * y))
+      .attr("transform", translate)
+      .attr("width", RECTSIZE)
+      .attr("height", RECTSIZE)
+      .attr("data-choosed", false)
+      .style("stroke", "#eff")
+      .style("fill", defaultColor);
+  }
 }
 
 initStage();
@@ -75,7 +75,8 @@ document.addEventListener("mouseup", function() {
 });
 
 function translate(d) {
-  return `translate(${(d % x) * rectSize},${Math.floor(d / x) * rectSize})`;
+  console.log(d);
+  return `translate(${(d % x) * RECTSIZE},${Math.floor(d / x) * RECTSIZE})`;
 }
 
 function paintSquare(item) {
