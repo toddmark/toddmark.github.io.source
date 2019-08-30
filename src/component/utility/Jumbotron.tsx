@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import React from "react";
 import { Link } from "react-router-dom";
 import Clock from "./clock";
@@ -5,11 +6,14 @@ import Clock from "./clock";
 const Jumbotron = (props: any) => (
   <div>
     <div className="jumbotron shadow">
+      <p style={{ marginTop: 15 }} className="text-center">
+        {props.content.title}
+      </p>
       <div className="row">
         <div className="col">
-          <a className="btn btn-primary btn-dark" href="/blog">
+          <Link className="btn btn-dark btn-block" to="/blog">
             Blog
-          </a>
+          </Link>
         </div>
         <div className="col">
           <Link className="btn btn-dark btn-block" to="/hello">
@@ -17,10 +21,7 @@ const Jumbotron = (props: any) => (
           </Link>
         </div>
       </div>
-      <p style={{ marginTop: 15 }} className="text-primary">
-        {props.content.title}
-      </p>
-      <div style={{ width: 200 }}>
+      <div style={{ width: 200, margin: "20px auto" }}>
         <img
           className="img-thumbnail"
           src="https://unsplash.it/200/300/?random"

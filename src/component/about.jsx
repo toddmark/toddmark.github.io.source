@@ -18,7 +18,7 @@ export default class About extends React.Component {
     return (
       <div>
         <Nav />
-        <Jumbotron content={{ title: "这里是我的简介" }} />
+        <Jumbotron content={{ title: "左手博客，右手杂货" }} />
         <div
           id="carousel-example-generic"
           className="carousel slide"
