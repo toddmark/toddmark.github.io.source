@@ -9,8 +9,12 @@
     "release": "node ./tool/release.js",
     "start": "cross-env NODE_ENV=development node ./tool/dev-server.js",
     "dll": "webpack --config webpack.dll.config.js",
-    "words": "node ./tool/get-words.js",
-    "precommit": "lint-staged"
+    "words": "node ./tool/get-words.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "lint-staged": {
     "*.{json,css}": [
