@@ -9,11 +9,11 @@ const Jumbotron = (props: any) => (
       <p style={{ marginTop: 15 }} className="text-center">
         {props.content.title}
       </p>
-      <div className="row">
+      <div style={{ maxWidth: 600, margin: "0 auto" }} className="row">
         <div className="col">
-          <Link className="btn btn-dark btn-block" to="/blog">
+          <a className="btn btn-dark btn-block" href="/blog">
             Blog
-          </Link>
+          </a>
         </div>
         <div className="col">
           <Link className="btn btn-dark btn-block" to="/hello">
