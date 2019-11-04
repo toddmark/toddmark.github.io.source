@@ -71,7 +71,7 @@ export default class RandomSelect extends Component {
     });
     return (
       <div className="bg">
-        <div style={{ display: "none" }}>
+        <div>
           <Nav />
         </div>
         <div

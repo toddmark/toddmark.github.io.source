@@ -62,24 +62,22 @@ export default class Nav extends Component {
                     Hello
                   </NavLink>
                 </li>
-                <li className="nav-item">
-                  <NavLink
-                    to="/game"
-                    className="nav-link"
-                    activeStyle={{ color: "#fff", background: "#777" }}
+                <li className="nav-item dropdown">
+                  <a
+                    href="javascript:void(0);"
+                    className="nav-link dropdown-toggle"
+                    data-toggle="dropdown"
                   >
-                    Game
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink
-                    to="/jetfighter"
-                    className="nav-link"
-                    replace={this.state.currentPath === "/jetfighter"}
-                    activeStyle={{ color: "#fff", background: "#777" }}
-                  >
-                    Jet Fighter
-                  </NavLink>
+                    Game <span className="caret" />
+                  </a>
+                  <div className="dropdown-menu" role="menu">
+                    <NavLink className="dropdown-item" to="/game/pingpang">
+                      PingPang
+                    </NavLink>
+                    <NavLink className="dropdown-item" to="/game/jetfighter">
+                      Jet Fighter
+                    </NavLink>
+                  </div>
                 </li>
                 <li className="nav-item dropdown">
                   <a
@@ -89,29 +87,24 @@ export default class Nav extends Component {
                   >
                     Sandbox <span className="caret" />
                   </a>
-                  <ul className="dropdown-menu" role="menu">
-                    <li className="dropdown-item">
-                      <NavLink className="dropdown-item" to="/sandbox">
-                        Index
-                      </NavLink>
-                    </li>
-                    <li className="dropdown-item">
-                      <NavLink className="nav-link" to="/sandbox/binarytree">
-                        binarytree
-                      </NavLink>
-                    </li>
-                    <li className="dropdown-item">
-                      <NavLink className="nav-link" to="/sandbox/randomSelect">
-                        randomSelect
-                      </NavLink>
-                    </li>
+                  <div className="dropdown-menu" role="menu">
+                    <NavLink className="dropdown-item" to="/sandbox/index">
+                      Index
+                    </NavLink>
+                    <NavLink className="dropdown-item" to="/sandbox/binarytree">
+                      binarytree
+                    </NavLink>
+                    <NavLink
+                      className="dropdown-item"
+                      to="/sandbox/randomSelect"
+                    >
+                      randomSelect
+                    </NavLink>
                     <div className="dropdown-divider" />
-                    <li className="dropdown-item">
-                      <a className="nav-link" href="/redux-demo">
-                        Redux-demo
-                      </a>
-                    </li>
-                  </ul>
+                    <a className="dropdown-item" href="/redux-demo">
+                      Redux-demo
+                    </a>
+                  </div>
                 </li>
                 <li className="nav-item">
                   <NavLink
@@ -130,13 +123,11 @@ export default class Nav extends Component {
                   >
                     d3.js Demo <span className="caret" />
                   </a>
-                  <ul className="dropdown-menu" role="menu">
-                    <li className="dropdown-item">
-                      <a className="nav-link" href="./d3.html">
-                        Home
-                      </a>
-                    </li>
-                  </ul>
+                  <div className="dropdown-menu" role="menu">
+                    <a className="dropdown-item" href="./d3.html">
+                      Home
+                    </a>
+                  </div>
                 </li>
               </ul>
             </div>

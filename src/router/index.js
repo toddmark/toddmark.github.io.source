@@ -24,19 +24,25 @@ const Sandbox = React.lazy(() =>
   import(/* webpackChunkName: 'Sandbox'*/ "../component/sandbox/Index.jsx")
 );
 const BinaryTree = React.lazy(() =>
-  import(/* webpackChunkName: 'binaryTree'*/ "../component/sandbox/binaryTree/Index.js")
+  import(
+    /* webpackChunkName: 'binaryTree'*/ "../component/sandbox/binaryTree/Index.js"
+  )
 );
 const RandomSelect = React.lazy(() =>
-  import(/* webpackChunkName: 'RandomSelect'*/ "../component/sandbox/randomSelect/Index.js")
+  import(
+    /* webpackChunkName: 'RandomSelect'*/ "../component/sandbox/randomSelect/Index.js"
+  )
 );
 const Home = React.lazy(() =>
   import(/* webpackChunkName: 'Home'*/ "../component/Home.tsx")
 );
-const Game = React.lazy(() =>
-  import(/* webpackChunkName: 'Game'*/ "../component/game/Game.jsx")
+const PingPang = React.lazy(() =>
+  import(/* webpackChunkName: 'Game'*/ "../component/game/pingpang.jsx")
 );
 const JetFighter = React.lazy(() =>
-  import(/* webpackChunkName: 'JetFighter'*/ "../component/game/jetFighter/Index")
+  import(
+    /* webpackChunkName: 'JetFighter'*/ "../component/game/jetFighter/Index"
+  )
 );
 
 function createComponent(Component) {
@@ -62,10 +68,20 @@ class Root extends React.Component {
           <Fragment>
             <Route exact path="/" component={createComponent(Home)} />
             <Route path="/hello" component={createComponent(Hello)} />
-            <Route path="/game" component={createComponent(Game)} />
-            <Route path="/jetfighter" component={createComponent(JetFighter)} />
+            <Route
+              path="/game/pingpang"
+              component={createComponent(PingPang)}
+            />
+            <Route
+              path="/game/jetfighter"
+              component={createComponent(JetFighter)}
+            />
             <Route path="/about" component={createComponent(About)} />
-            <Route exact path="/sandbox" component={createComponent(Sandbox)} />
+            <Route
+              exact
+              path="/sandbox/index"
+              component={createComponent(Sandbox)}
+            />
             <Route
               path="/sandbox/binaryTree"
               component={createComponent(BinaryTree)}

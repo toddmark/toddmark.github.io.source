@@ -38,9 +38,8 @@ class Sandbox extends React.Component {
           targetArray[i] = targetArray[j];
           targetArray[j] = temp;
           log.push(
-            `第${count}次交换, 把第${i}位的${targetArray[j]}与第${j}位的${
-              targetArray[i]
-            }互换, 互换后的新数组为${targetArray}`
+            `第${count}次交换, 把第${i + 1}位的${targetArray[j]}与第${j +
+              1}位的${targetArray[i]}互换, 互换后的新数组为${targetArray}`
           );
           this.setState({
             log: log
