@@ -1,6 +1,8 @@
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../component/home.less";
+import universal from "react-universal-component";
+
 import { hot } from "react-hot-loader/root";
 
 // eslint-disable-next-line no-unused-vars
@@ -12,38 +14,23 @@ import {
   HashRouter as Router
 } from "react-router-dom";
 
-const Hello = React.lazy(() =>
-  import(/* webpackChunkName: 'Hello' */ "../component/Hello.jsx")
-);
-const About = React.lazy(() =>
-  import(/* webpackChunkName: 'About'*/ "../component/About.jsx")
-);
+const Hello = universal(() => import("../component/Hello.jsx"));
+const About = universal(() => import("../component/About.jsx"));
 
 // sandbox
-const Sandbox = React.lazy(() =>
-  import(/* webpackChunkName: 'Sandbox'*/ "../component/sandbox/Index.jsx")
+const Sandbox = universal(() => import("../component/sandbox/Index.jsx"));
+const BinaryTree = universal(() =>
+  import("../component/sandbox/binaryTree/Index.js")
 );
-const BinaryTree = React.lazy(() =>
-  import(
-    /* webpackChunkName: 'binaryTree'*/ "../component/sandbox/binaryTree/Index.js"
-  )
+const RandomSelect = universal(() =>
+  import("../component/sandbox/randomSelect/Index.js")
 );
-const RandomSelect = React.lazy(() =>
-  import(
-    /* webpackChunkName: 'RandomSelect'*/ "../component/sandbox/randomSelect/Index.js"
-  )
+const Home = universal(() => import("../component/Home.tsx"));
+const PingPang = universal(() => import("../component/game/pingpang.jsx"));
+const JetFighter = universal(() =>
+  import("../component/game/jetFighter/Index")
 );
-const Home = React.lazy(() =>
-  import(/* webpackChunkName: 'Home'*/ "../component/Home.tsx")
-);
-const PingPang = React.lazy(() =>
-  import(/* webpackChunkName: 'Game'*/ "../component/game/pingpang.jsx")
-);
-const JetFighter = React.lazy(() =>
-  import(
-    /* webpackChunkName: 'JetFighter'*/ "../component/game/jetFighter/Index"
-  )
-);
+const Snake = universal(() => import("../component/game/snake"));
 
 function createComponent(Component) {
   return props => (
@@ -76,6 +63,8 @@ class Root extends React.Component {
               path="/game/jetfighter"
               component={createComponent(JetFighter)}
             />
+            <Route path="/game/snake" component={createComponent(Snake)} />
+
             <Route path="/about" component={createComponent(About)} />
             <Route
               exact

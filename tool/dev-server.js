@@ -8,7 +8,7 @@ const myIp = IP.address();
 Object.keys(config.entry).map(item => {
   if (item !== "commons") {
     // config.entry[item].unshift(
-    //   "react-hot-loader/patch",
+    // "react-hot-loader/patch",
     //   `webpack-dev-server/client?http://${myIp}:${port}/`,
     //   "webpack/hot/dev-server"
     // );

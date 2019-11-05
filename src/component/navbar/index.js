@@ -77,6 +77,9 @@ export default class Nav extends Component {
                     <NavLink className="dropdown-item" to="/game/jetfighter">
                       Jet Fighter
                     </NavLink>
+                    <NavLink className="dropdown-item" to="/game/snake">
+                      Snake
+                    </NavLink>
                   </div>
                 </li>
                 <li className="nav-item dropdown">
