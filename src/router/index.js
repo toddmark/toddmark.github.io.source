@@ -30,7 +30,7 @@ const PingPang = universal(() => import("../component/game/pingpang.jsx"));
 const JetFighter = universal(() =>
   import("../component/game/jetFighter/Index")
 );
-const Snake = universal(() => import("../component/game/snake"));
+const Snake = universal(() => import("../component/game/snake/index"));
 
 function createComponent(Component) {
   return props => (

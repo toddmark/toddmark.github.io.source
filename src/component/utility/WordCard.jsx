@@ -1,6 +1,6 @@
 import React from "react";
 import Moment from "moment";
-import "./wordCard.less";
+const style = require("./wordCard.less");
 
 class WordCard extends React.Component {
   constructor(props) {
@@ -55,7 +55,7 @@ class WordCard extends React.Component {
             TypeOneList[item].forEach(day => {
               days.push(
                 <span
-                  className="col-sm-2 word"
+                  className={`col-sm-2 ${style.word}`}
                   data-toggle="modal"
                   data-target="#exampleModal"
                   onClick={this.wordClick.bind(this, day)}
@@ -66,7 +66,7 @@ class WordCard extends React.Component {
               );
             });
             return (
-              <div className="wordPanel">
+              <div className={style.wordPanel}>
                 <div className="clearfix">
                   <h4 className="text-primary">
                     {month}

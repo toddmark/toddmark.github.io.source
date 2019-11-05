@@ -5,8 +5,10 @@ import React, { Component } from "react";
 // import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import Minecraft from "../component/d3/mincraft";
+import universal from "react-universal-component";
 import { hot } from "react-hot-loader/root";
+
+const Minecraft = universal(() => import("../component/d3/mincraft"));
 
 class D3 extends Component {
   render() {

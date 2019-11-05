@@ -60,8 +60,27 @@ module.exports = {
         loader: "html-loader"
       },
       {
+        // test: /\.less$/,
+        // loader: "style-loader!css-loader!less-loader"
         test: /\.less$/,
-        loader: "style-loader!css-loader!less-loader"
+        use: [
+          {
+            loader: "style-loader"
+          },
+          {
+            loader: "css-loader",
+            options: {
+              sourceMap: true,
+              modules: true,
+              modules: {
+                localIdentName: "[local]___[hash:base64:5]"
+              }
+            }
+          },
+          {
+            loader: "less-loader"
+          }
+        ]
       },
       {
         test: /\.css$/,
@@ -106,8 +125,8 @@ module.exports = {
         ? [
             // 开发环境
             new webpack.HotModuleReplacementPlugin(),
-            new webpack.NamedModulesPlugin(),
-            new BundleAnalyzerPlugin()
+            new webpack.NamedModulesPlugin()
+            // new BundleAnalyzerPlugin()
           ]
         : [
             // 生产环境
