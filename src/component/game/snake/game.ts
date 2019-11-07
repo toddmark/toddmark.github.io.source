@@ -68,9 +68,9 @@ class Game {
           y = Math.floor(Math.random() * 20);
         }
         newMap[x][y] = 1;
-        console.log(x, y);
+        console.log(x, y, this.map);
         this.updateCanvas(newMap, x, y);
-      }, 10);
+      }, 1000);
     }
   }
 
