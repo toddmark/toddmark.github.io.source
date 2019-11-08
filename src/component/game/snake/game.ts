@@ -58,43 +58,57 @@ class Game {
   }
 
   updateMap() {
-    const newMap = JSON.parse(JSON.stringify(this.map));
+    // console.log(this.map);
     if (!this.timerInterval) {
       this.timerInterval = setInterval(() => {
+        const newMap = JSON.parse(JSON.stringify(this.map));
         let x: number = Math.floor(Math.random() * 20);
         let y: number = Math.floor(Math.random() * 20);
-        while (newMap[x][y] === 1) {
-          x = Math.floor(Math.random() * 20);
-          y = Math.floor(Math.random() * 20);
+        if (this.isEmptyMap()) {
+          while (newMap[x][y] === 1) {
+            x = Math.floor(Math.random() * 20);
+            y = Math.floor(Math.random() * 20);
+          }
+          newMap[x][y] = 1;
+          this.map = newMap;
+          this.updateCanvas(x, y);
+        } else {
+          console.log("end");
+          this.pauseGame();
         }
-        newMap[x][y] = 1;
-        console.log(x, y, this.map);
-        this.updateCanvas(newMap, x, y);
-      }, 1000);
+      }, 10);
     }
   }
 
-  updateCanvas(newMap, x: number, y: number) {
+  updateCanvas(x: number, y: number) {
     this.ctx.strokeStyle = "#fff";
     // console.count("1");
-    if (this.map[x][y] !== newMap[x][y]) {
-      // this.ctx.fillStyle = "rgba(0,0,0,0.7)";
-      // this.ctx.fillRect(
-      //   i * this.mapSize.width / this.mapSize.col,
-      //   j * this.mapSize.height / this.mapSize.row,
-      //   this.mapSize.width / this.mapSize.col, this.mapSize.height / this.mapSize.row);
-      this.ctx.fillStyle = "rgba(255,255,255,0.3)";
-      this.ctx.fillRect(
-        (x * this.mapSize.width) / this.mapSize.col,
-        (y * this.mapSize.height) / this.mapSize.row,
-        this.mapSize.width / this.mapSize.col,
-        this.mapSize.height / this.mapSize.row
-      );
-    }
+    // this.ctx.fillStyle = "rgba(0,0,0,0.7)";
+    // this.ctx.fillRect(
+    //   i * this.mapSize.width / this.mapSize.col,
+    //   j * this.mapSize.height / this.mapSize.row,
+    //   this.mapSize.width / this.mapSize.col, this.mapSize.height / this.mapSize.row);
+    this.ctx.fillStyle = "rgba(255,255,255,0.3)";
+    this.ctx.fillRect(
+      (y * this.mapSize.width) / this.mapSize.col,
+      (x * this.mapSize.height) / this.mapSize.row,
+      this.mapSize.width / this.mapSize.col,
+      this.mapSize.height / this.mapSize.row
+    );
     // this.ctx.strokeRect(
     //   i * this.mapSize.width / this.mapSize.col,
     //   j * this.mapSize.height / this.mapSize.row,
     //   this.mapSize.width / this.mapSize.col, this.mapSize.height / this.mapSize.row);
+  }
+
+  isEmptyMap() {
+    const current = this.map
+      .reduce((arr, value) => {
+        return arr.concat(value);
+      }, [])
+      .reduce((resSum, value) => (resSum += value));
+    console.log(current);
+    return current !== 400;
   }
 
   clearCanvas() {
