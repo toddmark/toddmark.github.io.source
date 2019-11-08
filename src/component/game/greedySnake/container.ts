@@ -1,21 +1,25 @@
 class Game {
   canvas: HTMLCanvasElement;
   map: Array<Array<number>>;
+  mapCoordinate: Array<string>;
   ctx: any;
   timerFrame: any;
   timerInterval: any;
+  speed: number;
   private mapSize = {
-    row: 30,
-    col: 30,
-    width: 900,
-    height: 900
+    row: 20,
+    col: 20,
+    width: 600,
+    height: 600
   };
   constructor(canvas) {
     this.canvas = canvas;
     this.ctx = canvas.getContext("2d");
     this.map = [];
+    this.mapCoordinate = [];
     this.timerFrame = null;
     this.timerInterval = null;
+    this.speed = 10;
   }
 
   start() {
@@ -25,18 +29,21 @@ class Game {
   }
 
   init() {
-    const { width, height } = this.mapSize;
+    const { width, height, row, col } = this.mapSize;
     this.canvas.width = width;
     this.canvas.height = height;
     this.ctx.fillStyle = "rgb(0,0,0,.3)";
     const temp = [];
-    for (let i = 0; i < this.mapSize.row; i++) {
+    const tempCoor = [];
+    for (let i = 0; i < col; i++) {
       temp[i] = [];
-      for (let j = 0; j < this.mapSize.col; j++) {
+      for (let j = 0; j < row; j++) {
         temp[i].push(0);
+        tempCoor.push(`${i},${j}`);
       }
     }
     this.map = temp;
+    this.mapCoordinate = tempCoor;
     this.continueGame();
   }
 
@@ -57,44 +64,49 @@ class Game {
     }
   }
 
+  getRandomCoor() {
+    const random = Math.floor(Math.random() * this.mapCoordinate.length);
+    const randomItem = this.mapCoordinate[random];
+    const [x, y] = randomItem.split(",");
+    const deleteItem = this.mapCoordinate.splice(random, 1);
+    return { x, y };
+  }
+
   updateMap() {
     // console.log(this.map);
-    const { row, col } = this.mapSize;
+    // const { row, col } = this.mapSize;
     if (!this.timerInterval) {
       this.timerInterval = setInterval(() => {
         const newMap = JSON.parse(JSON.stringify(this.map));
-        let x: number = Math.floor(Math.random() * col);
-        let y: number = Math.floor(Math.random() * row);
         if (this.isEmptyMap()) {
-          while (newMap[x][y] === 1) {
-            x = Math.floor(Math.random() * col);
-            y = Math.floor(Math.random() * row);
-          }
+          const { x, y } = this.getRandomCoor();
           newMap[x][y] = 1;
           this.map = newMap;
-          this.updateCanvas(x, y);
+          this.updateCanvas(Number(x), Number(y));
+          // console.log(this.getRandomCoor());
         } else {
           console.log("end");
           this.pauseGame();
         }
-      }, 10);
+      }, this.speed);
     }
   }
 
   updateCanvas(x: number, y: number) {
-    this.ctx.strokeStyle = "#fff";
+    // this.ctx.strokeStyle = "#fff";
     // console.count("1");
     // this.ctx.fillStyle = "rgba(0,0,0,0.7)";
     // this.ctx.fillRect(
     //   i * this.mapSize.width / this.mapSize.col,
     //   j * this.mapSize.height / this.mapSize.row,
     //   this.mapSize.width / this.mapSize.col, this.mapSize.height / this.mapSize.row);
-    this.ctx.fillStyle = "rgba(255,255,255,0.3)";
+    const { width, height, row, col } = this.mapSize;
+    this.ctx.fillStyle = "rgba(50,100,200,0.2)";
     this.ctx.fillRect(
-      (y * this.mapSize.width) / this.mapSize.col,
-      (x * this.mapSize.height) / this.mapSize.row,
-      this.mapSize.width / this.mapSize.col,
-      this.mapSize.height / this.mapSize.row
+      (y * width) / col,
+      (x * width) / row,
+      width / col,
+      height / row
     );
     // this.ctx.strokeRect(
     //   i * this.mapSize.width / this.mapSize.col,
@@ -109,13 +121,14 @@ class Game {
         return arr.concat(value);
       }, [])
       .reduce((resSum, value) => (resSum += value));
-    console.log(current);
+    // console.log(current);
     return current !== row * col;
   }
 
-  clearCanvas() {
-    this.ctx.fillStyle = "rgba(0,0,0,0)";
-    this.ctx.fillRect(0, 0, 600, 600);
+  restart() {
+    const { width, height } = this.mapSize;
+    this.init();
+    this.ctx.clearRect(0, 0, width, height);
   }
 }
 

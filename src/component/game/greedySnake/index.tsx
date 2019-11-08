@@ -1,5 +1,5 @@
 import React from "react";
-import Game from "./game";
+import Game from "./container";
 
 // import Nav from "../navbar";
 const styles = require("./index.less");
@@ -20,8 +20,11 @@ class Snake extends React.Component {
     return (
       <div className={styles["snake-container"]}>
         <canvas id="canvas"></canvas>
-        <button onClick={() => this.game.pauseGame()}>Pause</button>
-        <button onClick={() => this.game.continueGame()}>Continue</button>
+        <div className="fixed-bottom">
+          <button onClick={() => this.game.continueGame()}>Continue</button>
+          <button onClick={() => this.game.pauseGame()}>Pause</button>
+          <button onClick={() => this.game.restart()}>Restart</button>
+        </div>
       </div>
     );
   }
