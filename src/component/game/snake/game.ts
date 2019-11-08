@@ -5,10 +5,10 @@ class Game {
   timerFrame: any;
   timerInterval: any;
   private mapSize = {
-    row: 20,
-    col: 20,
-    width: 600,
-    height: 600
+    row: 30,
+    col: 30,
+    width: 900,
+    height: 900
   };
   constructor(canvas) {
     this.canvas = canvas;
@@ -59,15 +59,16 @@ class Game {
 
   updateMap() {
     // console.log(this.map);
+    const { row, col } = this.mapSize;
     if (!this.timerInterval) {
       this.timerInterval = setInterval(() => {
         const newMap = JSON.parse(JSON.stringify(this.map));
-        let x: number = Math.floor(Math.random() * 20);
-        let y: number = Math.floor(Math.random() * 20);
+        let x: number = Math.floor(Math.random() * col);
+        let y: number = Math.floor(Math.random() * row);
         if (this.isEmptyMap()) {
           while (newMap[x][y] === 1) {
-            x = Math.floor(Math.random() * 20);
-            y = Math.floor(Math.random() * 20);
+            x = Math.floor(Math.random() * col);
+            y = Math.floor(Math.random() * row);
           }
           newMap[x][y] = 1;
           this.map = newMap;
@@ -102,13 +103,14 @@ class Game {
   }
 
   isEmptyMap() {
+    const { row, col } = this.mapSize;
     const current = this.map
       .reduce((arr, value) => {
         return arr.concat(value);
       }, [])
       .reduce((resSum, value) => (resSum += value));
     console.log(current);
-    return current !== 400;
+    return current !== row * col;
   }
 
   clearCanvas() {
