@@ -1,25 +1,29 @@
+import { GridType, ICoorMap } from "./types";
+import Snake from "./snake";
+
 class Game {
   canvas: HTMLCanvasElement;
   map: Array<Array<number>>;
-  mapCoordinate: Array<string>;
+  emptyGrid: Array<string>;
+  filledGrid: Array<string>;
   ctx: any;
   timerFrame: any;
   timerInterval: any;
   speed: number;
+  snake: Snake;
   private mapSize = {
-    row: 20,
-    col: 20,
-    width: 600,
-    height: 600
+    row: 10,
+    col: 10,
+    width: 300,
+    height: 300
   };
   constructor(canvas) {
     this.canvas = canvas;
     this.ctx = canvas.getContext("2d");
     this.map = [];
-    this.mapCoordinate = [];
     this.timerFrame = null;
     this.timerInterval = null;
-    this.speed = 10;
+    this.speed = 1000 / 1;
   }
 
   start() {
@@ -30,9 +34,12 @@ class Game {
 
   init() {
     const { width, height, row, col } = this.mapSize;
+    this.snake = new Snake();
     this.canvas.width = width;
     this.canvas.height = height;
     this.ctx.fillStyle = "rgb(0,0,0,.3)";
+    this.emptyGrid = [];
+    this.filledGrid = [];
     const temp = [];
     const tempCoor = [];
     for (let i = 0; i < col; i++) {
@@ -43,7 +50,7 @@ class Game {
       }
     }
     this.map = temp;
-    this.mapCoordinate = tempCoor;
+    this.emptyGrid = tempCoor;
     this.continueGame();
   }
 
@@ -64,12 +71,47 @@ class Game {
     }
   }
 
-  getRandomCoor() {
-    const random = Math.floor(Math.random() * this.mapCoordinate.length);
-    const randomItem = this.mapCoordinate[random];
-    const [x, y] = randomItem.split(",");
-    const deleteItem = this.mapCoordinate.splice(random, 1);
-    return { x, y };
+  toObjectCoors(strCoors: Array<string>): Array<ICoorMap> {
+    return strCoors.map(item => ({
+      x: Number(item.split(",")[0]),
+      y: Number(item.split(",")[1]),
+      type: GridType[item.split(",")[2]]
+    }));
+  }
+
+  toStringCoors(arrCoors: Array<ICoorMap>): Array<string> {
+    return arrCoors.map(item => `${item.x},${item.y},${item.type}`);
+  }
+
+  getRandomCoor(): Array<ICoorMap> {
+    const random = Math.floor(Math.random() * this.emptyGrid.length);
+    const randomItem = this.emptyGrid[random];
+    const [x, y] = randomItem.split(",").map(item => Number(item));
+    this.emptyGrid.splice(random, 1);
+    return [{ x, y, type: GridType.Bean }];
+  }
+
+  getSnakeCoor(): Array<ICoorMap> {
+    let coors = this.toObjectCoors(this.snake.getMoveCoors(this));
+    coors = coors.map(item => ({ ...item, type: GridType.Snake }));
+    console.log(coors);
+    return coors;
+  }
+
+  getUpdateCoor(): Array<ICoorMap> {
+    const strSnakeCoor: Array<string> = this.toStringCoors(this.getSnakeCoor());
+    const newCoors: Array<string> = [];
+    for (const item of strSnakeCoor) {
+      if (!this.filledGrid.includes(item)) {
+        newCoors.push(item);
+        this.filledGrid.push(item);
+        const index = this.emptyGrid.indexOf(item.substr(0, 3));
+        this.emptyGrid.splice(index, 1);
+      }
+    }
+    // const randomItem = this.getRandomCoor();
+    // newCoors.push(...this.toStringCoors(randomItem));
+    return this.toObjectCoors(newCoors);
   }
 
   updateMap() {
@@ -79,11 +121,12 @@ class Game {
       this.timerInterval = setInterval(() => {
         const newMap = JSON.parse(JSON.stringify(this.map));
         if (this.isEmptyMap()) {
-          const { x, y } = this.getRandomCoor();
-          newMap[x][y] = 1;
+          const arrCoors = this.getUpdateCoor();
+          for (const item of arrCoors) {
+            newMap[item.x][item.y] = 1;
+          }
           this.map = newMap;
-          this.updateCanvas(Number(x), Number(y));
-          // console.log(this.getRandomCoor());
+          this.updateCanvas(arrCoors);
         } else {
           console.log("end");
           this.pauseGame();
@@ -92,22 +135,26 @@ class Game {
     }
   }
 
-  updateCanvas(x: number, y: number) {
-    // this.ctx.strokeStyle = "#fff";
-    // console.count("1");
-    // this.ctx.fillStyle = "rgba(0,0,0,0.7)";
-    // this.ctx.fillRect(
-    //   i * this.mapSize.width / this.mapSize.col,
-    //   j * this.mapSize.height / this.mapSize.row,
-    //   this.mapSize.width / this.mapSize.col, this.mapSize.height / this.mapSize.row);
+  updateCanvas(updateSquare: Array<ICoorMap>) {
+    // console.log(updateSquare);
     const { width, height, row, col } = this.mapSize;
-    this.ctx.fillStyle = "rgba(50,100,200,0.2)";
-    this.ctx.fillRect(
-      (y * width) / col,
-      (x * width) / row,
-      width / col,
-      height / row
-    );
+    for (const item of updateSquare) {
+      const { x, y } = item;
+      this.ctx.fillStyle = "rgba(50,100,200,0.2)";
+      this.ctx.fillRect(
+        (x * width) / col,
+        (y * width) / row,
+        width / col,
+        height / row
+      );
+      this.ctx.font = "12px Arial";
+      this.ctx.fillStyle = "rgba(255,255,255,1)";
+      this.ctx.fillText(
+        `(${x},${y})`,
+        (x * width) / col,
+        (y * width) / row + 10
+      );
+    }
     // this.ctx.strokeRect(
     //   i * this.mapSize.width / this.mapSize.col,
     //   j * this.mapSize.height / this.mapSize.row,
@@ -127,8 +174,8 @@ class Game {
 
   restart() {
     const { width, height } = this.mapSize;
-    this.init();
     this.ctx.clearRect(0, 0, width, height);
+    this.init();
   }
 }
 
