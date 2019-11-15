@@ -23,7 +23,7 @@ class Game {
     this.map = [];
     this.timerFrame = null;
     this.timerInterval = null;
-    this.speed = 1000 / 1;
+    this.speed = 1000 / 2;
   }
 
   start() {
@@ -164,6 +164,7 @@ class Game {
 
   clearCanvas(arrClear: Array<string>) {
     const { width, height, row, col } = this.mapSize;
+    const arrFilled = this.filledGrid.map(item => item.substr(0, 3));
     for (const item of arrClear) {
       const x = Number(item.split(",")[0]);
       const y = Number(item.split(",")[1]);
@@ -173,7 +174,13 @@ class Game {
         width / col,
         height / row
       );
+      const indexClear = arrFilled.indexOf(item);
+      console.log(indexClear, item, this.filledGrid);
+      if (indexClear > -1) {
+        this.filledGrid.splice(indexClear, 1);
+      }
     }
+    this.emptyGrid.push(...arrClear);
   }
 
   isEmptyMap() {

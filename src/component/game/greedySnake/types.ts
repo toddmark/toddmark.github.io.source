@@ -12,7 +12,7 @@ export interface ICoorMap {
 // const Top = "top";
 export enum Direction {
   Top,
-  "Down",
-  "Left",
-  "Right"
+  Down,
+  Left,
+  Right
 }

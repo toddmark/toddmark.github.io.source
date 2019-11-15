@@ -17,15 +17,25 @@ class Snake {
     });
     // top
     let first = coors[0];
-    first = `${first.split(",")[0]},${Number(first.split(",")[1]) - 1}`;
+    const x = first.split(",")[0];
+    const y = first.split(",")[1];
+    switch (this.direction) {
+      case Direction.Top:
+        first = `${x},${Number(y) - 1}`;
+        break;
+      case Direction.Down:
+        first = `${x},${Number(y) + 1}`;
+        break;
+      case Direction.Left:
+        first = `${Number(x) - 1},${y}`;
+        break;
+      case Direction.Right:
+        first = `${Number(x) + 1},${y}`;
+        break;
+    }
     coors.unshift(first);
     const clear = coors.pop();
     container.clearCanvas([clear]);
-    // down
-    // coors.shift();
-    // let last = coors[coors.length - 1];
-    // last = `${last.split(",")[0]},${Number(last.split(",")[1]) + 1}`
-    // coors.push(last);
     this.coors = coors;
     // console.log(this.direction);
     return coors;
@@ -36,7 +46,6 @@ class Snake {
   }
 
   onKeyPress(e) {
-    console.log(this);
     switch (e.key) {
       case "w":
         this.changeDirection(Direction.Top);
