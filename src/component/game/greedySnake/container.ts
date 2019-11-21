@@ -1,4 +1,4 @@
-import { GridType, ICoorMap } from "./types";
+import { GridType, ICoorMap, IMapSize } from "./types";
 import Snake from "./snake";
 
 class Game {
@@ -11,19 +11,20 @@ class Game {
   timerInterval: any;
   speed: number;
   snake: Snake;
-  private mapSize = {
-    row: 10,
-    col: 10,
-    width: 300,
-    height: 300
-  };
+  mapSize: IMapSize;
   constructor(canvas) {
     this.canvas = canvas;
     this.ctx = canvas.getContext("2d");
     this.map = [];
     this.timerFrame = null;
     this.timerInterval = null;
-    this.speed = 1000 / 2;
+    this.speed = 1000 / 1;
+    this.mapSize = {
+      row: 10,
+      col: 10,
+      width: 300,
+      height: 300
+    };
   }
 
   start() {
@@ -34,7 +35,7 @@ class Game {
 
   init() {
     const { width, height, row, col } = this.mapSize;
-    this.snake = new Snake();
+    this.snake = new Snake({ container: this });
     this.canvas.width = width;
     this.canvas.height = height;
     this.ctx.fillStyle = "rgb(0,0,0,.3)";
@@ -94,7 +95,7 @@ class Game {
   }
 
   getSnakeCoor(): Array<ICoorMap> {
-    let coors = this.toObjectCoors(this.snake.getMoveCoors(this));
+    let coors = this.toObjectCoors(this.snake.getMoveCoors());
     coors = coors.map(item => ({ ...item, type: GridType.Snake }));
     return coors;
   }
@@ -175,7 +176,6 @@ class Game {
         height / row
       );
       const indexClear = arrFilled.indexOf(item);
-      console.log(indexClear, item, this.filledGrid);
       if (indexClear > -1) {
         this.filledGrid.splice(indexClear, 1);
       }

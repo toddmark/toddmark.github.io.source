@@ -9,6 +9,13 @@ export interface ICoorMap {
   type: GridType;
 }
 
+export interface IMapSize {
+  row: number;
+  col: number;
+  width: number;
+  height: number;
+}
+
 // const Top = "top";
 export enum Direction {
   Top,
