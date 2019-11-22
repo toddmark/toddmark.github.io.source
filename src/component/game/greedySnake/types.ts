@@ -16,7 +16,6 @@ export interface IMapSize {
   height: number;
 }
 
-// const Top = "top";
 export enum Direction {
   Top,
   Down,

@@ -12,13 +12,14 @@ class Game {
   speed: number;
   snake: Snake;
   mapSize: IMapSize;
+  singlePoint: ICoorMap;
   constructor(canvas) {
     this.canvas = canvas;
     this.ctx = canvas.getContext("2d");
     this.map = [];
     this.timerFrame = null;
     this.timerInterval = null;
-    this.speed = 1000 / 1;
+    this.speed = 1000 / 2;
     this.mapSize = {
       row: 10,
       col: 10,
@@ -41,6 +42,7 @@ class Game {
     this.ctx.fillStyle = "rgb(0,0,0,.3)";
     this.emptyGrid = [];
     this.filledGrid = [];
+    this.singlePoint = null;
     const temp = [];
     const tempCoor = [];
     for (let i = 0; i < col; i++) {
@@ -111,8 +113,11 @@ class Game {
         this.emptyGrid.splice(index, 1);
       }
     }
-    // const randomItem = this.getRandomCoor();
-    // newCoors.push(...this.toStringCoors(randomItem));
+    if (!this.singlePoint) {
+      const randomItem = this.getRandomCoor();
+      this.singlePoint = randomItem[0];
+      newCoors.push(...this.toStringCoors(randomItem));
+    }
     return this.toObjectCoors(newCoors);
   }
 
@@ -142,25 +147,49 @@ class Game {
     const { width, height, row, col } = this.mapSize;
     for (const item of updateSquare) {
       const { x, y } = item;
-      this.ctx.fillStyle = "rgba(50,100,200,0.2)";
-      this.ctx.fillRect(
-        (x * width) / col,
-        (y * width) / row,
-        width / col,
-        height / row
-      );
-      this.ctx.font = "12px Arial";
-      this.ctx.fillStyle = "rgba(255,255,255,1)";
-      this.ctx.fillText(
-        `(${x},${y})`,
-        (x * width) / col,
-        (y * width) / row + 10
-      );
+      switch (item.type) {
+        case GridType["1"]:
+          this.ctx.beginPath();
+          this.ctx.arc(
+            (x * width) / col + width / col / 2,
+            (y * height) / row + height / row / 2,
+            width / col / 2,
+            0,
+            2 * Math.PI,
+            false
+          );
+          this.ctx.fillStyle = "rgba(50,100,200,0.5)";
+          this.ctx.fill();
+          break;
+        default:
+          this.ctx.fillStyle = "rgba(50,100,200,0.2)";
+          this.ctx.fillRect(
+            (x * width) / col,
+            (y * height) / row,
+            width / col,
+            height / row
+          );
+      }
+      this.debug(item);
     }
-    // this.ctx.strokeRect(
-    //   i * this.mapSize.width / this.mapSize.col,
-    //   j * this.mapSize.height / this.mapSize.row,
-    //   this.mapSize.width / this.mapSize.col, this.mapSize.height / this.mapSize.row);
+  }
+
+  debug(item) {
+    const { width, height, row, col } = this.mapSize;
+    const { x, y } = item;
+    this.ctx.font = "10px YaHei";
+    this.ctx.fillStyle = "rgba(255,255,255,1)";
+    this.ctx.fillText(
+      `(${x},${y})`,
+      (x * width) / col + 5,
+      (y * height) / row + 20
+    );
+  }
+
+  clearSinglePoint() {
+    const clearArr = this.toStringCoors([this.singlePoint]);
+    this.singlePoint = null;
+    this.clearCanvas(clearArr);
   }
 
   clearCanvas(arrClear: Array<string>) {
@@ -179,6 +208,7 @@ class Game {
       if (indexClear > -1) {
         this.filledGrid.splice(indexClear, 1);
       }
+      this.map[x][y] = 0;
     }
     this.emptyGrid.push(...arrClear);
   }
