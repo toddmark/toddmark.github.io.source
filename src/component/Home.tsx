@@ -43,7 +43,6 @@ export default class Home extends React.Component {
           >
             Coding Pages
           </a>
-          <main />
           <main.one />
           <main.two />
         </p>

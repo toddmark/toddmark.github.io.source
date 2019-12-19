@@ -46,7 +46,7 @@ export default class About extends React.Component {
                   }
                 >
                   <div className="img-responsive">
-                    <img src={imgList[index]} alt="..." />
+                    <img src={imgList[index].default} alt="..." />
                   </div>
                   <div className="carousel-caption" />
                 </div>
