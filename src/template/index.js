@@ -5,6 +5,8 @@ import ReactDOM from "react-dom";
 import { AppContainer } from "react-hot-loader";
 import RootContainer from "../router/index.js";
 
+console.log(RootContainer);
+
 ReactDOM.render(
   <AppContainer>
     <RootContainer />

@@ -7,11 +7,12 @@ import { Paddle, Ball } from "./paddle.js";
 import { Stage } from "./stage.js";
 
 const width = 700;
-
+const PaddleImg = require("../img/50.jpg").default;
+const BallImg = require("./ball.png").default;
 class Game extends Component {
   componentDidMount() {
-    const paddle = Paddle(require("../img/50.jpg"));
-    const ball = Ball(require("./ball.png"));
+    const paddle = Paddle(PaddleImg);
+    const ball = Ball(BallImg);
     const stage = Stage();
 
     paddle.img.onload = function() {

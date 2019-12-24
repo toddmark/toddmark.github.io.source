@@ -39,7 +39,7 @@ const Snake = createComponent(() =>
 function createComponent(Component) {
   return universal(Component, {
     loading: (
-      <div style={{ marginTop: "30%" }} className="text-center">
+      <div style={{ marginTop: "200px" }} className="text-center">
         <div className="spinner-border text-danger loading" role="status">
           <span className="sr-only">Loading...</span>
         </div>

@@ -1,7 +1,7 @@
 function Stage() {
   const g = {
     actions: {},
-    keydowns: {},
+    keydowns: {}
   };
   const canvas = document.getElementById("canvas");
   const context = canvas.getContext("2d");
@@ -12,10 +12,10 @@ function Stage() {
     g.context.drawImage(img.img, img.x, img.y);
   };
   // events
-  window.addEventListener("keydown",(event) =>{
+  window.addEventListener("keydown", event => {
     g.keydowns[event.key] = true;
   });
-  window.addEventListener("keyup",(event) =>{
+  window.addEventListener("keyup", event => {
     g.keydowns[event.key] = false;
   });
 
@@ -26,11 +26,11 @@ function Stage() {
 
   // timer
   setInterval(() => {
-    // events 
+    // events
     const actions = Object.keys(g.actions);
-    for (let i = 0;  i < actions.length; i++) {
+    for (let i = 0; i < actions.length; i++) {
       let key = actions[i];
-      if (g.keydowns[key])  {
+      if (g.keydowns[key]) {
         g.actions[key]();
       }
     }
