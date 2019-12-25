@@ -4,6 +4,7 @@ import React from "react";
 import Nav from "../navbar";
 // import BinaryTree from "./binaryTree/Index";
 import RandomSort from "./demos/randomSort";
+import TrafficLight from "./demos/trafficLight";
 
 class Sandbox extends React.Component {
   render() {
@@ -12,11 +13,10 @@ class Sandbox extends React.Component {
         <Nav />
         <div className="container-fluid">
           <h4 class="text-primary text-center mt-3">Welcome to my Sandbox</h4>
-          <h3 class="text-info mt-2">random sort</h3>
-          <div class="border p-2">
-            <RandomSort />
-          </div>
-          <h3></h3>
+          <h3 class="text-info mt-2 pb-2 border-bottom">random sort</h3>
+          <RandomSort />
+          <h3 class="text-info mt-2 pb-2 border-bottom">Traffic Light</h3>
+          <TrafficLight />
         </div>
       </div>
     );
