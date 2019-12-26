@@ -1,5 +1,7 @@
 import React from "react";
 
+const style = require("./css/demos.less");
+
 export class TrafficLight extends React.Component {
   constructor(props) {
     super(props);
@@ -34,7 +36,22 @@ export class TrafficLight extends React.Component {
   }
 
   render() {
-    return <div>{this.state.currentLight}</div>;
+    return (
+      <div>
+        <div className="clearfix">
+          <ul className={style.trafficLight}>
+            <li className={this.state.currentLight === "red" && style.red}></li>
+            <li
+              className={this.state.currentLight === "green" && style.green}
+            ></li>
+            <li
+              className={this.state.currentLight === "yellow" && style.yellow}
+            ></li>
+          </ul>
+        </div>
+        <code>src\component\sandbox\demos\trafficLight.js</code>
+      </div>
+    );
   }
 }
 
