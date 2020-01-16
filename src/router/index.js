@@ -1,3 +1,4 @@
+import "semantic-ui-css/semantic.min.css";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../component/home.less";

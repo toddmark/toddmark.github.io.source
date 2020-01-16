@@ -1,5 +1,6 @@
 import React from "react";
 import Moment from "moment";
+import { Tab } from "semantic-ui-react";
 const style = require("./wordCard.less");
 
 class WordCard extends React.Component {
@@ -13,9 +14,7 @@ class WordCard extends React.Component {
     };
   }
 
-  componentDidMount() {
-    this.getTypeOne();
-  }
+  componentDidMount() {}
 
   getDetails() {}
 
@@ -23,14 +22,19 @@ class WordCard extends React.Component {
     const words = this.props.words.words;
     const newList = {};
     words.forEach(item => {
+      const year = Moment(item.date).year();
       const month = Moment(item.date).month();
-      if (!newList[month]) {
-        newList[month] = [];
+      if (!newList[year]) {
+        newList[year] = [];
+      }
+      if (!newList[year][month]) {
+        newList[year][month] = [];
       } else {
-        newList[month].push(item);
+        newList[year][month].push(item);
       }
     });
-    // newList[]
+    console.log(newList);
+
     return newList;
   }
 
@@ -44,15 +48,22 @@ class WordCard extends React.Component {
   render() {
     // const words = this.props.words;
     const TypeOneList = this.getTypeOne();
+    const years = Object.keys(TypeOneList);
     const { word } = this.state;
+    const months = TypeOneList[years[0]];
+    const panes = [
+      { menuItem: "Tab 1", render: () => <Tab.Pane>Tab 1 Content</Tab.Pane> },
+      { menuItem: "Tab 2", render: () => <Tab.Pane>Tab 2 Content</Tab.Pane> },
+      { menuItem: "Tab 3", render: () => <Tab.Pane>Tab 3 Content</Tab.Pane> }
+    ];
     return (
       <div>
-        {Object.keys(TypeOneList)
-          .reverse()
-          .map(item => {
-            const month = `${Number(item) + 1}月 `;
-            const days = [];
-            TypeOneList[item].forEach(day => {
+        <Tab panes={panes} />
+        {months.map((item, index) => {
+          const month = `${Number(index) + 1}月 `;
+          const days = [];
+          months[index] &&
+            months[index].forEach(day => {
               days.push(
                 <span
                   className={`col-sm-2 ${style.word}`}
@@ -65,20 +76,20 @@ class WordCard extends React.Component {
                 </span>
               );
             });
-            return (
-              <div className={style.wordPanel}>
-                <div className="clearfix">
-                  <h4 className="text-primary">
-                    {month}
-                    <span class="badge badge-light">
-                      ({TypeOneList[item].length})词
-                    </span>
-                  </h4>
-                </div>
-                <div className="row">{days}</div>
+          return (
+            <div className={style.wordPanel}>
+              <div className="clearfix">
+                <h4 className="text-primary">
+                  {month}
+                  <span class="badge badge-light">
+                    ({months[index].length})词
+                  </span>
+                </h4>
               </div>
-            );
-          })}
+              <div className="row">{days}</div>
+            </div>
+          );
+        })}
         <div
           className="modal fade"
           id="exampleModal"

@@ -50,6 +50,7 @@ class Hello extends Component {
     return (
       <div id="wrapper" style={{ height: 2000 }}>
         <Nav />
+        <blockquote></blockquote>
         <h3 id="stick" style={{ padding: 10 }}>
           {this.title.split("").map((item, key) => {
             item = item === " " ? "\u00A0" : item;

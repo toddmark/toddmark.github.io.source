@@ -17,6 +17,7 @@ module.exports = {
       "d3"
       //其他库
     ],
+    // semantic: [],
     bootstrap: ["bootstrap", "bootstrap/dist/css/bootstrap.min.css"]
   },
   output: {

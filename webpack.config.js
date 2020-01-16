@@ -125,8 +125,8 @@ module.exports = {
         ? [
             // 开发环境
             new webpack.HotModuleReplacementPlugin(),
-            new webpack.NamedModulesPlugin()
-            // new BundleAnalyzerPlugin()
+            new webpack.NamedModulesPlugin(),
+            new BundleAnalyzerPlugin()
           ]
         : [
             // 生产环境
