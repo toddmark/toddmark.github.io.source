@@ -54,19 +54,21 @@ class WordCard extends React.Component {
         ),
         render: () => (
           <Tab.Pane>
-            {item.map(item => {
-              return (
-                <span
-                  className={`col-sm-2 ${style.word}`}
-                  data-toggle="modal"
-                  data-target="#exampleModal"
-                  onClick={this.wordClick.bind(this, item)}
-                >
-                  {" "}
-                  {item.text.toLowerCase()}{" "}
-                </span>
-              );
-            })}
+            <div className="row">
+              {item.map(item => {
+                return (
+                  <span
+                    className={`col-sm-2 ${style.word}`}
+                    data-toggle="modal"
+                    data-target="#exampleModal"
+                    onClick={this.wordClick.bind(this, item)}
+                  >
+                    {" "}
+                    {item.text.toLowerCase()}{" "}
+                  </span>
+                );
+              })}
+            </div>
           </Tab.Pane>
         )
       });
@@ -77,7 +79,6 @@ class WordCard extends React.Component {
   render() {
     // const words = this.props.words;
     const TypeOneList = this.getTypeOne();
-    console.log(TypeOneList);
     const years = Object.keys(TypeOneList);
     const { word } = this.state;
     return (
@@ -87,7 +88,7 @@ class WordCard extends React.Component {
             return acc + cur.length;
           }, 0);
           return (
-            <div>
+            <div className={style.wordPanel}>
               <h4 className="text-primary">
                 {item}
                 <span class="badge badge-light">({result} words)</span>
