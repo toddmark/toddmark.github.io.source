@@ -36,6 +36,37 @@ class WordCard extends React.Component {
     return newList;
   }
 
+  getRecentWords(range) {
+    const words = this.props.words.words;
+    let newList = [];
+    switch (range.toString()) {
+      case "1":
+        console.log(words);
+        newList = words.splice(0, 1);
+        break;
+      case "7":
+        newList = words.splice(0, 7);
+        break;
+      case "15":
+        newList = words.splice(0, 15);
+        break;
+      case "30":
+        newList = words.splice(0, 30);
+        break;
+    }
+    return newList.map(item => (
+      <span
+        className={`col-sm-2 ${style.word}`}
+        data-toggle="modal"
+        data-target="#exampleModal"
+        onClick={this.wordClick.bind(this, item)}
+      >
+        {" "}
+        {item.text.toLowerCase()}{" "}
+      </span>
+    ));
+  }
+
   wordClick(word) {
     this.setState({
       word
@@ -73,7 +104,7 @@ class WordCard extends React.Component {
         )
       });
     });
-    return <Tab panes={panes} />;
+    return <Tab panes={panes.reverse()} />;
   }
 
   render() {
@@ -83,6 +114,14 @@ class WordCard extends React.Component {
     const { word } = this.state;
     return (
       <div>
+        <h1>Last 1 days</h1>
+        {this.getRecentWords("1")}
+        <h1>Last 7 days</h1>
+        {this.getRecentWords("7")}
+        <h1>Last 15 days</h1>
+        {this.getRecentWords("15")}
+        <h1>Last 30 days</h1>
+        {this.getRecentWords("30")}
         {years.reverse().map(item => {
           const result = TypeOneList[item].reduce((acc, cur) => {
             return acc + cur.length;
