@@ -36,6 +36,9 @@ const htmlFiles = (function() {
       new AddAssetHtmlPlugin({
         filepath: require.resolve("./build/bootstrap.dll.js")
       })
+      // new AddAssetHtmlPlugin({
+      //   filepath: require.resolve("./build/semantic.dll.js")
+      // }),
     );
   });
   return result;
@@ -125,8 +128,8 @@ module.exports = {
         ? [
             // 开发环境
             new webpack.HotModuleReplacementPlugin(),
-            new webpack.NamedModulesPlugin(),
-            new BundleAnalyzerPlugin()
+            new webpack.NamedModulesPlugin()
+            // new BundleAnalyzerPlugin()
           ]
         : [
             // 生产环境

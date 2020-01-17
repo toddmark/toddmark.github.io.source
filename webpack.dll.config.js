@@ -14,10 +14,12 @@ module.exports = {
       "gsap",
       "scrollmagic",
       "popper.js",
-      "d3"
+      "d3",
+      "moment"
+      // "semantic-ui-react",
       //其他库
     ],
-    // semantic: [],
+    // semantic: ["semantic-ui-react"],
     bootstrap: ["bootstrap", "bootstrap/dist/css/bootstrap.min.css"]
   },
   output: {

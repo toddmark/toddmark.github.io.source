@@ -1,6 +1,6 @@
 import React from "react";
 import Moment from "moment";
-import { Tab } from "semantic-ui-react";
+import { Tab, Menu } from "semantic-ui-react";
 const style = require("./wordCard.less");
 
 class WordCard extends React.Component {
@@ -24,17 +24,15 @@ class WordCard extends React.Component {
     words.forEach(item => {
       const year = Moment(item.date).year();
       const month = Moment(item.date).month();
-      if (!newList[year]) {
+      if (newList[year] === undefined) {
         newList[year] = [];
       }
-      if (!newList[year][month]) {
+      if (newList[year][month] === undefined) {
         newList[year][month] = [];
-      } else {
-        newList[year][month].push(item);
       }
+      newList[year][month].push(item);
     });
-    console.log(newList);
-
+    // console.log(newList);
     return newList;
   }
 
@@ -42,51 +40,59 @@ class WordCard extends React.Component {
     this.setState({
       word
     });
-    console.log(word);
+    // console.log(word);
+  }
+
+  renderYearTab(months) {
+    const panes = [];
+    months.map((item, index) => {
+      panes.push({
+        menuItem: (
+          <Menu.Item>
+            {index + 1}月<small>&nbsp;({item.length})</small>
+          </Menu.Item>
+        ),
+        render: () => (
+          <Tab.Pane>
+            {item.map(item => {
+              return (
+                <span
+                  className={`col-sm-2 ${style.word}`}
+                  data-toggle="modal"
+                  data-target="#exampleModal"
+                  onClick={this.wordClick.bind(this, item)}
+                >
+                  {" "}
+                  {item.text.toLowerCase()}{" "}
+                </span>
+              );
+            })}
+          </Tab.Pane>
+        )
+      });
+    });
+    return <Tab panes={panes} />;
   }
 
   render() {
     // const words = this.props.words;
     const TypeOneList = this.getTypeOne();
+    console.log(TypeOneList);
     const years = Object.keys(TypeOneList);
     const { word } = this.state;
-    const months = TypeOneList[years[0]];
-    const panes = [
-      { menuItem: "Tab 1", render: () => <Tab.Pane>Tab 1 Content</Tab.Pane> },
-      { menuItem: "Tab 2", render: () => <Tab.Pane>Tab 2 Content</Tab.Pane> },
-      { menuItem: "Tab 3", render: () => <Tab.Pane>Tab 3 Content</Tab.Pane> }
-    ];
     return (
       <div>
-        <Tab panes={panes} />
-        {months.map((item, index) => {
-          const month = `${Number(index) + 1}月 `;
-          const days = [];
-          months[index] &&
-            months[index].forEach(day => {
-              days.push(
-                <span
-                  className={`col-sm-2 ${style.word}`}
-                  data-toggle="modal"
-                  data-target="#exampleModal"
-                  onClick={this.wordClick.bind(this, day)}
-                >
-                  {" "}
-                  {day.text.toLowerCase()}{" "}
-                </span>
-              );
-            });
+        {years.reverse().map(item => {
+          const result = TypeOneList[item].reduce((acc, cur) => {
+            return acc + cur.length;
+          }, 0);
           return (
-            <div className={style.wordPanel}>
-              <div className="clearfix">
-                <h4 className="text-primary">
-                  {month}
-                  <span class="badge badge-light">
-                    ({months[index].length})词
-                  </span>
-                </h4>
-              </div>
-              <div className="row">{days}</div>
+            <div>
+              <h4 className="text-primary">
+                {item}
+                <span class="badge badge-light">({result} words)</span>
+              </h4>
+              {this.renderYearTab(TypeOneList[item])}
             </div>
           );
         })}
