@@ -99,7 +99,7 @@
     "inquirer": "^7.0.3",
     "ip": "^1.1.5",
     "jquery": "^3.4.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "popper.js": "^1.14.3",
     "progress-bar-webpack-plugin": "^2.1.0",
     "react": "^16.12.0",
